@@ -1,0 +1,460 @@
+% !TeX spellcheck = fr_FR
+\chapter{Transformées de Fourier}
+
+
+\section{Introduction}
+
+
+\subsection{Définitions et résultats préliminaires}
+
+
+\begin{definition}
+
+    Une fonction $f: \R \rightarrow \R$ est dite \textbf{T-périodique} s'il existe $T > 0$ tel que $f(x + T) = f(x) \enspace \forall x \in \R$.
+    L'intervalle $[0, T]$ caractérise complètement la fonction.
+
+\end{definition}
+
+
+\begin{definition}
+
+    Une fonction $f: \R \rightarrow \R$ est dite \textbf{continue par morceaux} sur l'intervalle $[a, b]$ s'il existe des points $ \{x\}_{i = 0}^{n + 1} \subset [a, b]$ avec $a = x_0 < x_1 < \cdots < x_n < x_{n + 1} = b$ tels que pour $i = 0, 1, ..., n$ on ait:
+    
+    \begin{enumerate}
+
+        \item
+        $f$ est continue sur chaque intervalle ouvert $]x_i, x_{i + 1}[$
+
+        \item
+        la limite à droite $f(x_i + 0) := \lim\limits_{\substack{t \rightarrow x_i \\ t > x_i}} f(t)$ et la limite à gauche $f(x_{i + 1} - 0) := \lim\limits_{\substack{t \rightarrow x_i \\ t < x_i}} f(t)$ existent et sont finies.
+
+    \end{enumerate}
+
+\end{definition}
+
+
+\begin{terminology}
+    On dit qu'une fonction T-périodique est continue par morceaux si elle l'est sur l'intervalle $[0, T]$ qui la caractérise.
+\end{terminology}
+
+
+\begin{definition}
+    Soit $f: \R \rightarrow \R$ une fonction T-périodique continue par morceaux.
+    Pour $N \in \mathbb{N}$, la \textbf{série de Fourier partielle d'ordre N} de $f$ est:
+    
+    \[
+    F_N f(x) = \sum_{n = -N}^{N} c_n e^{i \frac{2 \pi n}{T} x}
+    \]
+    
+    où les \textbf{coefficients de Fourier} $c_n$ sont des nombres complexes donnés par:
+    
+    \[
+    c_n = \frac{1}{T} \int_{0}^{T} f(x) e^{-i \frac{2 \pi n}{T} x} \dx
+    \]
+    
+    On appelle \textbf{série de Fourier de f} (en notation complexe) la limite lorsque $N \longrightarrow \infty$ de la série de $F_N f(x)$.
+    On écrit:
+    
+    \[ F f(x) := \lim_{N \rightarrow \infty} F_N f(x) = \sum_{n = -\infty}^{\infty} c_n e^{i \frac{2 \pi n}{T} x} \]
+\end{definition}
+
+
+\begin{theorem*}[de Dirichlet -- Résultat de convergence]
+    Soit $f: \R \rightarrow \R$ une fonction T-périodique telle que $f$ et $f'$ soient continues par morceaux.
+    Alors $\forall x \in \R : F f(x) = \lim\limits_{N \rightarrow \infty} F_N f(x)$ existe et $F f(x) = \frac{f(x + 0) + f(x - 0)}{2}$.
+    En particulier, si $f$ est continue en $x$, alors $f(x + 0) = f(x - 0) = f(x)$ et on a $F f(x) = f(x)$.
+\end{theorem*}
+
+
+\begin{note}
+    Utilisation de la formule d'Euler $e^{ix} = \cos x + i \sin x$ (cf. ex. 1-2, série 1).
+\end{note}
+
+
+
+\subsection{Motivation}
+
+
+
+\begin{description}
+
+    \item[Série de Fourier]
+    développement des fonctions \textit{périodiques} comme somme infinie de fonctions trigonométriques.
+    
+    \item[Transformée de Fourier]
+    étude de fonctions \textit{non} périodiques.
+
+\end{description}
+
+
+\begin{idea}
+    Soit $T > 0$ et $f_T$ une fonction T-périodique définie par
+    
+    \[
+    f_T (x) =
+    \left \{
+    \begin{array}{r c l}
+        0 & \mathrm{si} & x \in \enspace ]-\frac{T}{2}, -1[ \\
+        1 & \mathrm{si} & x \in [-1, 1] \\
+        0 & \mathrm{si} & x \in \enspace ]1, \frac{T}{2}[ \\
+    \end{array}
+    \right .
+    \]
+    
+    Lorsque la période $T \rightarrow \infty$, on a:
+    
+    \[
+    \lim_{T \rightarrow \infty} f_T (x) = f(x) =
+    \left \{
+    \begin{array}{r c l}
+        1 & \mathrm{si} & x \in [-1, 1] \\
+        0 & \mathrm{si} & x \notin [-1, 1] \\
+    \end{array}
+    \right .
+    \]
+    
+    qui n'est plus une fonction périodique.
+    
+\end{idea}
+
+
+\begin{idea}
+    considérer des fonctions comme limites de fonctions périodiques dont la périodiques dont la période $T$ tend vers $+\infty$.
+\end{idea}
+
+
+\subsection{Raisonnement heuristique}
+
+Soit $f_T: \R \rightarrow \R$ une fonction \textit{continue}, T-périodique telle que $f'_T$ soit continue par morceaux.
+Alors la série de Fourier de $f_T$ est:
+
+\[
+F f_T(y) = \sum_{n = -\infty}^{+\infty} c_n e^{i \frac{2 \pi n}{T} y}
+\]
+
+pour $y \in \R$, où
+
+\[
+c_n = \frac{1}{T} \int_{0}^{T} f_T(x) e^{-i \frac{2 \pi n}{T} x} \dx
+= \frac{1}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f_T(x) e^{-i \frac{2 \pi n}{T} x} \dx
+\]
+
+En écrivant
+$\Delta \alpha = \frac{2 \pi}{T}$
+et
+$\alpha_n = n \cdot \Delta \alpha$,
+on a
+$\frac{1}{T} = \frac{\Delta \alpha}{2 \pi}$.
+
+\[
+c_n =
+\frac{\Delta \alpha}{2 \pi}
+\int_{-\frac{T}{2}}^{\frac{T}{2}} f_T(x) e^{-i \alpha_n x} \dx
+\]
+
+\[
+\Rightarrow
+F f_T(y) =
+\sum_{n = -\infty}^{+\infty}
+\left[
+\frac{\Delta \alpha}{2 \pi}
+\int_{-\frac{T}{2}}^{\frac{T}{2}}
+f_T(x) e^{-i \alpha_n x} \dx
+\right]
+e^{i \alpha_n y}
+\]
+
+Échange de la somme infinie et de l'intégrale:
+
+\[
+F f_T(y) =
+\frac{1}{2 \pi}
+\int_{-\frac{T}{2}}^{\frac{T}{2}}
+f_T(x)
+\left[
+\Delta \alpha
+\sum_{n = -\infty}^{+\infty}
+e^{-i \alpha_n (x - y)}
+\right]
+\dx
+\]
+
+On décrouvre une somme de Riemann qui permet de définir une intégrale.
+En effet:
+
+\[
+\Delta \alpha \sum_{n = -\infty}^{+\infty}
+e^{-i \alpha_n (x - y)}
+\underbrace{=}_{\Delta\alpha = \alpha_n - \alpha_{n - 1}}
+\sum_{n = -\infty}^{+\infty}
+e^{-i \alpha_n (x - y)} (\alpha_n - \alpha_{n - 1})
+\]
+
+\[
+=
+\int_{-\infty}^{+\infty}
+e^{-i \alpha (x - y)}
+\dal
+\]
+
+Donc on obtient:
+
+\[
+F f_T(y) =
+\frac{1}{2 \pi}
+\int_{-\frac{T}{2}}^{\frac{T}{2}}
+f_T(x)
+\left[
+\int_{-\infty}^{+\infty}
+e^{-i \alpha (x - y)}
+\dal
+\right]
+\dx
+\]
+
+\[
+=
+\frac{1}{\sqrt{2 \pi}}
+\int_{-\infty}^{+\infty}
+\left[
+\frac{1}{\sqrt{2 \pi}}
+\int_{-\frac{T}{2}}^{\frac{T}{2}}
+f_T(x) e^{-i \alpha x}
+\dx
+\right]
+e^{i \alpha y}
+\dal
+\]
+
+Comme $f_T$ est continue, alors on a $f_T(y) = F f(y)$ et donc lorsque $T$ tend vers $+\infty$, on a
+$\lim\limits_{T \rightarrow \infty} f_T(y) =
+\lim\limits_{T \rightarrow \infty} F f_T(y) \iff
+f(y) = \lim\limits_{T \rightarrow \infty} F f_T(y)$.
+
+\[
+\iff
+f(y) =
+\frac{1}{\sqrt{2 \pi}}
+\int_{-\infty}^{+\infty}
+\underbrace{
+\left[
+\frac{1}{\sqrt{2 \pi}}
+\int_{-\infty}^{+\infty}
+f(x) e^{-i \alpha x}
+\dx
+\right]
+}_{\substack{
+\textrm{Nouvelle fonction qui dépend de la}\\
+\textrm{variable $\alpha$, qui est appelée la}\\
+\textrm{transformée de Fourier de $f$ et}\\
+\textrm{notée $\mathfrak{F}(f)$ ou $\hat{f}$}
+}}
+e^{i \alpha y}
+\dal
+\]
+
+On écrit:
+
+\[
+\mathfrak{F}(f)(\alpha) = \hat{f}(\alpha) =
+\frac{1}{\sqrt{2 \pi}}
+\int_{-\infty}^{+\infty}
+f(x) e^{-i \alpha x}
+\dx
+\]
+
+\begin{remark}
+    On a que:
+    
+    \[
+    f(y) =
+    \frac{1}{\sqrt{2 \pi}}
+    \int_{-\infty}^{+\infty}
+    \hat{f}(\alpha)
+    e^{i \alpha y}
+    \dal
+    \]
+\end{remark}
+
+
+
+\section{Transformée de Fourier d'une fonction}
+
+
+
+\subsection{Définitions}
+
+
+
+\begin{definition}
+    Soit $f: \R \rightarrow \R$ une fonction continue par morceaux et telle que $\int_{-\infty}^{+\infty} | f(x) | \dx < \infty$.
+    La \textbf{transformée de Fourier} de $f$ est la fonction notée $\mathfrak{F}(f)$ ou $\hat{f}: \R \rightarrow \C$ définie par:
+    
+    \[
+    \alpha \longmapsto
+    \mathfrak{F}(f)(\alpha) = \hat{f}(\alpha) =
+    \frac{1}{\sqrt{2 \pi}}
+    \int_{-\infty}^{+\infty}
+    f(x) e^{-i \alpha x}
+    \dx
+    \]
+\end{definition}
+
+
+
+\subsection{Définitions}
+
+
+
+\begin{example}
+    Calculer la transformée de Fourier de la fonction:
+    
+    \[
+    f:
+    \begin{array}{r c l}
+        \R & \rightarrow & \R_+^* \\
+        x  & \rightarrow & f(x) = e^{-|x|} =
+        \left \{
+        \begin{array}{r c l}
+            e^{-x} & \textrm{si} & x \geq 0 \\
+            e^x    & \textrm{si} & x < 0
+        \end{array}
+        \right.
+    \end{array}
+    \]
+    
+    \begin{align*}
+    \hat{f}(\alpha) & =
+    \frac{1}{\sqrt{2 \pi}}
+    \int_{-\infty}^{+\infty}
+    f(x)
+    e^{-i \alpha x}
+    \dx
+    =
+    \frac{1}{\sqrt{2 \pi}}
+    \int_{-\infty}^{+\infty}
+    e^{-|x|}
+    e^{-i \alpha x}
+    \dx
+    \\&=
+    \frac{1}{\sqrt{2 \pi}}
+    \left[
+    \int_{-\infty}^{0}
+    e^{x}
+    e^{-i \alpha x}
+    \dx
+    +
+    \int_{0}^{+\infty}
+    e^{-x}
+    e^{-i \alpha x}
+    \dx
+    \right]
+    \\&=
+    \frac{1}{\sqrt{2 \pi}}
+    \left[
+    \int_{-\infty}^{0}
+    e^{(1 - i \alpha) x}
+    \dx
+    +
+    \int_{0}^{+\infty}
+    e^{-(1 + i \alpha) x}
+    \dx
+    \right]
+    \\&=
+    \frac{1}{\sqrt{2 \pi}}
+    \left[
+    \left.
+    \frac{e^{(1 - i \alpha) x}}
+    {1 - i \alpha}
+    \right|_{-\infty}^0
+    -
+    \left.
+    \frac{e^{-(1 + i \alpha) x}}
+    {1 + i \alpha}
+    \right|_0^{+\infty}
+    \right]
+    \\=&
+    \frac{1}{\sqrt{2 \pi}}
+    \left[
+    \frac{1}
+    {1 - i \alpha}
+    \left(
+    1 - \lim\limits_{x \rightarrow -\infty} e^{(1 - i \alpha) x}
+    \right)
+    \right.
+    \\& -
+    \left.
+    \frac{1}
+    {1 + i \alpha}
+    \left(
+    \lim\limits_{x \rightarrow + \infty} e^{-(1 + i \alpha) x} - 1
+    \right)
+    \right]
+    \\&=
+    \frac{1}{\sqrt{2 \pi}}
+    \left(
+    \frac{1}{1 + i \alpha}
+    +
+    \frac{1}{1 + i \alpha}
+    \right)
+    \\&=
+    \frac{1}{\sqrt{2 \pi}}
+    \frac{1 + i \alpha + 1 - i \alpha}
+    {(1 - i \alpha) (1 + i \alpha)}
+    =
+    \frac{1}{\sqrt{2 \pi}}
+    \frac{2}{1 + \alpha^2}
+    \end{align*}
+    
+    Résultat:
+    
+    \[
+    \hat{f}:
+    \begin{array}{r c l}
+    \R & \rightarrow & \R_+^* \\
+    \alpha & \rightarrow & \hat{f}(\alpha) =
+    \sqrt{\frac{2}{\pi}} \frac{1}{1 + \alpha^2}
+    \end{array}
+    \]
+    
+    Autres exemples: ex. 3-4, série 1
+\end{example}
+
+
+\begin{remark}
+    Pour calculer
+    $\lim\limits_{x \rightarrow -\infty} e^{(1 - i \alpha) x}$:
+    
+    \begin{align*}
+    \left|e^{(1 - i \alpha) x}\right|
+    &= \left|e^{- i \alpha x} e^x\right|
+    = \underbrace{\left|e^{- i \alpha x}\right|}_{= 1} \left|e^x\right|
+    = e^x\\
+    \Rightarrow \lim\limits_{x \rightarrow -\infty} \left|e^{(1 - i \alpha) x}\right|
+    &= \lim\limits_{x \rightarrow -\infty} e^x
+    = 0\\
+    \Rightarrow \lim\limits_{x \rightarrow -\infty} e^{(1 - i \alpha) x}
+    &= 0 + i0
+    = 0
+    \end{align*}
+    
+    On a aussi $\lim\limits_{x \rightarrow +\infty} e^{-(1 + i \alpha) x} = 0$.
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

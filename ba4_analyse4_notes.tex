@@ -1,0 +1,39 @@
+\documentclass[a4paper, 11pt]{report}
+
+\usepackage[french]{babel}
+\usepackage[a4paper]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+
+\newtheorem{theorem}{Théorème}
+\newtheorem*{theorem*}{Théorème}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}
+\newtheorem*{idea}{Idée}
+
+\theoremstyle{remark}
+\newtheorem*{terminology}{Terminologie}
+\newtheorem*{note}{Note}
+\newtheorem*{remark}{Remarque}
+\newtheorem*{example}{Exemple}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand{\dal}{\mathrm{d}\alpha}
+
+\title{\textbf{Analyse IV} \\
+Transcript du cours du Pr. Michel \bsc{Cibils}}
+\author{Robin \bsc{Mamié}}
+\date{Printemps 2018}
+
+\begin{document}
+\maketitle
+\input{chapters/1-transformees_de_fourier}
+\end{document}
