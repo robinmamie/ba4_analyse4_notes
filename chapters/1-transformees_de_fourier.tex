@@ -7,16 +7,14 @@
 
 \subsection{Définitions et résultats préliminaires}
 
-
 \begin{definition}
-
     Une fonction $f: \R \rightarrow \R$ est dite \textbf{T-périodique} s'il existe $T > 0$ tel que $f(x + T) = f(x) \enspace \forall x \in \R$.
+    
     L'intervalle $[0, T]$ caractérise complètement la fonction.
-
 \end{definition}
 
 
-\begin{definition}
+\begin{definition}[14.1.i, p.103]
 
     Une fonction $f: \R \rightarrow \R$ est dite \textbf{continue par morceaux} sur l'intervalle $[a, b]$ s'il existe des points $ \{x\}_{i = 0}^{n + 1} \subset [a, b]$ avec $a = x_0 < x_1 < \cdots < x_n < x_{n + 1} = b$ tels que pour $i = 0, 1, ..., n$ on ait:
     
@@ -38,7 +36,7 @@
 \end{terminology}
 
 
-\begin{definition}
+\begin{definition}[14.2, p.104]
     Soit $f: \R \rightarrow \R$ une fonction T-périodique continue par morceaux.
     Pour $N \in \mathbb{N}$, la \textbf{série de Fourier partielle d'ordre N} de $f$ est:
     
@@ -55,26 +53,28 @@
     On appelle \textbf{série de Fourier de f} (en notation complexe) la limite lorsque $N \longrightarrow \infty$ de la série de $F_N f(x)$.
     On écrit:
     
-    \[ F f(x) := \lim_{N \rightarrow \infty} F_N f(x) = \sum_{n = -\infty}^{\infty} c_n e^{i \frac{2 \pi n}{T} x} \]
+    \[ F f(x) := \lim_{N \rightarrow +\infty} F_N f(x) = \sum_{-\infty}^{\infty} c_n e^{i \frac{2 \pi n}{T} x} \]
 \end{definition}
 
 
-\begin{theorem*}[de Dirichlet -- Résultat de convergence]
+\begin{theorem}[de Dirichlet -- Résultat de convergence; 14.3, p.104]
     Soit $f: \R \rightarrow \R$ une fonction T-périodique telle que $f$ et $f'$ soient continues par morceaux.
-    Alors $\forall x \in \R : F f(x) = \lim\limits_{N \rightarrow \infty} F_N f(x)$ existe et $F f(x) = \frac{f(x + 0) + f(x - 0)}{2}$.
+    Alors $\forall x \in \R$:
+    
+    \[
+    F f(x) = \lim\limits_{N \rightarrow \infty} F_N f(x) \textrm{ existe et } F f(x) = \frac{f(x + 0) + f(x - 0)}{2}
+    \]
+    
     En particulier, si $f$ est continue en $x$, alors $f(x + 0) = f(x - 0) = f(x)$ et on a $F f(x) = f(x)$.
-\end{theorem*}
+\end{theorem}
 
 
 \begin{note}
-    Utilisation de la formule d'Euler $e^{ix} = \cos x + i \sin x$ (cf. ex. 1-2, série 1).
+    Utilisation de la formule d'Euler $e^{ix} = \cos x + i \sin x$ \textit{(cf. ex. 1-2, série 1)}.
 \end{note}
 
 
-
 \subsection{Motivation}
-
-
 
 \begin{description}
 
@@ -119,7 +119,7 @@
 
 
 \begin{idea}
-    considérer des fonctions comme limites de fonctions périodiques dont la périodiques dont la période $T$ tend vers $+\infty$.
+    considérer des fonctions comme limites de fonctions périodiques dont la période $T$ tend vers $+\infty$.
 \end{idea}
 
 
@@ -129,7 +129,7 @@ Soit $f_T: \R \rightarrow \R$ une fonction \textit{continue}, T-périodique tell
 Alors la série de Fourier de $f_T$ est:
 
 \[
-F f_T(y) = \sum_{n = -\infty}^{+\infty} c_n e^{i \frac{2 \pi n}{T} y}
+F f_T(y) = \sum_{-\infty}^{+\infty} c_n e^{i \frac{2 \pi n}{T} y}
 \]
 
 pour $y \in \R$, où
@@ -155,7 +155,7 @@ c_n =
 \[
 \Rightarrow
 F f_T(y) =
-\sum_{n = -\infty}^{+\infty}
+\sum_{-\infty}^{+\infty}
 \left[
 \frac{\Delta \alpha}{2 \pi}
 \int_{-\frac{T}{2}}^{\frac{T}{2}}
@@ -173,20 +173,20 @@ F f_T(y) =
 f_T(x)
 \left[
 \Delta \alpha
-\sum_{n = -\infty}^{+\infty}
+\sum_{-\infty}^{+\infty}
 e^{-i \alpha_n (x - y)}
 \right]
 \dx
 \]
 
-On décrouvre une somme de Riemann qui permet de définir une intégrale.
+On découvre une somme de Riemann qui permet de définir une intégrale.
 En effet:
 
 \[
-\Delta \alpha \sum_{n = -\infty}^{+\infty}
+\Delta \alpha \sum_{-\infty}^{+\infty}
 e^{-i \alpha_n (x - y)}
 \underbrace{=}_{\Delta\alpha = \alpha_n - \alpha_{n - 1}}
-\sum_{n = -\infty}^{+\infty}
+\sum_{-\infty}^{+\infty}
 e^{-i \alpha_n (x - y)} (\alpha_n - \alpha_{n - 1})
 \]
 
@@ -199,8 +199,8 @@ e^{-i \alpha (x - y)}
 
 Donc on obtient:
 
-\[
-F f_T(y) =
+\begin{align*}
+F f_T(y) &=
 \frac{1}{2 \pi}
 \int_{-\frac{T}{2}}^{\frac{T}{2}}
 f_T(x)
@@ -210,10 +210,7 @@ e^{-i \alpha (x - y)}
 \dal
 \right]
 \dx
-\]
-
-\[
-=
+\\&=
 \frac{1}{\sqrt{2 \pi}}
 \int_{-\infty}^{+\infty}
 \left[
@@ -224,12 +221,12 @@ f_T(x) e^{-i \alpha x}
 \right]
 e^{i \alpha y}
 \dal
-\]
+\end{align*}
 
-Comme $f_T$ est continue, alors on a $f_T(y) = F f(y)$ et donc lorsque $T$ tend vers $+\infty$, on a
-$\lim\limits_{T \rightarrow \infty} f_T(y) =
-\lim\limits_{T \rightarrow \infty} F f_T(y) \iff
-f(y) = \lim\limits_{T \rightarrow \infty} F f_T(y)$.
+Comme $f_T$ est continue, alors on a $f_T(y) = F f_T(y)$ et donc lorsque $T$ tend vers $+\infty$, on a
+$\lim\limits_{T \rightarrow +\infty} f_T(y) =
+\lim\limits_{T \rightarrow +\infty} F f_T(y) \iff
+f(y) = \lim\limits_{T \rightarrow +\infty} F f_T(y)$.
 
 \[
 \iff
@@ -247,7 +244,7 @@ f(x) e^{-i \alpha x}
 \textrm{Nouvelle fonction qui dépend de la}\\
 \textrm{variable $\alpha$, qui est appelée la}\\
 \textrm{transformée de Fourier de $f$ et}\\
-\textrm{notée $\mathfrak{F}(f)$ ou $\hat{f}$}
+\textrm{notée $\TF(f)$ ou $\hat{f}$}
 }}
 e^{i \alpha y}
 \dal
@@ -256,7 +253,7 @@ e^{i \alpha y}
 On écrit:
 
 \[
-\mathfrak{F}(f)(\alpha) = \hat{f}(\alpha) =
+\TF(f)(\alpha) = \hat{f}(\alpha) =
 \frac{1}{\sqrt{2 \pi}}
 \int_{-\infty}^{+\infty}
 f(x) e^{-i \alpha x}
@@ -281,18 +278,16 @@ f(x) e^{-i \alpha x}
 \section{Transformée de Fourier d'une fonction}
 
 
+\subsection{Définition}
 
-\subsection{Définitions}
-
-
-
-\begin{definition}
+\begin{definition}[15.1, p.113]
     Soit $f: \R \rightarrow \R$ une fonction continue par morceaux et telle que $\int_{-\infty}^{+\infty} | f(x) | \dx < \infty$.
-    La \textbf{transformée de Fourier} de $f$ est la fonction notée $\mathfrak{F}(f)$ ou $\hat{f}: \R \rightarrow \C$ définie par:
+    
+    La \textbf{transformée de Fourier} de $f$ est la fonction notée $\TF(f)$ ou $\hat{f}: \R \rightarrow \C$ définie par:
     
     \[
     \alpha \longmapsto
-    \mathfrak{F}(f)(\alpha) = \hat{f}(\alpha) =
+    \TF(f)(\alpha) = \hat{f}(\alpha) =
     \frac{1}{\sqrt{2 \pi}}
     \int_{-\infty}^{+\infty}
     f(x) e^{-i \alpha x}
@@ -301,10 +296,7 @@ f(x) e^{-i \alpha x}
 \end{definition}
 
 
-
-\subsection{Définitions}
-
-
+\subsection{Exemples}
 
 \begin{example}
     Calculer la transformée de Fourier de la fonction:
@@ -313,7 +305,7 @@ f(x) e^{-i \alpha x}
     f:
     \begin{array}{r c l}
         \R & \rightarrow & \R_+^* \\
-        x  & \rightarrow & f(x) = e^{-|x|} =
+        x  & \mapsto & f(x) = e^{-|x|} =
         \left \{
         \begin{array}{r c l}
             e^{-x} & \textrm{si} & x \geq 0 \\
@@ -373,7 +365,7 @@ f(x) e^{-i \alpha x}
     {1 + i \alpha}
     \right|_0^{+\infty}
     \right]
-    \\=&
+    \\&=
     \frac{1}{\sqrt{2 \pi}}
     \left[
     \frac{1}
@@ -382,7 +374,7 @@ f(x) e^{-i \alpha x}
     1 - \lim\limits_{x \rightarrow -\infty} e^{(1 - i \alpha) x}
     \right)
     \right.
-    \\& -
+    -
     \left.
     \frac{1}
     {1 + i \alpha}
@@ -393,7 +385,7 @@ f(x) e^{-i \alpha x}
     \\&=
     \frac{1}{\sqrt{2 \pi}}
     \left(
-    \frac{1}{1 + i \alpha}
+    \frac{1}{1 - i \alpha}
     +
     \frac{1}{1 + i \alpha}
     \right)
@@ -406,18 +398,16 @@ f(x) e^{-i \alpha x}
     \frac{2}{1 + \alpha^2}
     \end{align*}
     
-    Résultat:
+    \textbf{Résultat:}
     
     \[
     \hat{f}:
     \begin{array}{r c l}
     \R & \rightarrow & \R_+^* \\
-    \alpha & \rightarrow & \hat{f}(\alpha) =
+    \alpha & \mapsto & \hat{f}(\alpha) =
     \sqrt{\frac{2}{\pi}} \frac{1}{1 + \alpha^2}
     \end{array}
     \]
-    
-    Autres exemples: ex. 3-4, série 1
 \end{example}
 
 
@@ -442,19 +432,347 @@ f(x) e^{-i \alpha x}
 \end{remark}
 
 
+\begin{example}
+    Soit la fonction 
+    
+    \[
+    f:
+    \begin{array}{r c l}
+    \R & \rightarrow & \R \\
+    x  & \mapsto & f(x) = 
+    \left \{
+    \begin{array}{r c l}
+    1 & \textrm{si} & x \in [-1, 1] \\
+    0   & \textrm{sinon} &
+    \end{array}
+    \right.
+    \end{array}
+    \]
+    
+    Calcul de la transformée de Fourier de $f$.
+    
+    \begin{align*}
+    \hat{f}(\alpha) & =
+    \frac{1}{\sqrt{2 \pi}}
+    \int_{-\infty}^{+\infty}
+    f(x)
+    e^{-i \alpha x}
+    \dx
+    =
+    \frac{1}{\sqrt{2 \pi}}
+    \int_{-1}^{1}
+    e^{-i \alpha x}
+    \dx
+    \\&\overbrace{=}^{\alpha \neq 0}
+    -
+    \frac{1}{\sqrt{2 \pi}}
+    \left.
+    \frac{e^{-i \alpha x}}{i \alpha}
+    \right|_{-1}^{1}
+    =
+    \frac{1}{\sqrt{2 \pi}}
+    \frac{e^{i \alpha} - e^{-i \alpha}}{i \alpha}
+    \\&=
+    \frac{2}{\sqrt{2 \pi}}
+    \frac{1}{\alpha}
+    \frac{e^{i \alpha} - e^{-i \alpha}}{2i}
+    =
+    \sqrt{\frac{2}{\pi}}
+    \frac{\sin \alpha}{\alpha}
+    \quad
+    \text{si } \alpha \neq 0
+    \end{align*}
+    
+    Pour $\alpha = 0$ :
+    
+    \begin{align*}
+    \hat{f}(0) &=
+    \frac{1}{\sqrt{2 \pi}}
+    \int_{-\infty}^{+\infty}
+    f(x)
+    e^{-i 0 x}
+    \dx
+    =
+    \frac{1}{\sqrt{2 \pi}}
+    \int_{-1}^{1}
+    \dx
+    =
+    \left.
+    \frac{1}{\sqrt{2 \pi}}
+    x
+    \right|_{-1}^{1}
+    =
+    \sqrt{\frac{2}{\pi}}
+    \end{align*}
+    
+    \textbf{Résultat:}
+    
+    \[
+    \hat{f}:
+    \begin{array}{r c l}
+    \R & \rightarrow & \R \\
+    \alpha & \mapsto & \hat{f}(\alpha) =
+    \left\{
+    \begin{array}{l c l}
+    \sqrt{\frac{2}{\pi}}
+    \frac{\sin \alpha}{\alpha} & \mathrm{si} & \alpha \neq 0\\
+    \sqrt{\frac{2}{\pi}} & \mathrm{si} & \alpha = 0
+    \end{array}
+    \right.
+    \end{array}
+    \]
+    
+    On remarque que $\lim\limits_{\alpha \rightarrow 0} \hat{f}(\alpha) = \lim\limits_{\alpha \rightarrow 0} \sqrt{\frac{2}{\pi}} \frac{\sin \alpha}{\alpha} = \sqrt{\frac{2}{\pi}} = \hat{f}(0)$.
+    
+    $\implies \hat{f}$ est aussi continue en $\alpha = 0$.
+    
+    \textit{Autres exemples: ex. 3-4, série 1}
+    
+\end{example}
 
 
 
+\section{Transformée de Fourier inverse}
+
+
+\subsection{Définition}
+
+\begin{definition}
+    Soit $g: \R \rightarrow \C$ une fonction continue par morceaux telle que $\int_{-\infty}^{+ \infty} |g(t)| \dt < \infty$.
+    La \textbf{transformée de Fourier inverse} de $g$ est notée:
+    
+    \[
+    \TFi(g):
+    \begin{array}{r c l}
+    \R & \rightarrow & \C \\
+    x & \rightarrow & \TFi(g)(x)
+    \end{array}, \textrm{ où}
+    \enspace
+    \TFi(g)(x) =
+    \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} g(t) e^{itx} \dt.
+    \]
+\end{definition}
+
+
+\subsection{Théorème de réciprocité (formule d'inversion)}
+
+\begin{theorem}[15.3.i, p.115]
+    Soit $f: \R \rightarrow \R$ une fonction telle que $f$ et $f'$ soient continues par morceaux avec $\int_{-\infty}^{+ \infty} |f(x)| dx < \infty$ et $\int_{-\infty}^{+ \infty} |\hat{f}(\alpha)| \dal < \infty$.
+    Alors $\forall x \in \R$, on a:
+    
+    \[
+    \TFi (\hat{f})(x) =
+    \frac{1}{\sqrt{2 \pi}}\int_{-\infty}^{+ \infty} \hat{f}(\alpha) e^{i\alpha x}\dal =
+    \frac{f(x+0)+f(x-0)}{2}
+    \]
+    
+    En particulier si $f$ est continue en $x$, on a $\frac{1}{2}[f(x+0) + f(x-0)] = f(x)$ et alors:
+    
+    \[
+    f(x) = \TFi (\hat{f})(x) =
+    \frac{1}{\sqrt{2 \pi}}
+    \int_{-\infty}^{+ \infty}
+    \hat{f}(\alpha) e^{i\alpha x}
+    \dal
+    \]
+    
+    Autrement dit, on a $\TFi(\TF(f)) = f$.
+    La transformée de Fourier peut être vue comme une \og transformation $\TF$ \fg{} inversible (une bijection) qui \og agit\fg{} sur la fonction $f$:
+    
+    \[
+    f \enspace
+    \xrightarrow{\enspace \TF \enspace}
+    \enspace \hat{f} \enspace
+    \xrightarrow{\TFi}
+    \enspace f
+    \]
+\end{theorem}
+
+
+\subsection{Exemple d'utilisation}
+
+\begin{example}
+    Soit $
+    f:
+    \begin{array}{r c l}
+    \R & \rightarrow & \R_+^* \\
+    x  & \mapsto & f(x) = e^{-|x|} =
+    \left \{
+    \begin{array}{r c l}
+    e^{-x} & \textrm{si} & x \geq 0 \\
+    e^x    & \textrm{si} & x < 0
+    \end{array}
+    \right.
+    \end{array}
+    $.
+    
+    La transformée de Fourier de $f$ est (\textit{exemple 1, §1.2.2})
+    
+    \[
+    \hat{f}:
+    \begin{array}{r c l}
+    \R & \rightarrow & \R_+^* \\
+    \alpha & \mapsto & \hat{f}(\alpha) =
+    \sqrt{\frac{2}{\pi}} \frac{1}{1 + \alpha^2}
+    \end{array}
+    \]
+
+    On remarque que $f'(x) =
+    \left\{
+    \begin{array}{r c l}
+    -e^{-x} & \textrm{si} & x \geq 0 \\
+    e^x    & \textrm{si} & x < 0
+    \end{array}
+    \right.$
+    est continue par morceaux car:
+    
+    \[\lim\limits_{\substack{x \rightarrow 0 \\ x > 0}} f'(x) = -1 \textrm{ et } \lim\limits_{\substack{x \rightarrow 0 \\ x < 0}} f'(x) = 1\]
+    
+    De plus, $\int_{-\infty}^{+\infty} |\hat{f}|\dx = \sqrt{\frac{2}{\pi}} \int_{-\infty}^{+\infty} \frac{\dal}{1 + \alpha^2} \dal < \infty$.
+    $f$ est continue $\forall x \in \R \implies$ en appliquant le \textit{théorème de réciprocité}, on a que $f(x) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} \hat{f}(\alpha) e^{i\alpha x}$, i.e.:
+    
+    \[
+    e^{-|x|} =
+    \frac{1}{\sqrt{2 \pi}} \sqrt{\frac{2}{\pi}} \int_{-\infty}^{+\infty} \frac{e^{i\alpha x}}{1 + \alpha^2}\dal
+    \quad \forall x \in \R
+    \]
+    
+    En particulier, lorsque $x = 0$, on trouve:
+    
+   \[1 = \frac{1}{\pi} \int_{-\infty}^{+\infty} \frac{\dal}{1 + \alpha^2} \implies \int_{-\infty}^{+\infty} \frac{\dal}{1 + \alpha^2} = \pi.
+   \]
+    
+    En particulier, lorsque $x = 1$, on trouve:
+    
+    \begin{align*}
+    e^{-1} &=
+    \frac{1}{\pi} \int_{-\infty}^{+\infty} \frac{e^{i \alpha}}{1 + \alpha^2}\dal =
+    \frac{1}{\pi} \left[ \int_{-\infty}^{+\infty} \frac{\cos \alpha}{1 + \alpha^2} \dal +
+    i \overbrace{\int_{-\infty}^{+\infty} \frac{\sin \alpha}{1 + \alpha^2} \dal}^{\substack{\textrm{fonction impaire} \\ \textrm{intégrée sur tout l'axe réel } = 0}} \right]
+    \\&\implies
+    \int_{-\infty}^{+\infty} \frac{\cos \alpha}{1 + \alpha^2} \dal = \frac{\pi}{e}
+    \end{align*}
+
+\end{example}
+
+\textbf{Conclusion:} Le \textit{théorème de réciprocité} permet de calculer la valeur d'intégrales généralisées.
+
+\textit{Autre exemple: ex. 1, série 2}
 
 
 
+\section{Propriétés de la transformée de Fourier}
 
 
+On considère $f$ et $g: \R \rightarrow \R$ continues par morceaux telles que $\int_{-\infty}^{+\infty} |f(x)| \dx < \infty$ et $\int_{-\infty}^{+\infty} |g(x)| \dx < \infty$.
+On note indifféremment $\TF(f) \doteq \hat{f}$ et $\TF(g) \doteq \hat{g}$ les transformées de Fourier de $f$ et de $g$.
+
+\begin{note}
+    Les prochains résultats sont décrits dans les \textbf{théorèmes 15.2 et 15.3} aux pages 113 à 115 du livre du cours.
+\end{note}
 
 
+\subsection{Continuité et linéarité}
+
+\begin{itemize}
+\item
+$\TF(f)$ est continue $\forall \alpha \in \R$ et $\lim\limits_{\alpha \rightarrow \pm \infty} |\TF(f)(\alpha)| = 0$.
+\item
+$\TF$ linéaire: $\TF(af + bg) = a\,\TF(f) + b\,\TF(g) \quad \forall a,b \in \R$.
+\end{itemize}
 
 
+\subsection{Transformée de Fourier du produit de convolution}
+
+\begin{definition}
+    Le \textbf{produit de convolution} de deux fonctions $f$ et $g$ est la fonction notée $f \ast g: \R \rightarrow \R$ définie par:
+    
+    \[(f \ast g)(x) := \int_{-\infty}^{+\infty} f(x - t) g(t) \dt\]
+\end{definition}
+
+\begin{remark}
+    On peut aussi écrire $(f \ast g)(x) := \int_{-\infty}^{+\infty} f(t') g(x - t') \dt'$, via un changement de variable.
+\end{remark}
+
+\textbf{Résultat:} on a que $\TF(f \ast g) = \sqrt{2\pi} \enspace \TF(f) \cdot \TF(g)$.
+
+La transformée de Fourier du produit de convolution de deux fonctions est égale au \textbf{produit} des transformées de Fourier de chaque fonction.
+
+\textit{Exemples: ex. 2-3, série 2}
 
 
+\subsection{Transformée de Fourier de la dérivée d'une fonction}
+
+Si de plus $f \in C^1(\R)$ et $\int_{-\infty}^{+\infty} |f'(x)| \dx < \infty$, alors on a :
+
+\[\TF(f')(\alpha) = i\alpha \enspace \TF(f)(\alpha) \quad \forall \alpha \in \R\]
+
+On écrit aussi $\widehat{f'}(\alpha) = i\alpha \enspace \hat{f}(\alpha)$.
+
+La transformée de Fourier de la dérivée de $f$ s'obtient en \textbf{multipliant par} $i\alpha$ la transformée de Fourier de $f$.
+
+Plus généralement, si $f\in C^n(\R)$ et $\int_{-\infty}^{+\infty} |f^{(k)}(x)| \dx < \infty$ pour $k=1,2,...,n$, alors on a:
+
+\[\TF(f^{(k)})(\alpha) = (i\alpha)^k \enspace \TF(f)(\alpha) \quad \forall \alpha \in \R, k = 1,2,...,n\]
+
+On écrit aussi $\widehat{f^{(k)}}(\alpha) = (i\alpha)^k \enspace \hat{f}(\alpha)$.
+
+\textit{Exemple: ex.3, série 2}
 
 
+\subsection{Décalage}
+
+Si $a \in \R^*, b \in \R$ et $h(x) = e^{-ibx}f(ax)$, alors:
+
+\[\TF(h)(\alpha) = \frac{1}{|a|} \TF(f)(\frac{\alpha + b}{a})\]
+
+
+\subsection{Identité de Plancherel}
+
+Si de plus $\int_{-\infty}^{+\infty} [f(x)]^2 \dx < \infty$, alors on a:
+
+\[\int_{-\infty}^{+\infty} [f(x)]^2 \dx = \int_{-\infty}^{+\infty} |\TF(f)(\alpha)|^2 \dal\]
+
+
+\subsection{Transformée de Fourier en sinus et cosinus}
+
+Si la fonction $f$ est paire (i.e. $f(-x) = f(x) \enspace \forall x \in \R$), alors on a:
+
+\[
+\TF(f)(\alpha) =
+\sqrt{\frac{2}{\pi}}
+\int_{0}^{+\infty} f(x)\cos(\alpha x) \dx
+\]
+
+qui est la transformée de Fourier en \textbf{cosinus} de $f$.
+
+Si la fonction $f$ est impaire (i.e. $f(-x) = -f(x) \enspace \forall x \in \R$), alors on a:
+
+\[
+\TF(f)(\alpha) =
+- i
+\sqrt{\frac{2}{\pi}}
+\int_{0}^{+\infty} f(x)\sin(\alpha x) \dx
+\]
+
+qui est la transformée de Fourier en \textbf{sinus} de $f$.
+
+\textit{Exemples: ex.4, série 2 et ex.1, série 3}
+
+\begin{remark}
+    Si de plus $f'$ est continue par morceaux et $\int_{-\infty}^{+\infty} |\hat{f}(\alpha)| \dal < \infty$, alors, d'après le \textit{théorème de réciprocité}, on a:
+    
+    \begin{align*}
+    f(x) &=
+    \sqrt{\frac{2}{\pi}}
+    \int_{0}^{+\infty} \hat{f}(\alpha)\cos(\alpha x) \dal
+    \quad
+    \textrm{ lorsque } f \textrm{ est paire}\\
+    f(x) &=
+    i
+    \sqrt{\frac{2}{\pi}}
+    \int_{0}^{+\infty} \hat{f}(\alpha)\sin(\alpha x) \dal
+    \quad
+    \textrm{ lorsque } f \textrm{ est impaire}\\
+    \end{align*}
+\end{remark}

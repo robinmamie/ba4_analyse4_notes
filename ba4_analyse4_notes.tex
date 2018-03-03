@@ -5,16 +5,13 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{mathtools}
 
 
-\newtheorem{theorem}{Théorème}
-\newtheorem*{theorem*}{Théorème}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{theorem}{Théorème}
 
 \theoremstyle{definition}
-\newtheorem{definition}{Définition}
+\newtheorem*{definition}{Définition}
 \newtheorem*{idea}{Idée}
 
 \theoremstyle{remark}
@@ -26,14 +23,31 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\dx}{\mathrm{d}x}
+\newcommand{\dt}{\mathrm{d}t}
 \newcommand{\dal}{\mathrm{d}\alpha}
+\newcommand{\TF}{\mathfrak{F}}
+\newcommand{\TFi}{\TF^{-1}}
 
 \title{\textbf{Analyse IV} \\
 Transcript du cours du Pr. Michel \bsc{Cibils}}
 \author{Robin \bsc{Mamié}}
 \date{Printemps 2018}
 
+
 \begin{document}
+
 \maketitle
+
+\tableofcontents
+
 \input{chapters/1-transformees_de_fourier}
+
+\begin{thebibliography}{9}
+    \bibitem{mainbook} 
+    Bernard Dacogna et Chiara Tanteri. 
+    \textit{Analyse avancée pour ingénieurs}. 
+    PPUR, 2017.
+\end{thebibliography}
+
+Toutes les références (numéro de théorème, définition, etc.) sont faites à ce livre.
 \end{document}
