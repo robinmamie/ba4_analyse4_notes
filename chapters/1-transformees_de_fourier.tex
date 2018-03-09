@@ -16,7 +16,7 @@
 
 \begin{definition}[14.1.i, p.103]
 
-    Une fonction $f: \R \rightarrow \R$ est dite \textbf{continue par morceaux} sur l'intervalle $[a, b]$ s'il existe des points $ \{x\}_{i = 0}^{n + 1} \subset [a, b]$ avec $a = x_0 < x_1 < \cdots < x_n < x_{n + 1} = b$ tels que pour $i = 0, 1, ..., n$ on ait:
+    Une fonction $f: \R \rightarrow \R$ est dite \textbf{continue par morceaux} sur l'intervalle $[a, b]$ s'il existe des points $ \{x\}_{i = 0}^{n + 1} \subset [a, b]$ avec $a = x_0 < x_1 < \cdots < x_n < x_{n + 1} = b$ tels que pour $i = 0, 1, \ldots, n$ on ait:
     
     \begin{enumerate}
 
@@ -648,7 +648,7 @@ f(x) e^{-i \alpha x}
     e^{-1} &=
     \frac{1}{\pi} \int_{-\infty}^{+\infty} \frac{e^{i \alpha}}{1 + \alpha^2}\dal =
     \frac{1}{\pi} \left[ \int_{-\infty}^{+\infty} \frac{\cos \alpha}{1 + \alpha^2} \dal +
-    i \overbrace{\int_{-\infty}^{+\infty} \frac{\sin \alpha}{1 + \alpha^2} \dal}^{\substack{\textrm{fonction impaire} \\ \textrm{intégrée sur tout l'axe réel } = 0}} \right]
+    i \overbrace{\int_{-\infty}^{+\infty} \frac{\sin \alpha}{1 + \alpha^2} \dal}^{\substack{\textrm{fonction impaire} \\ \textrm{intégrée sur tout l'axe} \\ \textrm{réel } = \> 0}} \right]
     \\&\implies
     \int_{-\infty}^{+\infty} \frac{\cos \alpha}{1 + \alpha^2} \dal = \frac{\pi}{e}
     \end{align*}
@@ -711,9 +711,9 @@ On écrit aussi $\widehat{f'}(\alpha) = i\alpha \enspace \hat{f}(\alpha)$.
 
 La transformée de Fourier de la dérivée de $f$ s'obtient en \textbf{multipliant par} $i\alpha$ la transformée de Fourier de $f$.
 
-Plus généralement, si $f\in C^n(\R)$ et $\int_{-\infty}^{+\infty} |f^{(k)}(x)| \dx < \infty$ pour $k=1,2,...,n$, alors on a:
+Plus généralement, si $f\in C^n(\R)$ et $\int_{-\infty}^{+\infty} |f^{(k)}(x)| \dx < \infty$ pour $k=1,2,\ldots,n$, alors on a:
 
-\[\TF(f^{(k)})(\alpha) = (i\alpha)^k \enspace \TF(f)(\alpha) \quad \forall \alpha \in \R, k = 1,2,...,n\]
+\[\TF(f^{(k)})(\alpha) = (i\alpha)^k \enspace \TF(f)(\alpha) \quad \forall \alpha \in \R, k = 1,2,\ldots,n\]
 
 On écrit aussi $\widehat{f^{(k)}}(\alpha) = (i\alpha)^k \enspace \hat{f}(\alpha)$.
 
@@ -724,7 +724,7 @@ On écrit aussi $\widehat{f^{(k)}}(\alpha) = (i\alpha)^k \enspace \hat{f}(\alpha
 
 Si $a \in \R^*, b \in \R$ et $h(x) = e^{-ibx}f(ax)$, alors:
 
-\[\TF(h)(\alpha) = \frac{1}{|a|} \TF(f)(\frac{\alpha + b}{a})\]
+\[\TF(h)(\alpha) = \frac{1}{|a|} \TF(f)\left(\frac{\alpha + b}{a}\right)\]
 
 
 \subsection{Identité de Plancherel}
@@ -776,3 +776,263 @@ qui est la transformée de Fourier en \textbf{sinus} de $f$.
     \textrm{ lorsque } f \textrm{ est impaire}\\
     \end{align*}
 \end{remark}
+
+
+\section{Esquisse de démonstrations de quelques propriétés}
+
+\subsection{Transformée de Fourier de la dérivée d'une fonction}
+
+\begin{proof}
+    On a
+    
+    \[
+    \TF(f')(\alpha) =
+    \ostpi \int_{-\infty}^{+\infty} f'(x) e^{-i\alpha x} \dx
+    \]
+    
+    On intègre par parties, avec $u' = f' \rightarrow u = f$ et $v = e^{-i\alpha x} \rightarrow v' = -i \alpha e^{-i\alpha x}$.
+    
+    \[
+    \implies \ostpi \left[
+    f(x) e^{-i\alpha x} \bigg|_{-\infty}^{+\infty} +
+    i\alpha \int_{-\infty}^{+\infty} f(x)e^{-i\alpha x} \dx
+    \right]
+    \]
+    
+    Or, $\lim\limits_{x \rightarrow \pm \infty} \left| f(x) e^{-i\alpha x}\right| = \lim\limits_{x \rightarrow \pm \infty} \left|f(x)\right| = 0$ car $\left|e^{-i\alpha x}\right| = 1 \enspace \forall x\in \R$ et $\int_{-\infty}^{+\infty} |f(x)| \dx < \infty$ ($f$ est sommable).
+    
+    \[
+    \implies \TF(f')(\alpha) = i\alpha \ostpi \int_{-\infty}^{+\infty} f'(x) e^{-i\alpha x} \dx = i\alpha \, \TF(f)(\alpha)
+    \]
+\end{proof}
+
+\begin{remark}
+    Formule pour la dérivée de la transformée de Fourier d'une fonction:
+    
+    \[\TF'(f)(\alpha) = (\hat{f})'(\alpha) = -i \, \TF\left(xf(x)\right)(\alpha)\]
+    
+    \textit{Cf. ex. 2, série 3}
+\end{remark}
+
+
+\subsection{Transformée de Fourier du produit de convolution}
+
+\begin{proof}
+    On a
+    
+    \begin{align*}
+    \TF(f\ast g)(\alpha) &=
+    \ostpi \int_{-\infty}^{+\infty} (f\ast g)(x) e^{-i\alpha x} \dx
+    \\&=
+    \ostpi \int_{-\infty}^{+\infty} \left[\int_{-\infty}^{+\infty} f(x-t)g(t)\dt\right] e^{-i\alpha x} \dx
+    \\&=
+    \ostpi \int_{-\infty}^{+\infty} \left[\int_{-\infty}^{+\infty} f(x-t)e^{-i\alpha x}\dx\right] g(t) \dt
+    \\&\overbrace{=}^{\textrm{cdv}}
+    \ostpi \int_{-\infty}^{+\infty} \left[\int_{-\infty}^{+\infty} f(y)e^{-i\alpha (y+t)}\dy\right] g(t) \dt
+    \\&=
+    \ostpi \int_{-\infty}^{+\infty} f(y)e^{-i\alpha y}\dy \int_{-\infty}^{+\infty} g(t)e^{-i\alpha t}\dt
+    \\&=
+    \sqrt{2 \pi} \> \TF(f)(\alpha) \cdot \TF(g)(\alpha)
+    \end{align*}
+    
+\end{proof}
+
+
+\subsection{Identité de Plancherel}
+
+\begin{proof}
+    Soit $t\in \R$.
+    On remarque que
+    
+    \begin{align*}
+    \int_{-\infty}^{+\infty} f(x) g(x+t) \dx &\overbrace{=}^{\footnotemark}
+    \int_{-\infty}^{+\infty}
+    f(x)
+    \left[
+    \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} \TF(g)(\alpha) e^{i\alpha (x + t)} \dal
+    \right]
+    \dx
+    \\&=
+    \int_{-\infty}^{+\infty}
+    \TF(g)(\alpha)
+    \left[
+    \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty}
+    f(x) e^{i\alpha x} \dx
+    \right]
+    e^{i\alpha t}
+    \dal
+    \\&=
+    \int_{-\infty}^{+\infty}
+    \TF(g)(\alpha)
+    \overline{\TF(f)(\alpha)}
+    e^{i\alpha t}
+    \dal
+    \end{align*}
+    \footnotetext{Par le \textbf{théorème de réciprocité}, §1.3.2}
+    
+    En posant $t = 0$ et en choisissant $g = f$, on obtient:
+    
+    \[
+    \int_{-\infty}^{+\infty} \left[f(\alpha)\right]^2 \dx =
+    \int_{-\infty}^{+\infty} \left|\TF(f)(\alpha)\right|^2 \dal
+    \]
+\end{proof}
+
+%!TeX \newpage for style, pay attention if content before that changes!
+\newpage
+\section{Exemples d'utilisation de la transformée de Fourier}
+
+\begin{enumerate}[label=\alph*)]
+    \item
+    Trouver une solution particulière $y(x)$ d'une équation différentielle du type:
+    
+    \[\lambda\, y''(x) + \omega\, y(x) = f(x) \quad \forall x \in \R \quad \lambda, \omega \in \R \quad f: \R \rightarrow \R\]
+    
+    qui est l'équation de l'oscillateur forcé ($f$ est une fonction donnée).
+    
+    \textbf{Méthode:} on écrit la transformée de Fourier de l'équation différentielle:
+    
+    \begin{align*}
+    &\TF(\lambda y'' + \omega y)(\alpha) = \TF(f)(\alpha)
+    \\\iff&
+    \lambda \, \TF(y'')(\alpha) + \omega \, \TF(y)(\alpha) = \TF(f)(\alpha)
+    \\\iff&
+    \lambda \left(-\alpha^2\right) \TF(y)(\alpha) + \omega \, \TF(y)(\alpha) = \TF(f)(\alpha)
+    \\\iff&
+    \left(\omega - \lambda \alpha^2\right) \TF(y)(\alpha) = \TF(f)(\alpha)
+    \\\iff&
+    \TF(y)(\alpha) = \frac{\TF(f)(\alpha)}{\omega - \lambda \alpha^2}
+    \end{align*}
+    
+    On utilise le \textbf{théorème de réciprocité} (§1.3.2): la solution particulière $y(x)$ s'obtient en calculant la transformée de Fourier inverse de la fonction de la variable $\alpha$ définie par $\frac{\TF(f)(\alpha)}{\omega - \lambda \alpha^2}$.
+    
+    
+    \item
+    On utilise la transformée de Fourier pour résoudre des équations intégrales du type produit de convolution (\textit{cf. ex. 2 et 3, série 3}).
+    
+    
+    \item
+    Problèmes statistiques avec loi normale.
+    
+    fonction gaussienne $f(x) = e^{-\frac{x^2}{2}} \quad \forall x\in \R$
+    
+    \textit{Ex. 4, série 1}: $\hat{f}(\alpha) = e^{-\frac{\alpha^2}{2}}$ est aussi une fonction gaussienne.
+    
+    
+    \item
+    Mécanique quantique
+    
+    $f(x)$: position de la particule quantique\\
+    $\hat{f}(p)$: impulsion de la particule quantique
+    
+    
+    \item
+    Résolution de l'équation de la chaleur pour une barre conductrice de longueur \textbf{infinie}.
+    
+    \begin{description}
+    \item[Rappel:] cas d'une barre de longueur \textbf{finie}
+    
+    Soit une barre de longueur $0 < L < \infty$.
+    On note $u(x,t)$ la fonction qui décrit la température de la barre au point $x$ et à l'instant $t$.
+    
+    L'évolution de la température $u(x,t)$ le long de la barre est modélisée par l'équation de la chaleur donnée par:
+    
+    \[
+    \frac{\partial}{\partial t} u(x,t) = a^2 \frac{\partial^2}{\partial x^2} u(x,t) \quad \textrm{pour } x \in ]0,L[ \textrm{ et } t > 0, \quad a \neq 0
+    \]
+    
+    où $a$ est un coefficient thermique.
+    On impose:
+    \begin{itemize}
+    \item \textbf{deux} conditions limites $u(0,t) = u(L,t) = 0 \quad \forall t > 0$,
+    \item une condition initiale $u(x,0) = f(x)$ pour $x \in ]0,L[$. \footnote{Dans le milieu de l'ingénierie, on sous-entend souvent qu'une condition \textbf{limite} l'est aux positions, et qu'une condition \textbf{initiale} l'est au temps}
+    \end{itemize} 
+
+    \textbf{Problème:} trouver une solution $u(x,t)$ satisfaisant ces conditions.
+    
+    \item[Cas d'une barre de longueur infinie]\hfill
+    
+    Il n'y a plus de conditions aux limites concernant les extrémités de la barre.
+    Le problème est:
+    
+    \[
+    \left\{
+    \begin{array}{rcl}
+    \frac{\partial}{\partial t} u(x,t) &=& a^2 \frac{\partial^2}{\partial x^2} u(x,t)\\
+    u(x,0) &=& f(x)
+    \end{array}
+    \right.
+    \]
+    
+    Pour $x\in \R$ et $t > 0$, avec \textbf{une} condition initiale, valable $\forall x \in \R$ où $f: \R \rightarrow \R$ est $C^1$ telle que $f$ et la transformée de Fourier de $f$ soient sommables.
+    
+    \item[Résolution]\hfill
+    
+    \textbf{1\iere{} étape:} on écrit la transformée de Fourier de l'équation de la chaleur en considérant $u(x,t)$ comme fonction de la variable $x$ ($t$ joue le rôle d'un paramètre).
+    On obtient:
+    
+    \[
+    \TF\left(\frac{\partial u}{\partial t}\right)(\alpha,t) = a^2 \TF\left(\frac{\partial^2 u}{\partial x^2}\right) (\alpha,t) \textrm{ avec } \TF(u)(\alpha,0) = \TF(f)(\alpha)
+    \]
+    
+    Avec la notation:
+    
+    \[
+    v(\alpha,t) = (\TF u)(\alpha,t) = \ostpi \int_{-\infty}^{+\infty} u(x,t) e^{-i\alpha x} \dx
+    \]
+    
+    On obtient à gauche:
+    
+    \begin{align*}
+    \TF\left(\frac{\partial u}{\partial t}\right)(\alpha,t) &=
+    \ostpi \int_{-\infty}^{+\infty} \frac{\partial u}{\partial t}(x,t) e^{-i\alpha x} \dx
+    \\&=
+    \frac{\partial}{\partial t}
+    \left[
+    \ostpi \int_{-\infty}^{+\infty} u(x,t) e^{-i\alpha x} \dx
+    \right]
+    \\&=
+    \frac{\partial}{\partial t}
+    v(\alpha,t)
+    \end{align*}
+    
+    %!TeX \newpage for style, pay attention if content before that changes!
+    \newpage
+    Et à droite:
+    
+    \begin{align*}
+    \TF\left(\frac{\partial^2 u}{\partial x^2}\right) (\alpha,t) &\overbrace{=}^{\footnotemark} (i\alpha)^2 \TF(u)(\alpha,t)
+    \\&=
+    - \alpha^2 v(\alpha,t)
+    \end{align*}
+    \footnotetext{Par la propriété du §1.4.3, concernant la \textbf{transformée de Fourier de la dérivée} d'une fonction}
+    
+    L'équation devient:
+    
+    \[
+    \frac{\partial}{\partial t} v(\alpha,t) = - a^2 \alpha^2 v(\alpha,t)
+    \]
+    
+    C'est une équation différentielle du \textbf{premier ordre} pour la fonction $v(\alpha,t)$ par rapport à \textbf{la variable} $t$ ($\alpha$ joue le rôle de paramètre).
+    
+    La solution est:
+    
+    \[
+    v(\alpha,t) = v(\alpha,0) e^{- a^2 \alpha^2 t} = \TF(f)(\alpha) e^{- a^2 \alpha^2 t}
+    \]
+    
+    \textbf{2\ieme{} étape:} pour obtenir la solution $u(x,t)$, on calcule la transformée de Fourier inverse de $v(\alpha,t)$ en considérant $t$ comme paramètre.
+    On obtient:
+    
+    \begin{align*}
+    u(x,t) = \TFi(v)(x,t) &=
+    \ostpi \int_{-\infty}^{+\infty} v(\alpha,t) e^{i\alpha x} \dal
+    \\&=
+    \ostpi \int_{-\infty}^{+\infty} \TF(f)(\alpha) e^{-a^2 \alpha^2 t} e^{i\alpha x} \dal
+    \end{align*}
+    
+    comme solution de l'équation de la chaleur pour une barre de longueur infinie.
+    
+    \textit{Exemple: ex. 3, série 3}
+    \end{description}
+\end{enumerate}
