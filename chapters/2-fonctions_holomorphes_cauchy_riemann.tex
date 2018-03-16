@@ -11,7 +11,327 @@
     
     \item[Rôle:] établir les notions de limite, de continuité, de dérivabilité et d'intégration dans $\C$.
     
-    \item[Intérêt:] méthodes puissantes qui permettent de calculer facilement des intégrales \textbf{réelles} compliquées.
+    \item[Intérêt:] méthodes puissantes qui permettent de calculer facilement des intégrales \textbf{ré\-elles} compliquées.
 \end{description}
 
 \textit{Cf. ex. 4, série 3}
+
+\subsection{Rappel sur les nombres complexes}
+
+\begin{itemize}
+    \item 
+    $\C$ désigne l'ensemble des nombres complexes
+    \item 
+    $z \in \C \iff z = x + iy$ avec $x = \Rep z \in \R$ et $y = \Imp z \in \R$ et $i^2 = -1$
+    \item 
+    $\C^* = \C \setminus \{0\}$ où $0 = 0 + i0$
+    \item 
+    complexe conjugué de $z \quad \conj{z} = x - iy$ 
+    \item 
+    module de $z \in \C \quad \module{z} = \sqrt{x^2 + y^2} \in \R_+$
+    \item 
+    représentation polaire de $z \in \C^* \quad z = \module{z} e^{i\theta} = \module{z} (\cos \theta + i \sin \theta)$
+    \item 
+    $\theta$ est appelé l'argument de $z$ et est noté $\arg z$
+\end{itemize}
+
+\begin{remark}
+    Pour $z \in \C^*$:
+    \begin{itemize}
+        \item 
+        L'argument de $z$ est défini à $2k\pi$ près avec $k \in \Z$
+        \item 
+        Par convention, la \textbf{valeur (détermination) principale} de l'argument de $z$ est l'unique angle $\theta \in ] -\pi ; \pi ]$ tel que $\frac{z}{\module{z}} = \cos \theta + i \sin \theta$
+    \end{itemize}
+\end{remark}
+
+
+\section{Fonctions complexes}
+
+\subsection{Définitions}
+
+\begin{definition}
+    Une \textbf{fonction d'une variable complexe} à valeur dans $\C$ s'écrit:
+    
+    \[
+    f: \begin{array}{{rcl}}
+    \C & \longrightarrow & \C \\
+    z = x+iy & \longmapsto & f(z) = u(x,y) + i v(x,y) \\
+    \end{array}
+    \]
+    
+    où
+    
+    \[
+    u: \begin{array}{{rcl}}
+    \R^2 & \longrightarrow & \R \\
+    (x,y) & \longmapsto & u(x,y) \\
+    \end{array}
+    \textrm{ et }\enspace
+    v: \begin{array}{{rcl}}
+    \R^2 & \longrightarrow & \R \\
+    (x,y) & \longmapsto & v(x,y) \\
+    \end{array}
+    \]
+    
+    sont deux fonctions à valeurs réelles qui s'appellent respectivement la partie réelle de $f$ (on note $u = \Rep f$) et la partie imaginaire de $f$ (on note $v = \Imp f$).
+\end{definition}
+
+\begin{remark}
+    Les variables $x \in \R$ et $y \in \R$ des fonctions $u$ et $v$ sont les parties réelles et imaginaires de la variable $z \in \C$ de la fonction $f$.
+\end{remark}
+
+\subsection{Exemples}
+
+\begin{example}\hfill
+\begin{enumerate}[label=\arabic{enumi})]
+    \item 
+    \[
+    f: \begin{array}{{rcl}}
+    \C & \longrightarrow & \C \\
+    z = x+iy & \longmapsto & f(z) = \conj{z} = x - iy \\
+    \end{array}
+    \]
+    
+    On a $u(x,y) = x \enspace$ et $v(x,y)=-y$.
+    
+    \item 
+    \[
+    f: \begin{array}{{rcl}}
+    \C & \longrightarrow & \C \\
+    z = x+iy & \longmapsto & f(z) = z^2 = (x + iy)^2 = x^2 - y^2 + 2ixy \\
+    \end{array}
+    \]
+    
+    On a $u(x,y) = x^2 - y^2 \enspace$ et $v(x,y)= 2xy$.
+    
+    \item 
+    \[
+    f: \begin{array}{{rcl}}
+    \C^* & \longrightarrow & \C \\
+    z = x+iy & \longmapsto & f(z) = \frac{1}{z}
+    = \frac{1}{x + iy}
+    = \frac{x - iy}{(x + iy)(x - iy)}
+    = \frac{x - iy}{x^2 + y^2} \\
+    \end{array}
+    \]
+    
+    On a $u(x,y) = \frac{x}{x^2 + y^2} \enspace$ et $v(x,y)= -\frac{y}{x^2 + y^2}$.
+    
+    \item 
+    Pour $z = x + iy \in \C$, la fonction exponentielle est définie par:
+    
+    \[e^z = e^{x + iy} := e^x(\cos y + i \sin y) \in \C^*\]
+    
+    On a $u(x,y) = e^x \cos y \enspace$ et $v(x,y)= e^x \sin y$.
+    
+    \begin{remark}
+    Contrairement au cas réel, $e^z$ n'est pas bijective sur $\C$ car $e^{z + 2ik\pi} = e^z$ $\forall z \in \Z$ \textit{(ex.4, série 3)}.
+    En choisissant $y$ tel que $-\pi < y \leq \pi$, la fonction $e^z$ est bijective sur l'ensemble $\left\{z \in \C : \Imp z \in \enspace ] -\pi; \pi]\right\}$.
+    Avec cette convention, c'est la \textbf{\og restriction bijective de l'exponentielle complexe\fg{}}.
+    \end{remark}
+
+    \item 
+    Pour $z \in \C^*$, la fonction logarithme est définie par:
+    
+    \[
+    \log z := \ln \module{z} + i \arg z
+    \]
+    
+    avec le choix de la valeur principale $\arg z \in \enspace ]-\pi;\pi[$. Avec cette convention, c'est la \textbf{\og détermination principale du logarithme complexe \fg} (correspond à la fonction réciproque de la restriction bijective de l'exponentielle).\\
+    En écrivant $z = x + iy$, on a $u(x,y) = \ln \module{x + iy} = \ln \sqrt{x^2 + y^2} \enspace$ et $v(x,y)= \arg (x + iy)$.
+    
+    \begin{remark}\hfill
+    \begin{enumerate}[label=\alph*)]
+    \item 
+    Les formules valables en analyse réelle ne sont pas nécessairement valables en analyse complexe.
+    Par exemple, en général, on a $\log(z_1 z_2) \neq \log z_1 + \log z_2$.
+    En effet, pour $z_1 = -1$ et $z_2 = -1$:
+    
+    \[\log\left[(-1)(-1)\right] = \log(1) := \ln \module{1} + i \arg(1) = 0 + i0 = 0\]
+    
+    mais
+    
+    \[\log(-1) + \log(-1) = 2 \log(-1) := 2 \left[\ln \module{-1} + i \arg (-1) \right] = 2i\pi \neq 0 \]
+    
+    \item 
+    La fonction $\log z$ n'est pas continue sur le demi-axe réel négatif.
+    En effet, par exemple pour $z = -1$, on considère $t > 0$:
+    
+    \[z^+_t = -1 + it \enspace \textrm{ et }\enspace
+     z^-_t = -1 - it \]
+     
+    On a $\lim\limits_{t \rightarrow 0^+} z^+_t = -1$ et $\lim\limits_{t \rightarrow 0^+} z^-_t = -1$.
+
+    \begin{note}
+    Pour $z = x + iy$, on a la valeur principale:
+    
+    \[
+    \arg z =
+    \left\{
+    \begin{array}{rcl}
+    \pi + \Arctg\frac{y}{x} & \textrm{si} & x < 0, y > 0\\
+    -\pi + \Arctg\frac{y}{x} & \textrm{si} & x < 0, y < 0\\
+    \end{array}
+    \right.
+    \]
+    \end{note}
+
+    Avec la définition du logarithme, on a:
+    
+    \begin{align*}
+    \lim\limits_{t \rightarrow 0^+} \log(z^+_t)
+    &=
+    \lim\limits_{t \rightarrow 0^+} \ln \module{-1 + it} + i \lim\limits_{t \rightarrow 0^+} \arg(-1 + it)
+    \\&=
+    \lim\limits_{t \rightarrow 0^+} \ln \sqrt{1 + t^2} + i \lim\limits_{t \rightarrow 0^+} \left[\pi + \Arctg(-t)\right]
+    \\&=
+    \ln (1) + i \pi = 0 + i\pi = i\pi
+    \end{align*}
+    
+    \begin{align*}
+    \lim\limits_{t \rightarrow 0^+} \log(z^-_t)
+    &=
+    \lim\limits_{t \rightarrow 0^+} \ln \module{-1 - it} + i \lim\limits_{t \rightarrow 0^+} \arg(-1 - it)
+    \\&=
+    \lim\limits_{t \rightarrow 0^+} \ln \sqrt{1 + t^2} + i \lim\limits_{t \rightarrow 0^+} \left[-\pi + \Arctg(t)\right]
+    \\&=
+    \ln (1) - i \pi = 0 - i\pi = -i\pi
+    \end{align*}
+    
+    \textbf{Conclusion:} $\lim\limits_{t \rightarrow 0^+} \log(z^+_t) \neq \lim\limits_{t \rightarrow 0^+} \log(z^-_t) \implies$ la fonction $\log z$ n'est pas continue en $z = -1$.
+    De façon analogue, on obtient le même résultat $\forall z \in \enspace ]-\infty;0[$.
+    $\log z$ \textbf{n'est pas continue} pour $z \in \enspace ]-\infty;0]$
+    
+    \textbf{Résultat final:} En excluant le demi-axe réel négatif, on a que la fonction $\log z$ est continue sur l'ensemble:
+    
+    \[
+    V = \C \enspace \setminus \enspace ]-\infty;0] = \C \setminus \left\{z \in \C : \Imp z = 0, \Rep z \leq 0\right\}
+    \]
+    
+    C'est la \textbf{\og restriction continue du logarithme complexe \fg}.
+    \end{enumerate}
+    \end{remark}
+
+    \item 
+    Pour $z \in \C$, on définit les fonctions trigonométriques et hyperboliques:
+    
+    \begin{align*}
+    \cos z = \frac{e^{iz} + e^{-iz}}{2}
+    &\hspace{2cm} \sin z = \frac{e^{iz} - e^{-iz}}{2i}\\
+    \cosh z = \frac{e^{z} + e^{-z}}{2}
+    &\hspace{2cm} \sinh z = \frac{e^{z} - e^{-z}}{2}
+    \end{align*}
+    
+    \textit{Cf. ex. 1, série 4}
+\end{enumerate}
+\end{example}
+
+
+\section{Limites, continuité, dérivabilité}
+
+\subsection{Définitions}
+
+\begin{definition}
+    Les notions de topologie (ouverts, fermés, etc.), de limite, de continuité et de dérivabilité sont analogues à celles de l'analyse réelle.
+    Soit $f: \C \rightarrow \C$, alors:
+    
+    \begin{enumerate}[label=\arabic{enumi})]
+    \item 
+    $f$ possède une limite $l \in \C$ en $z_0 \in \C$ (notation $\lim\limits_{z \rightarrow z_0} f(z) = l$) si:\\
+    $\forall\, \epsilon > 0 \enspace \exists\, \delta > 0 :\enspace 0 < \module{z - z_0} < \delta \implies \module{f(z) - l} < \epsilon$
+    
+    \item 
+    $f$ est continue en $z_0 \in \C$ si $\lim\limits_{z \rightarrow z_0} f(z) = f(z_0)$
+    
+    \item 
+    $f$ est dérivable en $z_0 \in \C$ si $\lim\limits_{z \rightarrow z_0} \frac{f(z) - f(z_0)}{z - z_0}$ existe et est finie.
+    La limite s'appelle la dérivée de $f$ en $z_0$ et est notée $f'(z_0)$.
+    Les règles de dérivation établies dans $\R$ sont valables dans $\C$.
+    
+    \item 
+    Étant donné un ouvert $V \subset \C$, on dit que la fonction $f: V \rightarrow \C$ est \textbf{holomorphe} (ou analytique complexe) dans $V$ si $f$ est \textit{définie et dérivable} $\forall z \in V$.
+    \end{enumerate}
+\end{definition}
+
+\subsection{Équations de Cauchy-Riemann}
+
+\begin{remark}[sur un abus de notation]
+    Étant donné un ouvert $V \subset \C$, on l'identifie souvent au sous-ensemble correspondant de $\R^2$, i.e. on écrit indifféremment $z = x + iy \in V (\in \C)$ ou $(x,y) \in V (\in \R^2)$ de façon abusive.
+\end{remark}
+
+%!TeX newpage for cosmetic reasons
+\newpage
+
+\begin{theorem}[de Cauchy-Riemann]
+    Soit $V \in \C$ un ouvert et soit une fonction $f: V \rightarrow \C$, où $u: V \rightarrow \R$ et $v: V \rightarrow \R$ sont respectivement les parties réelles et imaginaires de $f$.
+    Alors les deux affirmations suivantes sont équivalentes:
+    \begin{enumerate}[label=\arabic{enumi})]
+        \item 
+        $f$ est holomorphe dans $V$
+        \item 
+        Les fonctions $u,v \in C^1(V)$ et satisfont les équations de Cauchy-Riemann:
+        
+        \[
+        \frac{\partial u}{\partial x}(x,y) = \frac{\partial v}{\partial y}(x,y)
+        \quad,\quad
+        \frac{\partial u}{\partial y}(x,y) = - \frac{\partial v}{\partial x}(x,y)
+        \]
+        
+        En particulier, si $f$ est holomorphe dans $V$, alors on a:
+        
+        \[
+        f'(z) = \frac{\partial u}{\partial x}(x,y) + i \frac{\partial v}{\partial x}(x,y) = \frac{\partial v}{\partial y}(x,y) - i \frac{\partial u}{\partial y}(x,y) \quad \forall z = x + iy \in V
+        \]
+    \end{enumerate}
+\end{theorem}
+
+\begin{remark}\hfill
+\begin{enumerate}[label=\arabic{enumi})]
+    \item 
+    Démonstration du Théorème: voir §2.3.4 (fin du chapitre)
+    \item 
+    Les équations de Cauchy-Riemann sont une condition nécessaire pour que $f$ soit holomorphe mais elles ne sont pas une condition suffisante.
+    Si $u$ et $v$ sont continûment dérivables ($u,v \in C^1(V)$), alors elles deviennent une condition suffisante.
+    \item 
+    Utilité du Théorème: pour qu'une fonction $f$ soit holomorphe dans un ouvert $V$, il suffit de vérifier que les équations de Cauchy-Riemann pour $u = \Rep f \in C^1(V)$ et $v = \Imp f \in C^1(V)$ sont satisfaites dans $V$.
+    Si les équations de Cauchy-Riemann ne sont pas vérifiées en $(x_0,y_0) \in V$, alors $f(z_0)$ n'est pas holomorphe en $z_0 = x_0 + iy_0$.
+    \item 
+    Pour alléger la notation, on écrit:
+    
+    \[
+    u_x = \frac{\partial u}{\partial x}, \quad
+    u_y = \frac{\partial u}{\partial y}, \quad
+    v_x = \frac{\partial v}{\partial x}, \quad
+    v_y = \frac{\partial v}{\partial y}
+    \]
+    
+    Équations de Cauchy-Riemann:
+    
+    \[
+    u_x = v_y \quad, \quad u_y = -v_x
+    \]
+    
+    \textit{Exemples: ex. 1 à 4, série 4}
+\end{enumerate}
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

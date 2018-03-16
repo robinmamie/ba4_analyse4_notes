@@ -9,6 +9,7 @@ Le document est compilé avec **XeTeX**.
 - 23.02.2018 : notes du 1er cours
 - 03.03.2018 : notes du 2e cours, ajout des références au livre
 - 09.03.2018 : notes du 3e cours
+- 16.03.2018 : notes du 4e cours
 
 ## Contributions
 
