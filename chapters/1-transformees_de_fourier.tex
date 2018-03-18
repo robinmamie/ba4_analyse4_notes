@@ -802,7 +802,7 @@ qui est la transformée de Fourier en \textbf{sinus} de $f$.
     Or, $\lim\limits_{x \rightarrow \pm \infty} \left| f(x) e^{-i\alpha x}\right| = \lim\limits_{x \rightarrow \pm \infty} \left|f(x)\right| = 0$ car $\left|e^{-i\alpha x}\right| = 1 \enspace \forall x\in \R$ et $\int_{-\infty}^{+\infty} |f(x)| \dx < \infty$ ($f$ est sommable).
     
     \[
-    \implies \TF(f')(\alpha) = i\alpha \ostpi \int_{-\infty}^{+\infty} f'(x) e^{-i\alpha x} \dx = i\alpha \, \TF(f)(\alpha)
+    \implies \TF(f')(\alpha) = i\alpha \ostpi \int_{-\infty}^{+\infty} f(x) e^{-i\alpha x} \dx = i\alpha \, \TF(f)(\alpha)
     \]
 \end{proof}
 
