@@ -25,7 +25,7 @@ En particulier, il ne s'agit ni d'un résumé, ni d'un document expliquant plus 
 
 ### Liste des contributeurs
 
-- [Robin Mamie](robin.mamie@epfl.ch) (IN)
+- Robin Mamie (IN - <robin.mamie@epfl.ch>)
 - Eric Jollès (SC)
 
 ## Distribution et licence
