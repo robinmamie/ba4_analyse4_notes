@@ -316,22 +316,183 @@
 \end{enumerate}
 \end{remark}
 
+\subsection{Exemples}
 
+\begin{example}[1]\hfill
+    
+    $f(z) = z^2$ définie pour $z = x + iy \in \C$.
+    
+    $f(z) = (x + iy) ^2 = x^2 - y^2 + i2xy$.
+    
+    \[\implies u(x,y) = x^2 - y^2, \quad v(x,y) = 2xy\]
+    
+    \[\left.
+    \begin{array}{ll}
+    u_x(x,y) = 2x &
+    u_y(x,y) = -2y \\
+    v_x(x,y) = 2y &
+    v_y(x,y) = 2x
+    \end{array}
+    \right\} \implies
+    \begin{array}{l}
+    u_x = v_y \\
+    u_y = -v_x
+    \end{array}
+    \forall (x,y) \in \C\]
+    
+    CR (Cauchy-Riemann) satisfaites $\forall z \in \C \implies f$ holomorphe dans $\C$.
+    
+    De plus: $f'(z) = u_x(x,y) + i v_x(x,y) = 2x + 2iy = 2(x + iy) = 2z$.
+\end{example}
 
+\begin{example}[2]\hfill
+    
+    $f(z) = \conj{z}$ définie pour $z = x + iy \in \C$.
+    
+    $f(z) = \conj{x + iy} = x - iy$.
+    
+    \[\implies u(x,y) = x, \quad v(x,y) = -y\]
+    
+    \[\left.
+    \begin{array}{ll}
+    u_x(x,y) = 1 &
+    u_y(x,y) = 0 \\
+    v_x(x,y) = 0 &
+    v_y(x,y) = -1
+    \end{array}
+    \right\} \implies
+    \begin{array}{l}
+    u_x \neq v_y \\
+    u_y = -v_x
+    \end{array}\]
+    
+    CR non satisfaites $\implies f$ n'est pas holomorphe dans $\C$.
+\end{example}
 
+\begin{example}[3]\hfill
+    
+    $f(z) = e^z$ définie pour $z = x + iy \in \C$.
+    
+    $f(z) = e^x (\cos y + i \sin y) = e^x \cos y + i e^x \sin y$
+    
+    \[\implies u(x,y) = e^x \cos y, \quad v(x,y) = e^x \sin y\]
+    
+    \[\left.
+    \begin{array}{ll}
+    u_x(x,y) = e^x \cos y &
+    u_y(x,y) = -e^x \sin y \\
+    v_x(x,y) = e^x \sin y &
+    v_y(x,y) = e^x \cos y
+    \end{array}
+    \right\} \implies
+    \begin{array}{l}
+    u_x = v_y \\
+    u_y = -v_x
+    \end{array}\]
+    
+    CR satisfaites $\implies f$ holomorphe dans $\C$.
+    
+    \[f'(z) = u_x(x,y) + i v_x(x,y) = e^x \cos y + i e^x \sin y := e^z\]
+\end{example}
 
+\begin{example}[4]\hfill
+    
+    $f(z) = \log z = \ln \module{z} + i \arg z$ avec la détermination principale définie pour $V = \C\, \setminus\, ]-\infty; 0] = \C \setminus \{z \in \C : \Imp z = 0, \Rep z \leq 0\}$.
+    $\log z$ est holomorphe dans $V$ et on a:
+    
+    \[f'(z) = \frac{1}{z} \enspace \forall z \in V\]
+    
+    En effet: preuve pour le demi-plan $D = \{z \in \C : \Rep z > 0\}$.
+    Pour $z = x +iy$ avec $x > 0$ et $y \in \R$.
+    On a: $\module{z} = \sqrt{x^2 + y^2}$ et $\arg z = \Arctg \frac{y}{x}$.
+    
+    Donc $\log z := \ln \sqrt{x^2 + y^2} + i \Arctg \frac{y}{x}.$
+    
+    \[\implies u(x,y) = \ln \sqrt{x^2 + y^2}, \quad v(x,y) = \Arctg \frac{y}{x}\]
+    
+    \[\left.
+    \begin{array}{ll}
+    u_x(x,y) = \frac{\frac{1}{2}\frac{2x}{\sqrt{x^2 + y^2}}}{\sqrt{x^2 + y^2}}
+    = \frac{x}{x^2 + y^2} &
+    u_y(x,y) = \frac{\frac{1}{2}\frac{2y}{\sqrt{x^2 + y^2}}}{\sqrt{x^2 + y^2}}
+    = \frac{y}{x^2 + y^2} \\
+    v_x(x,y) = \frac{-\frac{y}{x^2}}{1 + \frac{y^2}{x^2}}
+    = - \frac{y}{x^2 + y^2} &
+    v_y(x,y) = \frac{\frac{1}{x}}{1 + \frac{y^2}{x^2}}
+    =  \frac{x}{x^2 + y^2}
+    \end{array}
+    \right\} \implies
+    \begin{array}{l}
+    u_x = v_y \\
+    u_y = -v_x
+    \end{array}\]
+    
+    CR satisfaites $\implies f$ holomorphe dans $D$.
+    
+    De plus:
+    
+    \begin{align*}
+    f'(z) &= u_x(x,y) + i v_x(x,y) = \frac{x}{x^2 + y^2} - i \frac{y}{x^2 + y^2}
+    \\&=
+    \frac{x - iy}{x^2 + y^2} = \frac{x - iy}{(x + iy)(x - iy)} = \frac{1}{x + iy} = \frac{1}{z}
+    \end{align*}
+\end{example}
 
+\textit{Cf. ex. 1, série 5}
 
+\subsection{Démonstration des équations de Cauchy-Riemann}
 
+\begin{proof}{'$\implies$'}\hfill
 
+    Soient $z_0 = x_0 + i y_0 \in V$ et $z = (x_0 + \alpha) + i (y_0 + \beta) \in V$ avec $\alpha, \beta \in \R$.
+    Puisque $f$ est holomorphe dans $V$, alors $f'(z_0) := \lim\limits_{z \rightarrow z_0} \frac{f(z) - f(z_0)}{z - z_0}$ existe $\forall z_0 \in V$
+    On a:
+    
+    \[\frac{f(z) - f(z_0)}{z - z_0} = \frac{[u(x_0 + \alpha, y_0 + \beta) + iv(x_0 + \alpha, y_0 + \beta)] - [u(x_0,y_0) + iv(x_0,y_0)]}{\alpha + i\beta}\]
+    
+    \begin{enumerate}[label=\alph*)]
+    \item
+    En posant $\beta = 0$, on obtient:
+    
+    \begin{align*}
+    f'(z_0) &= \lim\limits_{\alpha \rightarrow 0} \frac{[u(x_0 + \alpha, y_0) + iv(x_0 + \alpha, y_0)] - [u(x_0,y_0) + iv(x_0,y_0)]}{\alpha}
+    \\&=
+    \lim\limits_{\alpha \rightarrow 0} \frac{u(x_0 + \alpha, y_0)  - u(x_0,y_0)}{\alpha} + i \lim\limits_{\alpha \rightarrow 0} \frac{v(x_0 + \alpha, y_0) - v(x_0,y_0)}{\alpha}
+    \\&=
+    u_x(x_0,y_0) + i v_x(x_0,y_0)
+    \end{align*}
+    
+    \item
+    En posant $\alpha = 0$, on obtient:
+    
+    \begin{align*}
+    f'(z_0) &= \lim\limits_{\beta \rightarrow 0} \frac{u(x_0, y_0 + \beta) - u(x_0,y_0)}{i\beta} + i \lim\limits_{\beta \rightarrow 0} \frac{v(x_0, y_0 + \beta) - v(x_0,y_0)}{i\beta}
+    \\&=
+    \frac{1}{i}\, u_y(x_0,y_0) + v_y(x_0,y_0) = v_y(x_0,y_0) - i u_y(x_0,y_0)
+    \end{align*}
+    \end{enumerate}
 
+    Les deux limites existent et sont identiques.
 
+    \[\implies u_x(x_0,y_0) = v_y(x_0,y_0), \quad u_y(x_0,y_0) = -v_x(x_0,y_0) \quad \textrm{(équations de CR)}\]
+    
+    '$\Longleftarrow$' \hspace{1em} On utilise les développements de Taylor au 1\ier{} ordre de $u(x,y)$ et $v(x,y)$ pour montrer que $f'(z_0)$ existe.
+    
+    \textit{Cf. ex. 5, série 4 et ex. 2-4, série 5}
+\end{proof}
 
-
-
-
-
-
-
-
-
+\begin{remark}[finale]
+    Affirmer que $f: \C \rightarrow \C$ est dérivable en $z = x + iy$ \textbf{n'est pas équivalent} au fait que le champ vectoriel $\tilde{f}: \R^2 \rightarrow \R^2$ est continûment dérivable dans le contexte usuel de $\R^2$ (i.e matrice jacobienne $\begin{pmatrix}u_x & u_y\\v_x & v_y\end{pmatrix}$ de $\tilde{f}$ existe avec $u_x, u_y, v_x, v_y$ continues).
+    
+    Par exemple, $f(z) = \conj{z}$ n'est pas holomorphe dans $\C$: si $z_0 = x_0 + i y_0$ et $z = (x_0 + \alpha) + i (y_0 + \beta)$, alors on a:
+    
+    \[\frac{f(z) - f(z_0)}{z - z_0} = \frac{(x_0 + \alpha) - i(y_0 + \beta) - x_0 + iy_0}{(x_0 + \alpha) + i(y_0 + \beta) - x_0 - iy_0} = \frac{\alpha - i\beta}{\alpha + i\beta} = \left\{\begin{array}{rl}-1 & \textrm{si } \alpha = 0\\1 & \textrm{si } \beta = 0\end{array}\right.\]
+    
+    \[\lim\limits_{\alpha \rightarrow 0} \frac{f(z) - f(z_0)}{z - z_0} = -1, \quad \lim\limits_{\beta \rightarrow 0} \frac{f(z) - f(z_0)}{z - z_0} = 1\]
+    
+    $\implies f'(z_0)$ n'existe pas.
+    
+    Mais $\tilde{f}:\begin{array}{rcl} \R^2 & \longrightarrow & \R^2\\ (x,y) & \longmapsto & (u(x,y),v(x,y)) = (x,-y)\end{array}$
+    
+    $\implies$ Matrice jacobienne $\begin{pmatrix}u_x & u_y\\v_x & v_y\end{pmatrix} = \begin{pmatrix}1 & 0\\0 & -1 \end{pmatrix}$ existe $\forall (x,y) \in \R^2$
+\end{remark}

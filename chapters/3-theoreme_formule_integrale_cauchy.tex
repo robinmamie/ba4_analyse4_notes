@@ -1,0 +1,94 @@
+% !TeX spellcheck = fr_FR
+\chapter{Théorème et formule intégrale de Cauchy}
+
+
+\section{Intégration complexe}
+
+\subsection{Définitions et notations}
+
+\begin{definition}\hfill
+\begin{enumerate}[label=\arabic{enumi})]
+    \item
+    $\Gamma \subset \C$ est une \textbf{courbe simple régulière} s'il existe un intervalle $[a,b] \subset \R$ et une fonction $\gamma: \begin{array}{ccl} [a,b] & \longrightarrow & \C\\ t & \longmapsto & \gamma(t) = \gamma_1(t) + i\gamma_2(t)\end{array}$ telle que:
+    
+    \begin{itemize}
+    \item $\Gamma = \gamma([a,b])$, la courbe $\Gamma$ est l'image de $\gamma$
+    \item $\gamma(t_1) = \gamma(t_2) \implies t_1 = t_2 \enspace \forall t_1,t_2 \in [a,b[$
+    \item $\gamma \in C^1\left([a,b]\right)$
+    \item $\module{\gamma'(t)} = \left[\gamma_1'(t)^2 + \gamma_2'(t)^2\right]^\frac{1}{2} \neq 0 \enspace \forall t \in [a,b]$
+    \end{itemize}
+
+    $\gamma$ s'appelle une paramétrisation de $\Gamma$ décrite par $t \in [a,b]$.
+    
+    \item
+    $\Gamma \subset \C$ est une courbe simple régulière \textbf{fermée} si de plus $\gamma(\alpha) = \gamma(\beta)$.
+    
+    \item
+    $\Gamma \subset \C$ est une courbe simple régulière \textbf{par morceaux} si $\exists \Gamma_1, \Gamma_2,\ldots,\Gamma_k$ des courbes simples régulières telles que $\Gamma = \bigcup\limits_{j = 1}^k \Gamma_j$.
+    
+    \begin{note}[Abus de langage et de notation]
+        En analyse complexe, on identifie souvent la courbe $\Gamma$ à sa paramétrisation $\gamma$.
+        On dit \og soit $\gamma$ une courbe... \fg{} au lieu de \og soit $\Gamma$ une courbe...\fg{}
+    \end{note}
+
+    \item
+    Si $\Gamma \subset \C$ est une courbe simple fermée régulière (par morceaux) de paramétrisation $\gamma$, on note \textbf{l'intérieur} $\inte \Gamma$ (ou aussi $\inte \gamma$) l'ensemble ouvert et borné $V \in \C$ dont le bord est $\Gamma$ (i.e. tel que $\bord V = \Gamma$).
+    
+    Pour l'adhérence de $V$, on écrit $\adh \gamma = \inte \gamma \cup \bord V$.
+    
+    \begin{note}
+        $\gamma$ est dite orientée \textbf{positivement} si le sens de parcours laisse l'intérieur $\inte \gamma$ à gauche.
+    \end{note}
+    
+    \item
+    Soit $\Gamma \subset \C$ une courbe simple régulière de paramétrisation $\gamma: [a,b] \rightarrow \C$ et soit $f: \Gamma \rightarrow \C$ une fonction continue.
+    L'\textbf{intégrale} de $f$ le long de $\Gamma$ est définie par:
+    
+    \[\int_\Gamma f(z) \dz = \int_\gamma f(z) \dz = \int_a^b f(\gamma(t)) \gamma'(t) \dt\]
+    
+    \item
+    Si la courbe $\Gamma = \bigcup\limits_{j = 1}^k \Gamma_j$ est simple régulière par morceaux, alors:
+    
+    \[\int_\Gamma f(z) \dz = \sum_{j=1}^k \int_{\Gamma_k} f(z) \dz\]
+\end{enumerate}
+\end{definition}
+
+\subsection{Exemples}
+
+\begin{example}
+    Calculer $\int_\gamma f(z) \dz$ pour $f(z) = z^2$ et $\gamma$ le demi-cercle unité de rayon 1 centré à l'origine.
+    
+    \[
+    \gamma:
+    \begin{array}{ccl}
+    [0;\pi] & \longrightarrow & \C \\
+    \theta & \longmapsto & \gamma(\theta) = e^{i\theta} = \cos \theta + i \sin \theta
+    \end{array}
+    \]
+    
+    \[
+    \gamma'(\theta) = -\sin \theta + i \cos \theta = i(\cos \theta + i \sin \theta) = i e^{i\theta}
+    \]
+    
+    \begin{align*}
+    \implies \int_\gamma f(z) \dz &= \int_0^\pi f(\gamma(\theta)) \gamma'(\theta) \dth = \int_0^\pi \left(e^{i\theta}\right)^2 i e^{i\theta} \dth
+    \\&=
+    i \int_0^\pi e^{3i\theta} \dth = \left.\frac{1}{3} e^{3i\theta} \right|_0^\pi = \frac{1}{3} \left[e^{3i\pi} - e^{i0}\right]
+    \\&=
+    \frac{1}{3} (-1-1) = -\frac{2}{3}
+    \end{align*}
+    
+    \textit{Autres exemples: ex.5, série 5}
+\end{example}
+
+
+\section{Théorème de Cauchy}
+
+\begin{theorem}
+    Soient $D \subset \C$ un domaine simplement connexe, $f: D \rightarrow \C$ une fonction holomorphe dans $D$ et $\gamma$ une courbe simple régulière fermée contenue dans $D$.
+    Alors:
+    
+    \[\int_\gamma f(z) \dz = 0\]
+    
+    \textit{Cf. ex. 6, série 5}
+\end{theorem}
