@@ -84,6 +84,8 @@
 
 \section{Théorème de Cauchy}
 
+\subsection{Théorème}
+
 \begin{theorem}[10.2, p.73]
     Soient $D \subset \C$ un domaine simplement connexe, $f: D \rightarrow \C$ une fonction holomorphe dans $D$ et $\gamma$ une courbe simple régulière fermée contenue dans $D$.
     Alors:
@@ -92,3 +94,283 @@
     
     \textit{Cf. ex. 6, série 5}
 \end{theorem}
+
+\begin{terminology}
+    On appelle domaine simplement connexe un ensemble ouvert $D \subset \C$ qui \og n'a pas de trous \fg{}.
+\end{terminology}
+
+\subsection{Exemples}
+
+\begin{example}[1]
+    $D = \C, \quad f(z) = z^2$ holomorphe dans $D$ et $\gamma$ une courbe simple fermée régulière (par morceaux) \textit{quelconque} dans $D$, alors:
+    
+    \[\textrm{Thm. de Cauchy } \implies \int_\gamma z^2 \dz = 0\]
+    
+    Par exemple, si $\gamma(\theta) = e^{i\theta}$ avec $\theta \in [0, 2\pi[$ (cercle unité centré à l'origine), on a bien:
+    
+    \[
+    \int_\gamma z^2 \dz =
+    \int_0^{2\pi} \module{e^{i\theta}}^2 i e^{i\theta}\dth =
+    i \int_0^{2\pi} e^{3 i\theta}\dth =
+    \left.\frac{1}{3} e^{3 i\theta}\right|_0^{2\pi} =
+    \frac{1}{3} \left[e^{6 i \pi} - 1\right] =
+    \frac{1}{3} \left[1 - 1\right] =
+    0
+    \]
+\end{example}
+
+\begin{example}[2]
+    $f(z) = \frac{1}{z}$
+    
+    \begin{enumerate}[label=\alph*)]
+    \item 
+    $D = \C$ Le Thm. de Cauchy ne s'applique pas car $f$ n'est pas holomorphe en $t = 0$.
+    
+    $D = \C^\ast = \C \setminus \{0\}$
+    Le Thm. de Cauchy ne s'applique pas non plus car $D$ n'est pas simplement connexe.
+    Par exemple, si $\gamma$ le cercle unité centré en $z = 0$, alors:
+    
+    \[
+    \int_\gamma f(z)\dz = \int_\gamma \frac{1}{z} \dz = \ldots = 2i\pi \neq 0
+    \]
+    
+    \item 
+    $D = \{z \in \C : \Rep z > 0\}$
+    Le Thm. de Cauchy s'applique car $D$ est simplement connexe et $f$ est holomorphe dans $D$.
+    
+    \[\textrm{Thm. de Cauchy } \implies \int_\gamma \frac{1}{z} \dz = 0\]
+    
+    pour $\gamma \subset D$ courbe simple fermée régulière quelconque.
+    Par exemple, si $\gamma$ est le cercle unité centré en $z = 2$, alors:
+    
+    \[
+    \int_\gamma \frac{1}{z} \dz = \ldots = 0
+    \]
+    
+    \textit{Cf. ex.4, série 6, application avec variantes de $\gamma(\theta) = e^{i\theta}$}
+    \end{enumerate}
+\end{example}
+
+%!TeX newpage for the design of the document
+\newpage
+
+\subsection{Démonstration du théorème de Cauchy}
+
+\begin{proof}
+    Soient $\gamma \subset D$ une courbe simple régulière fermée
+    
+    \[\gamma: \begin{array}{ccl} [a,b] & \longrightarrow & \C\\ t & \longmapsto & \gamma(t) = \alpha(t) + i\beta(t)\end{array}\]
+    
+    et $f$ une fonction holomorphe dans $D$ définie par $f(x + iy) = u(x,y) + iv(x,y)$.
+    On a:
+    
+    \begin{align*}
+    \int_\gamma f(z) \dz
+    =& \int_a^b f\big(\gamma(t)\big) \gamma'(t) \dt
+    \\=& \int_a^b \Big[u\big(\alpha(t), \beta(t)\big) + i v\big(\alpha(t), \beta(t)\big)\Big] \cdot \Big[\alpha'(t) + i\beta'(t)\Big] \dt
+    \\=& \int_a^b \Big[u\big(\alpha(t), \beta(t)\big) \alpha'(t) - v\big(\alpha(t), \beta(t)\big) \beta'(t)\Big] \dt
+      \\&+ i \int_a^b \Big[u\big(\alpha(t), \beta(t)\big) \beta'(t) + v\big(\alpha(t), \beta(t)\big) \alpha'(t)\Big] \dt
+    \\=& \underbrace{\int_a^b \left(
+    \begin{array}{c}
+    u\big(\alpha(t), \beta(t)\big)\\
+    - v\big(\alpha(t), \beta(t)\big)
+    \end{array} \right) \cdot \left(
+    \begin{array}{c}
+    \alpha'(t)\\
+    \beta'(t)
+    \end{array} \right) \dt}_{I_1}
+      \\&+ i \underbrace{\int_a^b \left(
+      \begin{array}{c}
+      v\big(\alpha(t), \beta(t)\big)\\
+      u\big(\alpha(t), \beta(t)\big)
+      \end{array} \right) \cdot \left(
+      \begin{array}{c}
+      \alpha'(t)\\
+      \beta'(t)
+      \end{array} \right) \dt}_{I_2}
+    \end{align*}
+    
+    On a que $I_1 = \int_\gamma F \cd \dl$ est l'intervalle curviligne le long de $\gamma$ du champ vectoriel $F: \R^2 \rightarrow \R^2$ défini par $F(x,y) = \big(u(x,y),-v(x,y)\big)$.
+    En appliquant le Thm. de Green, on obtient:
+    
+    \[
+    I_1 = \iint_{\inte\gamma} \rot F(x,y) \, \dx\dy
+    = \iint_{\inte\gamma} \big[-v_x(x,y) - u_y(x,y)\big] \, \dx\dy
+    \]
+    
+    $f$ holomorphe dans $D$ et $\gamma \subset D \xRightarrow[\textrm{CR}]{\textrm{Thm}} v_x(x,y) + u_y(x,y) = 0 \enspace \forall(x,y) \in \inte\gamma \implies I_1 = 0$
+    
+    On a que $I_2 = \int_\gamma G \cd \dl$ est l'intervalle curviligne le long de $\gamma$ du champ vectoriel $G: \R^2 \rightarrow \R^2$ défini par $G(x,y) = \big(v(x,y),u(x,y)\big)$.
+    En appliquant le Thm. de Green, on obtient:
+    
+    \[
+    I_2 = \iint_{\inte\gamma} \rot G(x,y) \, \dx\dy
+    = \iint_{\inte\gamma} \big[u_x(x,y) - v_y(x,y)\big] \, \dx\dy
+    \]
+    
+    $f$ holomorphe dans $D$ et $\gamma \subset D \xRightarrow[\textrm{CR}]{\textrm{Thm}} u_x(x,y) - v_y(x,y) = 0 \enspace \forall(x,y) \in \inte\gamma \implies I_2 = 0$
+    
+    \textbf{Conclusion:}
+    
+    \[\int_\gamma f(z) \dz = I_1 + iI_2 = 0 + i0 = 0\]
+\end{proof}
+
+\subsection{Corollaire du Théorème de Cauchy}
+
+\begin{corollary}
+    Soient $D_0,D_1,D_2,\ldots,D_m \subset \C$ des domaines simplement connexes tels que:
+    
+    \begin{enumerate}[label=\arabic{enumi})]
+    \item 
+    $\adh{D_j} \subset D_0 \quad \forall j = 1,\ldots,m$
+    \item 
+    $\adh{D_j} \cap \adh{D_k} = \emptyset \quad \forall j,k = 1,\ldots,m; \enspace j \neq k$ (domaines disjoints)
+    \item 
+    $\bord D_j = \gamma_j$ pour $j=0,1,\ldots,m$ sont des courbes simples fermées régulières (par morceaux)
+    \end{enumerate}
+
+    Soit $f: D = \adh{D_0} \setminus \bigcup\limits_{j=1}^m D_j \rightarrow \C$ une fonction holomorphe dans $D$.
+    Alors:
+    
+    \[
+    \int_{\gamma_0} f(z) \dz = \sum_{j=1}^m \int_{\gamma_j} f(z) \dz
+    \]
+    
+    où toutes les courbes $\gamma_j$ sont orientées positivement. % (par rapport à \emph{leurs} intérieurs).
+\end{corollary}
+
+\subsubsection*{Justification heuristique du corollaire}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.65\linewidth]{img/3_2_4-heur.png}
+    \caption{Illustration de la justification heuristique}
+    \label{3_2_4-heur}
+\end{figure}
+
+\[
+D = \adh{D_0} \setminus \big(D_1 \cup D_2\big) = \adh{C_1} \cup \adh{C_2}
+\]
+
+Les bords de $\gamma_0, \gamma_1$ et $\gamma_2$ de $D_0,D_1$ et $D_2$ appartiennent à $D$.
+
+\begin{itemize}
+    \item 
+    D'une part, $f$ holomorphe dans $\adh{C_1}$ et $\adh{C_2}$, $C_1$ et $C_2$ sont fermés $\xRightarrow[\textrm{Cauchy}]{\textrm{Thm.}}$
+    
+    \[\int_{C_1} f(z) \dz = 0 \textrm{ et } \int_{C_2} f(z) \dz = 0\]
+    \item 
+    D'autre part, avec $C_1$ et $C_2$ orientés positivement, on a:
+    
+    \[
+    \int_{C_1} f(z) \dz + \int_{C_2} f(z) \dz = \int_{\gamma_0} f(z) \dz + \int_{\gamma_1} f(z) \dz + \int_{\gamma_2} f(z) \dz
+    \]
+    
+    où $\gamma_0$ est orientée \textit{positivement} ($D_0$ à gauche), mais $\gamma_1$ et $\gamma_2$ orientées \textit{négativement} ($D_1$ et $D_2$ à droite).
+\end{itemize}
+
+Donc:
+
+\[\int_{\gamma_0} f(z) \dz + \int_{\gamma_1} f(z) \dz + \int_{\gamma_2} f(z) \dz = 0\]
+
+\begin{align*}
+\implies \int_{\gamma_0} f(z) \dz &= - \int_{\gamma_1} f(z) \dz - \int_{\gamma_2} f(z) \dz \quad \textrm{orientation négative (dessin)}\\
+&= \int_{\gamma_1} f(z) \dz + \int_{\gamma_2} f(z) \dz \quad \textrm{orientation positive (énoncé)}
+\end{align*}
+
+
+\section{Formule intégrale de Cauchy}
+
+\subsection{Énoncé}
+
+\begin{theorem}
+    Soient $D \subset \C$ un domaine simplement connexe, $f: D \rightarrow \C$ une fonction holomorphe dans $D$ et $\gamma$ une courbe simple fermée régulière (par morceaux) orientée positivement contenue dans $D$.
+    Alors:
+    
+    \[
+    f(z) = \oipi \int_\gamma \frac{f(\xi)}{\xi - z} \dxi \quad \forall z \in \inte \gamma
+    \]
+\end{theorem}
+
+\begin{illustration}
+    $D = \C$
+    
+    Si $f$ est une fonction holomorphe dans $\C$, la valeur de la fonction $f$ en un point $z \in \C$ s'obtient en intégrant $\frac{f(\xi)}{\xi - z}$ le long de n'importe quelle courbe $\gamma$ (orientée positivement) telle que $z \in \inte \gamma$.
+\end{illustration}
+
+\subsection{Exemples d'utilisation}
+
+\begin{example}[1]
+    Soit $\gamma$ une courbe simple fermée régulière.
+    Discuter en fonction de $\gamma$ la valeur de l'intégrale:
+    
+    \[\int_\gamma \frac{\cos 2z}{z} \dz\]
+    
+    Constatation: la fonction $g(z) = \frac{\cos 2z}{z}$ n'est pas définie en $z = 0$.
+    
+    Distinction de différents cas:
+    
+    \begin{description}
+    \item[1\ier{} cas $0 \in \gamma$]
+    L'intégrale n'est pas définie puisque $g(z) = \frac{\cos 2z}{z}$ n'est pas continue sur $\gamma$.
+    
+    \item[2\ieme{} cas $0 \notin \adh{\gamma}$]
+    La fonction $g(z) = \frac{\cos 2z}{z}$ est holomorphe dans un domaine $D$ simplement connexe tel que $\adh{\gamma} \subset D$.
+    Comme $\gamma \subset \adh{\gamma} \subset D$, alors le Thm. de Cauchy s'applique à la fonction $g$ et on trouve:
+    
+    \[\int_\gamma \frac{\cos 2z}{z} \dz = 0\]
+    
+    $\forall \gamma$ de ce type (i.e. $0 \notin \adh{\gamma}$).
+    
+    \item[3\ieme{} cas $0 \in \inte{\gamma}$]
+    La fonction $f(\xi) = \cos 2\xi$ est holomorphe dans $\C$.
+    Comme $\gamma \subset \C$, en lui appliquant la formule intégrale de Cauchy pour $z = 0$ (avec $D = \C$), on trouve:
+    
+    \[
+    f(0) = \oipi \int_\gamma \frac{\cos 2\xi}{\xi - 0} \dxi
+    \implies \int_\gamma \frac{\cos 2\xi}{\xi} \dxi = 2\pi i f(0) = 2\pi i \cos 0 = 2\pi i
+    \]
+    
+    \textbf{Conclusion:} $\int_\gamma \frac{\cos 2z}{z} \dz = 2\pi i \quad \forall \gamma$ de ce type.
+    \end{description}
+\end{example}
+
+\begin{remark}
+    Pour le cercle unité de rayon $1$, on a $\gamma(\theta) = e^{i\theta}$ avec $\theta \in [0,2\pi[$, il faudrait calculer:
+    
+    \[
+    \int_\gamma \frac{\cos 2z}{z} \dz
+    = \int_0^{2\pi} \frac{\cos \big(2e^{i\theta}\big)}{e^{i\theta}} i e^{i\theta} \dth
+    = i \int_0^{2\pi} \cos \big(2e^{i\theta}\big) \dth
+    \]
+\end{remark}
+
+\begin{example}[2]
+    Calculer
+    
+    \[\int_\gamma \frac{e^{z^2}}{z + i\pi} \dz\]
+    
+    où $\gamma$ est le cercle de rayon $4$ centré en $z = 1$.
+    
+    Utilisation de la formule de Cauchy, constatations:
+    
+    \begin{enumerate}[label=\arabic{enumi})]
+    \item 
+    La fonction $g(z) = \frac{e^{z^2}}{z + i\pi}$ n'est pas définie en $z = -i\pi$
+    \item 
+    $-i\pi \in \inte{\gamma}$
+    \end{enumerate}
+
+    On considère $\gamma$ orientée positivement et $f(\xi) = e^{\xi^2}$ qui est holomorphe dans $\C$.
+    Formule intégrale de Cauchy pour $z = -i\pi$ (avec $D = \C$) donne:
+    
+    \[
+    f(-i\pi) = \oipi \int_\gamma \frac{e^{\xi^2}}{\xi + i\pi} \dxi \implies \int_\gamma \frac{e^{\xi^2}}{\xi + i\pi} \dxi = 2\pi i f(-i\pi)
+    \]
+    
+    Mais $f(-i\pi) = e^{(-i\pi)^2} = e^{-\pi^2}$, donc:
+    
+    \[\int_\gamma \frac{e^{z^2}}{z + i\pi} \dz = 2\pi i e^{-\pi^2}\]
+    
+    \textit{Autres exemples: ex. 1-4, série 6}
+\end{example}
