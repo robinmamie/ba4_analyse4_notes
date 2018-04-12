@@ -7,8 +7,8 @@
 \subsection{Définitions et résultats}
 
 \begin{hypothesis}
-    Soit un ouvert $D \subset \C$ et $f: \begin{array}{ccc}
-    D & \longrightarrow & \C\\
+    Soit un ouvert $D \subset \Cx$ et $f: \begin{array}{ccc}
+    D & \longrightarrow & \Cx\\
     z & \longmapsto & f(z)
     \end{array}$ une fonction holomorphe dans $D$ et $z_0 \in D$.
 \end{hypothesis}
@@ -22,9 +22,9 @@
 \end{definition}
 
 \begin{result}[séries de Taylor]
-    Soit $R > 0$ et $D_R(z_0) = \{z \in \C : \module{z - z_0} < R \}$ le plus grand disque de rayon $R$ centré en $z_0$ contenu dans $D$.
+    Soit $R > 0$ et $D_R(z_0) = \{z \in \Cx : \module{z - z_0} < R \}$ le plus grand disque de rayon $R$ centré en $z_0$ contenu dans $D$.
     
-    Convention: si $D = \C \implies R = +\infty$ et $D_R(z_0) = \C$
+    Convention: si $D = \Cx \implies R = +\infty$ et $D_R(z_0) = \Cx$
     
     Alors:
     
@@ -56,27 +56,27 @@
 \begin{example}[1]
     \[f(z) = e^z\]
     
-    est holomorphe dans $\C$.
+    est holomorphe dans $\Cx$.
     On a $f^{(n)}(z) = e^z$ et $f^{(n)}(0) = 1 \quad \forall n \in N$.
     
     Donc:
     
-    \[ e^z = \sum_{n=0}^{+\infty} \frac{z^n}{n!} \quad \forall z \in \C \]
+    \[ e^z = \sum_{n=0}^{+\infty} \frac{z^n}{n!} \quad \forall z \in \Cx \]
 \end{example}
 
 \begin{example}[2]
     \[f(z) = \frac{1}{1-z}\]
     
-     est holomorphe dans $D = \C \setminus \{1\}$.
+     est holomorphe dans $D = \Cx \setminus \{1\}$.
     
-    Le plus grand disque centré en $z_0 = 0$ contenu dans $D$ est $D_1(0) = \{ z \in \C : \module{z} < 1 \}$.
+    Le plus grand disque centré en $z_0 = 0$ contenu dans $D$ est $D_1(0) = \{ z \in \Cx : \module{z} < 1 \}$.
     
     On a $f^{(n)}(z) = \frac{n!}{(1-z)^{n+1}}$ et $f^{(n)}(0) = n! \ \forall n \in \N$.
     
     Donc:
     
     \[
-    \frac{1}{1-z} = \sum_{n=0}^{+\infty} z^n \quad \forall z \in \C, \module{z} < 1
+    \frac{1}{1-z} = \sum_{n=0}^{+\infty} z^n \quad \forall z \in \Cx, \module{z} < 1
     \]
     
     \textbf{\og Série géométrique \fg{}} avec rayon de convergence $R = 1$.
@@ -85,9 +85,9 @@
 \begin{example}[3]
     \[f(z) = \frac{1}{1 + z^2}\]
     
-    est holomorphe dans $D = \C \setminus \{-i; i\}$.
+    est holomorphe dans $D = \Cx \setminus \{-i; i\}$.
     
-    Le plus grand disque centré en $z_0 = 0$ et contenu dans $D$ est $D_1(0) = \{z \in \C : \module{z} < 1\}$.
+    Le plus grand disque centré en $z_0 = 0$ et contenu dans $D$ est $D_1(0) = \{z \in \Cx : \module{z} < 1\}$.
     
     On a:
     
@@ -96,7 +96,7 @@
     = \frac{1}{1 - \left(-z^2\right)}
     \overset{\textrm{Ex. 2}}{=}
     \sum_{n=0}^{+\infty} (-z^2)^n
-    = \sum_{n=0}^{+\infty} (-1)^n z^{2n} \quad \forall z \in \C, \module{z} < 1
+    = \sum_{n=0}^{+\infty} (-1)^n z^{2n} \quad \forall z \in \Cx, \module{z} < 1
     \]
     
     Le rayon de convergence $R = 1$

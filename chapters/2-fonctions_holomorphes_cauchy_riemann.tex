@@ -7,9 +7,9 @@
 \subsection{Motivation}
 
 \begin{description}
-    \item[But:] étendre l'étude de fonctions réelles (du type $f: \R \rightarrow \R$) à des fonctions qui dépendent d'\textbf{une} variable complexe qui sont à valeurs complexes (du type $f: \C \rightarrow \C$ où $\C$ est l'ensemble des nombres complexes).
+    \item[But:] étendre l'étude de fonctions réelles (du type $f: \R \rightarrow \R$) à des fonctions qui dépendent d'\textbf{une} variable complexe qui sont à valeurs complexes (du type $f: \Cx \rightarrow \Cx$ où $\Cx$ est l'ensemble des nombres complexes).
     
-    \item[Rôle:] établir les notions de limite, de continuité, de dérivabilité et d'intégration dans $\C$.
+    \item[Rôle:] établir les notions de limite, de continuité, de dérivabilité et d'intégration dans $\Cx$.
     
     \item[Intérêt:] méthodes puissantes qui permettent de calculer facilement des intégrales \textbf{ré\-elles} compliquées.
 \end{description}
@@ -20,23 +20,23 @@
 
 \begin{itemize}
     \item 
-    $\C$ désigne l'ensemble des nombres complexes
+    $\Cx$ désigne l'ensemble des nombres complexes
     \item 
-    $z \in \C \iff z = x + iy$ avec $x = \Rep z \in \R$ et $y = \Imp z \in \R$ et $i^2 = -1$
+    $z \in \Cx \iff z = x + iy$ avec $x = \Rep z \in \R$ et $y = \Imp z \in \R$ et $i^2 = -1$
     \item 
-    $\C^* = \C \setminus \{0\}$ où $0 = 0 + i0$
+    $\Cx^* = \Cx \setminus \{0\}$ où $0 = 0 + i0$
     \item 
     complexe conjugué de $z \quad \conj{z} = x - iy$ 
     \item 
-    module de $z \in \C \quad \module{z} = \sqrt{x^2 + y^2} \in \R_+$
+    module de $z \in \Cx \quad \module{z} = \sqrt{x^2 + y^2} \in \R_+$
     \item 
-    représentation polaire de $z \in \C^* \quad z = \module{z} e^{i\theta} = \module{z} (\cos \theta + i \sin \theta)$
+    représentation polaire de $z \in \Cx^* \quad z = \module{z} e^{i\theta} = \module{z} (\cos \theta + i \sin \theta)$
     \item 
     $\theta$ est appelé l'argument de $z$ et est noté $\arg z$
 \end{itemize}
 
 \begin{remark}
-    Pour $z \in \C^*$:
+    Pour $z \in \Cx^*$:
     \begin{itemize}
         \item 
         L'argument de $z$ est défini à $2k\pi$ près avec $k \in \Z$
@@ -51,11 +51,11 @@
 \subsection{Définitions}
 
 \begin{definition}
-    Une \textbf{fonction d'une variable complexe} à valeur dans $\C$ s'écrit:
+    Une \textbf{fonction d'une variable complexe} à valeur dans $\Cx$ s'écrit:
     
     \[
     f: \begin{array}{{rcl}}
-    \C & \longrightarrow & \C \\
+    \Cx & \longrightarrow & \Cx \\
     z = x+iy & \longmapsto & f(z) = u(x,y) + i v(x,y) \\
     \end{array}
     \]
@@ -78,7 +78,7 @@
 \end{definition}
 
 \begin{remark}
-    Les variables $x \in \R$ et $y \in \R$ des fonctions $u$ et $v$ sont les parties réelles et imaginaires de la variable $z \in \C$ de la fonction $f$.
+    Les variables $x \in \R$ et $y \in \R$ des fonctions $u$ et $v$ sont les parties réelles et imaginaires de la variable $z \in \Cx$ de la fonction $f$.
 \end{remark}
 
 \subsection{Exemples}
@@ -88,7 +88,7 @@
     \item 
     \[
     f: \begin{array}{{rcl}}
-    \C & \longrightarrow & \C \\
+    \Cx & \longrightarrow & \Cx \\
     z = x+iy & \longmapsto & f(z) = \conj{z} = x - iy \\
     \end{array}
     \]
@@ -98,7 +98,7 @@
     \item 
     \[
     f: \begin{array}{{rcl}}
-    \C & \longrightarrow & \C \\
+    \Cx & \longrightarrow & \Cx \\
     z = x+iy & \longmapsto & f(z) = z^2 = (x + iy)^2 = x^2 - y^2 + 2ixy \\
     \end{array}
     \]
@@ -108,7 +108,7 @@
     \item 
     \[
     f: \begin{array}{{rcl}}
-    \C^* & \longrightarrow & \C \\
+    \Cx^* & \longrightarrow & \Cx \\
     z = x+iy & \longmapsto & f(z) = \frac{1}{z}
     = \frac{1}{x + iy}
     = \frac{x - iy}{(x + iy)(x - iy)}
@@ -119,20 +119,20 @@
     On a $u(x,y) = \frac{x}{x^2 + y^2} \enspace$ et $v(x,y)= -\frac{y}{x^2 + y^2}$.
     
     \item 
-    Pour $z = x + iy \in \C$, la fonction exponentielle est définie par:
+    Pour $z = x + iy \in \Cx$, la fonction exponentielle est définie par:
     
-    \[e^z = e^{x + iy} := e^x(\cos y + i \sin y) \in \C^*\]
+    \[e^z = e^{x + iy} := e^x(\cos y + i \sin y) \in \Cx^*\]
     
     On a $u(x,y) = e^x \cos y \enspace$ et $v(x,y)= e^x \sin y$.
     
     \begin{remark}
-    Contrairement au cas réel, $e^z$ n'est pas bijective sur $\C$ car $e^{z + 2ik\pi} = e^z$ $\forall z \in \Z$ \textit{(ex.4, série 3)}.
-    En choisissant $y$ tel que $-\pi < y \leq \pi$, la fonction $e^z$ est bijective sur l'ensemble $\left\{z \in \C : \Imp z \in \enspace ] -\pi; \pi]\right\}$.
+    Contrairement au cas réel, $e^z$ n'est pas bijective sur $\Cx$ car $e^{z + 2ik\pi} = e^z$ $\forall z \in \Z$ \textit{(ex.4, série 3)}.
+    En choisissant $y$ tel que $-\pi < y \leq \pi$, la fonction $e^z$ est bijective sur l'ensemble $\left\{z \in \Cx : \Imp z \in \enspace ] -\pi; \pi]\right\}$.
     Avec cette convention, c'est la \textbf{\og restriction bijective de l'exponentielle complexe\fg{}}.
     \end{remark}
 
     \item 
-    Pour $z \in \C^*$, la fonction logarithme est définie par:
+    Pour $z \in \Cx^*$, la fonction logarithme est définie par:
     
     \[
     \log z := \ln \module{z} + i \arg z
@@ -206,7 +206,7 @@
     \textbf{Résultat final:} En excluant le demi-axe réel négatif, on a que la fonction $\log z$ est continue sur l'ensemble:
     
     \[
-    V = \C \enspace \setminus \enspace ]-\infty;0] = \C \setminus \left\{z \in \C : \Imp z = 0, \Rep z \leq 0\right\}
+    V = \Cx \enspace \setminus \enspace ]-\infty;0] = \Cx \setminus \left\{z \in \Cx : \Imp z = 0, \Rep z \leq 0\right\}
     \]
     
     C'est la \textbf{\og restriction continue du logarithme complexe \fg}.
@@ -214,7 +214,7 @@
     \end{remark}
 
     \item 
-    Pour $z \in \C$, on définit les fonctions trigonométriques et hyperboliques:
+    Pour $z \in \Cx$, on définit les fonctions trigonométriques et hyperboliques:
     
     \begin{align*}
     \cos z = \frac{e^{iz} + e^{-iz}}{2}
@@ -234,37 +234,37 @@
 
 \begin{definition}[9.1, p.67]
     Les notions de topologie (ouverts, fermés, etc.), de limite, de continuité et de dérivabilité sont analogues à celles de l'analyse réelle.
-    Soit $f: \C \rightarrow \C$, alors:
+    Soit $f: \Cx \rightarrow \Cx$, alors:
     
     \begin{enumerate}[label=\arabic{enumi})]
     \item 
-    $f$ possède une limite $l \in \C$ en $z_0 \in \C$ (notation $\lim\limits_{z \rightarrow z_0} f(z) = l$) si:\\
+    $f$ possède une limite $l \in \Cx$ en $z_0 \in \Cx$ (notation $\lim\limits_{z \rightarrow z_0} f(z) = l$) si:\\
     $\forall\, \epsilon > 0 \enspace \exists\, \delta > 0 :\enspace 0 < \module{z - z_0} < \delta \implies \module{f(z) - l} < \epsilon$
     
     \item 
-    $f$ est continue en $z_0 \in \C$ si $\lim\limits_{z \rightarrow z_0} f(z) = f(z_0)$
+    $f$ est continue en $z_0 \in \Cx$ si $\lim\limits_{z \rightarrow z_0} f(z) = f(z_0)$
     
     \item 
-    $f$ est dérivable en $z_0 \in \C$ si $\lim\limits_{z \rightarrow z_0} \frac{f(z) - f(z_0)}{z - z_0}$ existe et est finie.
+    $f$ est dérivable en $z_0 \in \Cx$ si $\lim\limits_{z \rightarrow z_0} \frac{f(z) - f(z_0)}{z - z_0}$ existe et est finie.
     La limite s'appelle la dérivée de $f$ en $z_0$ et est notée $f'(z_0)$.
-    Les règles de dérivation établies dans $\R$ sont valables dans $\C$.
+    Les règles de dérivation établies dans $\R$ sont valables dans $\Cx$.
     
     \item 
-    Étant donné un ouvert $V \subset \C$, on dit que la fonction $f: V \rightarrow \C$ est \textbf{holomorphe} (ou analytique complexe) dans $V$ si $f$ est \textit{définie et dérivable} $\forall z \in V$.
+    Étant donné un ouvert $V \subset \Cx$, on dit que la fonction $f: V \rightarrow \Cx$ est \textbf{holomorphe} (ou analytique complexe) dans $V$ si $f$ est \textit{définie et dérivable} $\forall z \in V$.
     \end{enumerate}
 \end{definition}
 
 \subsection{Équations de Cauchy-Riemann}
 
 \begin{remark}[sur un abus de notation]
-    Étant donné un ouvert $V \subset \C$, on l'identifie souvent au sous-ensemble correspondant de $\R^2$, i.e. on écrit indifféremment $z = x + iy \in V (\in \C)$ ou $(x,y) \in V (\in \R^2)$ de façon abusive.
+    Étant donné un ouvert $V \subset \Cx$, on l'identifie souvent au sous-ensemble correspondant de $\R^2$, i.e. on écrit indifféremment $z = x + iy \in V (\in \Cx)$ ou $(x,y) \in V (\in \R^2)$ de façon abusive.
 \end{remark}
 
 %!TeX newpage for cosmetic reasons
 \newpage
 
 \begin{theorem}[de Cauchy-Riemann; 9.2, p.67]
-    Soit $V \in \C$ un ouvert et soit une fonction $f: V \rightarrow \C$, où $u: V \rightarrow \R$ et $v: V \rightarrow \R$ sont respectivement les parties réelles et imaginaires de $f$.
+    Soit $V \in \Cx$ un ouvert et soit une fonction $f: V \rightarrow \Cx$, où $u: V \rightarrow \R$ et $v: V \rightarrow \R$ sont respectivement les parties réelles et imaginaires de $f$.
     Alors les deux affirmations suivantes sont équivalentes:
     \begin{enumerate}[label=\arabic{enumi})]
         \item 
@@ -320,7 +320,7 @@
 
 \begin{example}[1]\hfill
     
-    $f(z) = z^2$ définie pour $z = x + iy \in \C$.
+    $f(z) = z^2$ définie pour $z = x + iy \in \Cx$.
     
     $f(z) = (x + iy) ^2 = x^2 - y^2 + i2xy$.
     
@@ -338,16 +338,16 @@
     u_x = v_y \\
     u_y = -v_x
     \end{array}
-    \forall (x,y) \in \C\]
+    \forall (x,y) \in \Cx\]
     
-    CR (Cauchy-Riemann) satisfaites $\forall z \in \C \implies f$ holomorphe dans $\C$.
+    CR (Cauchy-Riemann) satisfaites $\forall z \in \Cx \implies f$ holomorphe dans $\Cx$.
     
     De plus: $f'(z) = u_x(x,y) + i v_x(x,y) = 2x + 2iy = 2(x + iy) = 2z$.
 \end{example}
 
 \begin{example}[2]\hfill
     
-    $f(z) = \conj{z}$ définie pour $z = x + iy \in \C$.
+    $f(z) = \conj{z}$ définie pour $z = x + iy \in \Cx$.
     
     $f(z) = \conj{x + iy} = x - iy$.
     
@@ -366,12 +366,12 @@
     u_y = -v_x
     \end{array}\]
     
-    CR non satisfaites $\implies f$ n'est pas holomorphe dans $\C$.
+    CR non satisfaites $\implies f$ n'est pas holomorphe dans $\Cx$.
 \end{example}
 
 \begin{example}[3]\hfill
     
-    $f(z) = e^z$ définie pour $z = x + iy \in \C$.
+    $f(z) = e^z$ définie pour $z = x + iy \in \Cx$.
     
     $f(z) = e^x (\cos y + i \sin y) = e^x \cos y + i e^x \sin y$
     
@@ -390,19 +390,19 @@
     u_y = -v_x
     \end{array}\]
     
-    CR satisfaites $\implies f$ holomorphe dans $\C$.
+    CR satisfaites $\implies f$ holomorphe dans $\Cx$.
     
     \[f'(z) = u_x(x,y) + i v_x(x,y) = e^x \cos y + i e^x \sin y := e^z\]
 \end{example}
 
 \begin{example}[4]\hfill
     
-    $f(z) = \log z = \ln \module{z} + i \arg z$ avec la détermination principale définie pour $V = \C\, \setminus\, ]-\infty; 0] = \C \setminus \{z \in \C : \Imp z = 0, \Rep z \leq 0\}$.
+    $f(z) = \log z = \ln \module{z} + i \arg z$ avec la détermination principale définie pour $V = \Cx\, \setminus\, ]-\infty; 0] = \Cx \setminus \{z \in \Cx : \Imp z = 0, \Rep z \leq 0\}$.
     $\log z$ est holomorphe dans $V$ et on a:
     
     \[f'(z) = \frac{1}{z} \enspace \forall z \in V\]
     
-    En effet: preuve pour le demi-plan $D = \{z \in \C : \Rep z > 0\}$.
+    En effet: preuve pour le demi-plan $D = \{z \in \Cx : \Rep z > 0\}$.
     Pour $z = x +iy$ avec $x > 0$ et $y \in \R$.
     On a: $\module{z} = \sqrt{x^2 + y^2}$ et $\arg z = \Arctg \frac{y}{x}$.
     
@@ -482,9 +482,9 @@
 \end{proof}
 
 \begin{remark}[finale]
-    Affirmer que $f: \C \rightarrow \C$ est dérivable en $z = x + iy$ \textbf{n'est pas équivalent} au fait que le champ vectoriel $\tilde{f}: \R^2 \rightarrow \R^2$ est continûment dérivable dans le contexte usuel de $\R^2$ (i.e matrice jacobienne $\begin{pmatrix}u_x & u_y\\v_x & v_y\end{pmatrix}$ de $\tilde{f}$ existe avec $u_x, u_y, v_x, v_y$ continues).
+    Affirmer que $f: \Cx \rightarrow \Cx$ est dérivable en $z = x + iy$ \textbf{n'est pas équivalent} au fait que le champ vectoriel $\tilde{f}: \R^2 \rightarrow \R^2$ est continûment dérivable dans le contexte usuel de $\R^2$ (i.e matrice jacobienne $\begin{pmatrix}u_x & u_y\\v_x & v_y\end{pmatrix}$ de $\tilde{f}$ existe avec $u_x, u_y, v_x, v_y$ continues).
     
-    Par exemple, $f(z) = \conj{z}$ n'est pas holomorphe dans $\C$: si $z_0 = x_0 + i y_0$ et $z = (x_0 + \alpha) + i (y_0 + \beta)$, alors on a:
+    Par exemple, $f(z) = \conj{z}$ n'est pas holomorphe dans $\Cx$: si $z_0 = x_0 + i y_0$ et $z = (x_0 + \alpha) + i (y_0 + \beta)$, alors on a:
     
     \[\frac{f(z) - f(z_0)}{z - z_0} = \frac{(x_0 + \alpha) - i(y_0 + \beta) - x_0 + iy_0}{(x_0 + \alpha) + i(y_0 + \beta) - x_0 - iy_0} = \frac{\alpha - i\beta}{\alpha + i\beta} = \left\{\begin{array}{rl}-1 & \textrm{si } \alpha = 0\\1 & \textrm{si } \beta = 0\end{array}\right.\]
     

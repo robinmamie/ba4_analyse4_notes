@@ -9,7 +9,7 @@
 \begin{definition}[10.1, p.73]\hfill
 \begin{enumerate}[label=\arabic{enumi})]
     \item
-    $\Gamma \subset \C$ est une \textbf{courbe simple régulière} s'il existe un intervalle $[a,b] \subset \R$ et une fonction $\gamma: \begin{array}{ccl} [a,b] & \longrightarrow & \C\\ t & \longmapsto & \gamma(t) = \gamma_1(t) + i\gamma_2(t)\end{array}$ telle que:
+    $\Gamma \subset \Cx$ est une \textbf{courbe simple régulière} s'il existe un intervalle $[a,b] \subset \R$ et une fonction $\gamma: \begin{array}{ccl} [a,b] & \longrightarrow & \Cx\\ t & \longmapsto & \gamma(t) = \gamma_1(t) + i\gamma_2(t)\end{array}$ telle que:
     
     \begin{itemize}
     \item $\Gamma = \gamma([a,b])$, la courbe $\Gamma$ est l'image de $\gamma$
@@ -21,10 +21,10 @@
     $\gamma$ s'appelle une paramétrisation de $\Gamma$ décrite par $t \in [a,b]$.
     
     \item
-    $\Gamma \subset \C$ est une courbe simple régulière \textbf{fermée} si de plus $\gamma(\alpha) = \gamma(\beta)$.
+    $\Gamma \subset \Cx$ est une courbe simple régulière \textbf{fermée} si de plus $\gamma(\alpha) = \gamma(\beta)$.
     
     \item
-    $\Gamma \subset \C$ est une courbe simple régulière \textbf{par morceaux} si $\exists \Gamma_1, \Gamma_2,\ldots,\Gamma_k$ des courbes simples régulières telles que $\Gamma = \bigcup\limits_{j = 1}^k \Gamma_j$.
+    $\Gamma \subset \Cx$ est une courbe simple régulière \textbf{par morceaux} si $\exists \Gamma_1, \Gamma_2,\ldots,\Gamma_k$ des courbes simples régulières telles que $\Gamma = \bigcup\limits_{j = 1}^k \Gamma_j$.
     
     \begin{note}[Abus de langage et de notation]
         En analyse complexe, on identifie souvent la courbe $\Gamma$ à sa paramétrisation $\gamma$.
@@ -32,7 +32,7 @@
     \end{note}
 
     \item
-    Si $\Gamma \subset \C$ est une courbe simple fermée régulière (par morceaux) de paramétrisation $\gamma$, on note \textbf{l'intérieur} $\inte \Gamma$ (ou aussi $\inte \gamma$) l'ensemble ouvert et borné $V \in \C$ dont le bord est $\Gamma$ (i.e. tel que $\bord V = \Gamma$).
+    Si $\Gamma \subset \Cx$ est une courbe simple fermée régulière (par morceaux) de paramétrisation $\gamma$, on note \textbf{l'intérieur} $\inte \Gamma$ (ou aussi $\inte \gamma$) l'ensemble ouvert et borné $V \in \Cx$ dont le bord est $\Gamma$ (i.e. tel que $\bord V = \Gamma$).
     
     Pour l'adhérence de $V$, on écrit $\adh \gamma = \inte \gamma \cup \bord V$.
     
@@ -41,7 +41,7 @@
     \end{note}
     
     \item
-    Soit $\Gamma \subset \C$ une courbe simple régulière de paramétrisation $\gamma: [a,b] \rightarrow \C$ et soit $f: \Gamma \rightarrow \C$ une fonction continue.
+    Soit $\Gamma \subset \Cx$ une courbe simple régulière de paramétrisation $\gamma: [a,b] \rightarrow \Cx$ et soit $f: \Gamma \rightarrow \Cx$ une fonction continue.
     L'\textbf{intégrale} de $f$ le long de $\Gamma$ est définie par:
     
     \[\int_\Gamma f(z) \dz = \int_\gamma f(z) \dz = \int_a^b f(\gamma(t)) \gamma'(t) \dt\]
@@ -61,7 +61,7 @@
     \[
     \gamma:
     \begin{array}{ccl}
-    [0;\pi] & \longrightarrow & \C \\
+    [0;\pi] & \longrightarrow & \Cx \\
     \theta & \longmapsto & \gamma(\theta) = e^{i\theta} = \cos \theta + i \sin \theta
     \end{array}
     \]
@@ -87,7 +87,7 @@
 \subsection{Théorème}
 
 \begin{theorem}[10.2, p.73]
-    Soient $D \subset \C$ un domaine simplement connexe, $f: D \rightarrow \C$ une fonction holomorphe dans $D$ et $\gamma$ une courbe simple régulière fermée contenue dans $D$.
+    Soient $D \subset \Cx$ un domaine simplement connexe, $f: D \rightarrow \Cx$ une fonction holomorphe dans $D$ et $\gamma$ une courbe simple régulière fermée contenue dans $D$.
     Alors:
     
     \[\int_\gamma f(z) \dz = 0\]
@@ -96,13 +96,13 @@
 \end{theorem}
 
 \begin{terminology}
-    On appelle domaine simplement connexe un ensemble ouvert $D \subset \C$ qui \og n'a pas de trous \fg{}.
+    On appelle domaine simplement connexe un ensemble ouvert $D \subset \Cx$ qui \og n'a pas de trous \fg{}.
 \end{terminology}
 
 \subsection{Exemples}
 
 \begin{example}[1]
-    $D = \C, \quad f(z) = z^2$ holomorphe dans $D$ et $\gamma$ une courbe simple fermée régulière (par morceaux) \textit{quelconque} dans $D$, alors:
+    $D = \Cx, \quad f(z) = z^2$ holomorphe dans $D$ et $\gamma$ une courbe simple fermée régulière (par morceaux) \textit{quelconque} dans $D$, alors:
     
     \[\textrm{Thm. de Cauchy } \implies \int_\gamma z^2 \dz = 0\]
     
@@ -124,9 +124,9 @@
     
     \begin{enumerate}[label=\alph*)]
     \item 
-    $D = \C$ Le Thm. de Cauchy ne s'applique pas car $f$ n'est pas holomorphe en $t = 0$.
+    $D = \Cx$ Le Thm. de Cauchy ne s'applique pas car $f$ n'est pas holomorphe en $t = 0$.
     
-    $D = \C^\ast = \C \setminus \{0\}$
+    $D = \Cx^\ast = \Cx \setminus \{0\}$
     Le Thm. de Cauchy ne s'applique pas non plus car $D$ n'est pas simplement connexe.
     Par exemple, si $\gamma$ le cercle unité centré en $z = 0$, alors:
     
@@ -135,7 +135,7 @@
     \]
     
     \item 
-    $D = \{z \in \C : \Rep z > 0\}$
+    $D = \{z \in \Cx : \Rep z > 0\}$
     Le Thm. de Cauchy s'applique car $D$ est simplement connexe et $f$ est holomorphe dans $D$.
     
     \[\textrm{Thm. de Cauchy } \implies \int_\gamma \frac{1}{z} \dz = 0\]
@@ -159,7 +159,7 @@
 \begin{proof}
     Soient $\gamma \subset D$ une courbe simple régulière fermée
     
-    \[\gamma: \begin{array}{ccl} [a,b] & \longrightarrow & \C\\ t & \longmapsto & \gamma(t) = \alpha(t) + i\beta(t)\end{array}\]
+    \[\gamma: \begin{array}{ccl} [a,b] & \longrightarrow & \Cx\\ t & \longmapsto & \gamma(t) = \alpha(t) + i\beta(t)\end{array}\]
     
     et $f$ une fonction holomorphe dans $D$ définie par $f(x + iy) = u(x,y) + iv(x,y)$.
     On a:
@@ -218,7 +218,7 @@
 \subsection{Corollaire du Théorème de Cauchy}
 
 \begin{corollary}
-    Soient $D_0,D_1,D_2,\ldots,D_m \subset \C$ des domaines simplement connexes tels que:
+    Soient $D_0,D_1,D_2,\ldots,D_m \subset \Cx$ des domaines simplement connexes tels que:
     
     \begin{enumerate}[label=\arabic{enumi})]
     \item 
@@ -229,7 +229,7 @@
     $\bord D_j = \gamma_j$ pour $j=0,1,\ldots,m$ sont des courbes simples fermées régulières (par morceaux)
     \end{enumerate}
 
-    Soit $f: D = \adh{D_0} \setminus \bigcup\limits_{j=1}^m D_j \rightarrow \C$ une fonction holomorphe dans $D$.
+    Soit $f: D = \adh{D_0} \setminus \bigcup\limits_{j=1}^m D_j \rightarrow \Cx$ une fonction holomorphe dans $D$.
     Alors:
     
     \[
@@ -285,7 +285,7 @@ Donc:
 \subsection{Énoncé}
 
 \begin{theorem}
-    Soient $D \subset \C$ un domaine simplement connexe, $f: D \rightarrow \C$ une fonction holomorphe dans $D$ et $\gamma$ une courbe simple fermée régulière (par morceaux) orientée positivement contenue dans $D$.
+    Soient $D \subset \Cx$ un domaine simplement connexe, $f: D \rightarrow \Cx$ une fonction holomorphe dans $D$ et $\gamma$ une courbe simple fermée régulière (par morceaux) orientée positivement contenue dans $D$.
     Alors:
     
     \[
@@ -294,9 +294,9 @@ Donc:
 \end{theorem}
 
 \begin{illustration}
-    $D = \C$
+    $D = \Cx$
     
-    Si $f$ est une fonction holomorphe dans $\C$, la valeur de la fonction $f$ en un point $z \in \C$ s'obtient en intégrant $\frac{f(\xi)}{\xi - z}$ le long de n'importe quelle courbe $\gamma$ (orientée positivement) telle que $z \in \inte \gamma$.
+    Si $f$ est une fonction holomorphe dans $\Cx$, la valeur de la fonction $f$ en un point $z \in \Cx$ s'obtient en intégrant $\frac{f(\xi)}{\xi - z}$ le long de n'importe quelle courbe $\gamma$ (orientée positivement) telle que $z \in \inte \gamma$.
 \end{illustration}
 
 \subsection{Exemples d'utilisation}
@@ -324,8 +324,8 @@ Donc:
     $\forall \gamma$ de ce type (i.e. $0 \notin \adh{\gamma}$).
     
     \item[3\ieme{} cas $0 \in \inte{\gamma}$]
-    La fonction $f(\xi) = \cos 2\xi$ est holomorphe dans $\C$.
-    Comme $\gamma \subset \C$, en lui appliquant la formule intégrale de Cauchy pour $z = 0$ (avec $D = \C$), on trouve:
+    La fonction $f(\xi) = \cos 2\xi$ est holomorphe dans $\Cx$.
+    Comme $\gamma \subset \Cx$, en lui appliquant la formule intégrale de Cauchy pour $z = 0$ (avec $D = \Cx$), on trouve:
     
     \[
     f(0) = \oipi \int_\gamma \frac{\cos 2\xi}{\xi - 0} \dxi
@@ -362,8 +362,8 @@ Donc:
     $-i\pi \in \inte{\gamma}$
     \end{enumerate}
 
-    On considère $\gamma$ orientée positivement et $f(\xi) = e^{\xi^2}$ qui est holomorphe dans $\C$.
-    Formule intégrale de Cauchy pour $z = -i\pi$ (avec $D = \C$) donne:
+    On considère $\gamma$ orientée positivement et $f(\xi) = e^{\xi^2}$ qui est holomorphe dans $\Cx$.
+    Formule intégrale de Cauchy pour $z = -i\pi$ (avec $D = \Cx$) donne:
     
     \[
     f(-i\pi) = \oipi \int_\gamma \frac{e^{\xi^2}}{\xi + i\pi} \dxi \implies \int_\gamma \frac{e^{\xi^2}}{\xi + i\pi} \dxi = 2\pi i f(-i\pi)
@@ -428,7 +428,7 @@ f(z) \int_0^{2\pi} \dth
 
 \subsection{Énoncé}
 
-Avec les mêmes hypothèses du §3.3 ($D \subset \C$ domaine simplement connexe, $f: D \rightarrow \C$ holomorphe dans $D$, $\gamma \subset D$ courbe fermée régulière orientée positivement), on a:
+Avec les mêmes hypothèses du §3.3 ($D \subset \Cx$ domaine simplement connexe, $f: D \rightarrow \Cx$ holomorphe dans $D$, $\gamma \subset D$ courbe fermée régulière orientée positivement), on a:
 
 \begin{enumerate}[label=\arabic{enumi})]
     \item 
@@ -481,7 +481,7 @@ Commentaires
     Calculer:
     
     \[
-    \int_\gamma \frac{z e^{3z + 5}}{(z + 1)^3}\dz \ \textrm{ où }\ \gamma = \big\{z \in \C : \module{z - i} = 2\big\}
+    \int_\gamma \frac{z e^{3z + 5}}{(z + 1)^3}\dz \ \textrm{ où }\ \gamma = \big\{z \in \Cx : \module{z - i} = 2\big\}
     \]
     
     Constatations:
@@ -493,10 +493,10 @@ Commentaires
     \item 
     $\gamma$ est le cercle de rayon $2$ centré en $z_0 = i$ et $-1 \in \inte \gamma$.
     
-    On considère $\gamma$ orientée positivement et la fonction $f(\xi) = \xi e^{3\xi + 5}$ qui est holomorphe dans $\C$.
+    On considère $\gamma$ orientée positivement et la fonction $f(\xi) = \xi e^{3\xi + 5}$ qui est holomorphe dans $\Cx$.
     \end{enumerate}
 
-    En appliquant à $f$ le corollaire de la formule de Cauchy pour $z = -1$ et $n = 2$ (avec $D = \C$), on obtient:
+    En appliquant à $f$ le corollaire de la formule de Cauchy pour $z = -1$ et $n = 2$ (avec $D = \Cx$), on obtient:
     
     \[f''(-1) = \frac{2!}{2\pi i} \int_\gamma \frac{\xi e^{3\xi + 5}}{(\xi + 1)^3} \dxi\]
     
@@ -533,7 +533,7 @@ Commentaires
         
         \item \textbf{3\ieme{} cas} $\frac{\pi}{2} \in \inte\gamma$
         
-        La fonction $f(\xi) = \frac{\xi^2}{2} \sin \xi$ est holomorphe dans $\C$. Comme $\gamma \subset \C$, en lui appliquant le corollaire de la formule de Cauchy pour $z = \frac{\pi}{2}$ et $n = 1$ (avec $D = \C$), on obtient:
+        La fonction $f(\xi) = \frac{\xi^2}{2} \sin \xi$ est holomorphe dans $\Cx$. Comme $\gamma \subset \Cx$, en lui appliquant le corollaire de la formule de Cauchy pour $z = \frac{\pi}{2}$ et $n = 1$ (avec $D = \Cx$), on obtient:
         
         \[
         f'\left(\frac{\pi}{2}\right) = \frac{1!}{2\pi i} \int_\gamma \frac{\frac{\xi^2}{2} \sin \xi}{(\xi - \frac{\pi}{2})^2} \dxi
