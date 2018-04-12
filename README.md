@@ -3,6 +3,7 @@
 ## Utilisation
 
 Le document est compilé avec **XeTeX**.
+Il suffit de lancer la commande `make` dans le terminal afin de compiler le document si besoin est.
 
 ## Registre des grosses modifications :
 
