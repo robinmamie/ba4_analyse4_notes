@@ -1,0 +1,127 @@
+% !TeX spellcheck = fr_FR
+\chapter{Séries de Laurent, pôles et résidus}
+
+
+\section{Polynôme et série de Taylor d'une fonction holomorphe}
+
+\subsection{Définitions et résultats}
+
+\begin{hypothesis}
+    Soit un ouvert $D \subset \C$ et $f: \begin{array}{ccc}
+    D & \longrightarrow & \C\\
+    z & \longmapsto & f(z)
+    \end{array}$ une fonction holomorphe dans $D$ et $z_0 \in D$.
+\end{hypothesis}
+
+\begin{definition}
+    Pour $N \in \N$, le \textbf{polynôme de Taylor} de $f$ de degré $N$ en $z_0$ est:
+    
+    \[
+    T_N f(z) = \sum_{n = 0}^N \frac{f^{(n)}(z_0)}{n!}(z - z_0)^n
+    \]
+\end{definition}
+
+\begin{result}[séries de Taylor]
+    Soit $R > 0$ et $D_R(z_0) = \{z \in \C : \module{z - z_0} < R \}$ le plus grand disque de rayon $R$ centré en $z_0$ contenu dans $D$.
+    
+    Convention: si $D = \C \implies R = +\infty$ et $D_R(z_0) = \C$
+    
+    Alors:
+    
+    \begin{enumerate}[label=\arabic{enumi})]
+        \item 
+        \[
+        T f(z) = \lim_{N \rightarrow +\infty} T_N f(z) = \sum_{n = 0}^{+\infty} \frac{f^{(n)}(z_0)}{n!}(z - z_0)^n
+        \]
+        
+        existe et est finie $\forall z \in D_R(z_0)$. L'expression $T f(z)$ s'appelle \textbf{la série de Taylor} de $f$ en $z_0$.
+        
+        \item 
+        De plus, on a $f(z) = T f(z) \quad \forall z \in D_R(z_0)$
+        
+        $R$ est appelé \textbf{le rayon de convergence} de la série de Taylor.
+        
+        \item 
+        Les coefficients de la série de Taylor sont reliés à la formule de Cauchy par le corollaire du §3.4.
+        On a:
+        
+        \[ \frac{f^{(n)}(z_0)}{n!} = \frac{1}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^{n+1}} \dxi \]
+        
+        où $\gamma \subset D_R(z_0)$ est une courbe simple fermée régulière orientée positivement telle que $z_0 \in \inte \gamma$.
+    \end{enumerate}
+\end{result}
+
+\subsection{Exemples}
+
+\begin{example}[1]
+    \[f(z) = e^z\]
+    
+    est holomorphe dans $\C$.
+    On a $f^{(n)}(z) = e^z$ et $f^{(n)}(0) = 1 \quad \forall n \in N$.
+    
+    Donc:
+    
+    \[ e^z = \sum_{n=0}^{+\infty} \frac{z^n}{n!} \quad \forall z \in \C \]
+\end{example}
+
+\begin{example}[2]
+    \[f(z) = \frac{1}{1-z}\]
+    
+     est holomorphe dans $D = \C \setminus \{1\}$.
+    
+    Le plus grand disque centré en $z_0 = 0$ contenu dans $D$ est $D_1(0) = \{ z \in \C : \module{z} < 1 \}$.
+    
+    On a $f^{(n)}(z) = \frac{n!}{(1-z)^{n+1}}$ et $f^{(n)}(0) = n! \ \forall n \in \N$.
+    
+    Donc:
+    
+    \[
+    \frac{1}{1-z} = \sum_{n=0}^{+\infty} z^n \quad \forall z \in \C, \module{z} < 1
+    \]
+    
+    \textbf{\og Série géométrique \fg{}} avec rayon de convergence $R = 1$.
+\end{example}
+
+\begin{example}[3]
+    \[f(z) = \frac{1}{1 + z^2}\]
+    
+    est holomorphe dans $D = \C \setminus \{-i; i\}$.
+    
+    Le plus grand disque centré en $z_0 = 0$ et contenu dans $D$ est $D_1(0) = \{z \in \C : \module{z} < 1\}$.
+    
+    On a:
+    
+    \[
+    \frac{1}{1 + z^2}
+    = \frac{1}{1 - \left(-z^2\right)}
+    \overset{\textrm{Ex. 2}}{=}
+    \sum_{n=0}^{+\infty} (-z^2)^n
+    = \sum_{n=0}^{+\infty} (-1)^n z^{2n} \quad \forall z \in \C, \module{z} < 1
+    \]
+    
+    Le rayon de convergence $R = 1$
+\end{example}
+
+\textit{Autre exemple: ex. 5, série 7}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

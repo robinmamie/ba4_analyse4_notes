@@ -241,6 +241,7 @@
 
 \subsubsection*{Justification heuristique du corollaire}
 
+%!TeX IMAGE À COMMENTER
 \begin{figure}[h]
     \centering
     \includegraphics[width=.65\linewidth]{img/3_2_4-heur.png}
@@ -374,3 +375,180 @@ Donc:
     
     \textit{Autres exemples: ex. 1-4, série 6}
 \end{example}
+
+% 3.3.3
+\subsection{Démonstration de la formule intégrale de Cauchy}
+
+\begin{proof}
+Soit $f$ holomorphe dans $D$ et $\gamma$ une courbe simple fermée régulière orientée positivement et contenue dans $D$.
+Soient $z \in \inte \gamma$ et $C$ un cercle de rayon $r$ centré en $z$ orienté positivement tel que $C \subset \inte \gamma$.
+On note $V = \adh{\gamma} \setminus \inte C$.
+
+Corollaire du Thm. de Cauchy (§3.2.4) appliqué à la fonction $g(\xi) = \frac{f(\xi)}{\xi - z}$ holomorphe pour $\xi \in V$ 
+
+\begin{align*}
+\implies \int_\gamma \frac{f(\xi)}{\xi - z} \dxi
+&\overset{\textrm{Cor.}}{\underset{\textrm{Thm. Cauchy}}{=}}
+\int_C \frac{f(\xi)}{\xi - z} \dxi
+\overset{\ast}{=}
+\int_0^{2\pi} \frac{f(z + re^{i\theta})}{re^{i\theta}}ire^{i\theta} \dth
+\\&=
+i \int_0^{2\pi} f(z + re^{i\theta}) \dth
+\end{align*}
+
+\[^\ast \xi(\theta) = z + re^{i\theta},
+\quad \theta \in [0, 2\pi[,
+\quad \xi'(\theta) = ire^{i\theta}\]
+
+D'une part, on a:
+
+\[
+\lim_{r \rightarrow 0} \int_\gamma \frac{f(\xi)}{\xi - z} \dxi = \int_\gamma \frac{f(\xi)}{\xi - z} \dxi \ \textrm{(grandeur indépendante de $r$)}
+\]
+
+D'autre part, on a:
+
+\begin{align*}
+\lim_{r \rightarrow 0} \int_0^{2\pi} f(z + re^{i\theta}) \dth &=
+\int_0^{2\pi} \lim_{r \rightarrow 0} \big[f(z + re^{i\theta})\big] \dth
+\overset{f \ \textrm{continue}}{=}
+\int_0^{2\pi} f(z) \dth
+\\&=
+f(z) \int_0^{2\pi} \dth
+= 2\pi f(z)
+\end{align*}
+
+Égalité des limites:
+
+\[\implies \int_\gamma \frac{f(\xi)}{\xi - z} \dxi = 2\pi i f(z)\]
+\end{proof}
+
+% 3.4
+\section{Corollaire de la formule intégrale de Cauchy}
+
+\subsection{Énoncé}
+
+Avec les mêmes hypothèses du §3.3 ($D \subset \C$ domaine simplement connexe, $f: D \rightarrow \C$ holomorphe dans $D$, $\gamma \subset D$ courbe fermée régulière orientée positivement), on a:
+
+\begin{enumerate}[label=\arabic{enumi})]
+    \item 
+    $f$ est infiniment dérivable dans $D$
+    \item 
+    \[
+    f^{(n)}(z) = \frac{n!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^{n+1}} \dxi \quad \textrm{pour } n \in \N, \ \forall z \in \inte \gamma
+    \]
+\end{enumerate}
+
+Commentaires
+
+\begin{enumerate}[label=\arabic{enumi})]
+    \item 
+    Pour $n=0$, le corollaire redonne la formule intégrale de Cauchy:
+    
+    \[
+    f(z) = f^{(0)}(z) = \frac{0!}{2\pi i} \int_\gamma \frac{f(\xi)}{\xi - z} \dxi
+    \]
+    
+    \item 
+    Résultat remarquable: le corollaire affirme qu'une fonction holomorphe dans $D$ (i.e. dérivable $\forall z \in D$) est en fait infiniment dérivable et que sa $n$-ième dérivée se calcule en dérivant $n$ fois par rapport à $z$ sous l'intégrale de la formule de Cauchy.
+    En effet: $\quad ' = \frac{\dd}{\dz}$
+    
+    \[
+    f^{(1)}(z) = \frac{1}{2\pi i} \int_\gamma f(\xi) \left[\frac{1}{\xi - z}\right]' \dxi
+    = \frac{1}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^2} \dxi = \frac{1!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^2} \dxi
+    \]
+    
+    \[
+    f^{(2)}(z) = \frac{1}{2\pi i} \int_\gamma f(\xi) \left[\frac{1}{(\xi - z)^2}\right]' \dxi
+    = \frac{2}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^3} \dxi = \frac{2!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^3} \dxi 
+    \]
+    
+    \[
+    f^{(3)}(z) = \frac{2}{2\pi i} \int_\gamma f(\xi) \left[\frac{1}{(\xi - z)^3}\right]' \dxi
+    = \frac{2 \cd 3}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^4} \dxi = \frac{3!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^4} \dxi 
+    \]
+    
+    Récurrence sur $n$:
+    
+    \[
+    f^{(n)}(z) = \frac{n!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^{n+1}} \dxi
+    \]
+\end{enumerate}
+
+\subsection{Exemples d'utilisation}
+
+\begin{example}[1]
+    Calculer:
+    
+    \[
+    \int_\gamma \frac{z e^{3z + 5}}{(z + 1)^3}\dz \ \textrm{ où }\ \gamma = \big\{z \in \C : \module{z - i} = 2\big\}
+    \]
+    
+    Constatations:
+    
+    \begin{enumerate}[label=\arabic{enumi})]
+    \item 
+    la fonction $g(z) = \frac{z e^{3z + 5}}{(z + 1)^3}$ n'est pas définie en $z = -1$
+    
+    \item 
+    $\gamma$ est le cercle de rayon $2$ centré en $z_0 = i$ et $-1 \in \inte \gamma$.
+    
+    On considère $\gamma$ orientée positivement et la fonction $f(\xi) = \xi e^{3\xi + 5}$ qui est holomorphe dans $\C$.
+    \end{enumerate}
+
+    En appliquant à $f$ le corollaire de la formule de Cauchy pour $z = -1$ et $n = 2$ (avec $D = \C$), on obtient:
+    
+    \[f''(-1) = \frac{2!}{2\pi i} \int_\gamma \frac{\xi e^{3\xi + 5}}{(\xi + 1)^3} \dxi\]
+    
+    mais $f'(\xi) = \big(\xi e^{3\xi + 5}\big)' = e^{3\xi + 5} + 3 \xi e^{3\xi + 5}$ et $f''(\xi) = 3 e^{3\xi + 5} + 3 e^{3\xi + 5} + 9 \xi e^{3\xi + 5}$
+    
+    \[ \implies f''(-1) = -3 e^2 \]
+    
+    \textbf{Donc:}
+    
+    \[
+    \int_\gamma \frac{\xi e^{3\xi + 5}}{(\xi + 1)^3} \dxi
+    = -3\pi i e^2
+    \]
+\end{example}
+
+\begin{example}[2]
+    Soit $\gamma$ une courbe simple fermée régulière.
+    Discuter en fonction de $\gamma$ la valeur de l'intégrale:
+    
+    \[\int_\gamma \frac{z^2 \sin z}{2 (z - \frac{\pi}{2})^2} \dz\]
+    
+    La fonction $g(z) = \frac{z^2 \sin z}{2 (z - \frac{\pi}{2})^2}$ n'est pas définie pour $z = \frac{\pi}{2} \implies$ distinction de plusieurs cas.
+    
+    \begin{itemize}
+        \item \textbf{1\ier{} cas} $\frac{\pi}{2} \in \gamma$
+        
+        L'intégrale n'est pas définie puisque $g(z) = \frac{z^2 \sin z}{2 (z - \frac{\pi}{2})^2}$ n'est pas continue en $z = \frac{\pi}{2}$
+        
+        \item \textbf{2\ieme{} cas} $\frac{\pi}{2} \notin \adh{\gamma}$
+        
+        La fonction $g(z) = \frac{z^2 \sin z}{2 (z - \frac{\pi}{2})^2}$ est holomorphe dans un domaine simplement connexe $D$ tel que $\adh{\gamma} \subset D$. Comme $\gamma \subset \adh{\gamma} \subset D$, alors le Théorème de Cauchy s'applique à $g$ et on trouve:
+        
+        \[ \int_\gamma \frac{z^2 \sin z}{2 (z - \frac{\pi}{2})^2} \dz = 0 \quad \forall \gamma \textrm{ de ce type} \]
+        
+        \item \textbf{3\ieme{} cas} $\frac{\pi}{2} \in \inte\gamma$
+        
+        La fonction $f(\xi) = \frac{\xi^2}{2} \sin \xi$ est holomorphe dans $\C$. Comme $\gamma \subset \C$, en lui appliquant le corollaire de la formule de Cauchy pour $z = \frac{\pi}{2}$ et $n = 1$ (avec $D = \C$), on obtient:
+        
+        \[
+        f'\left(\frac{\pi}{2}\right) = \frac{1!}{2\pi i} \int_\gamma \frac{\frac{\xi^2}{2} \sin \xi}{(\xi - \frac{\pi}{2})^2} \dxi
+        \]
+        
+        mais $f'(\xi) = \big(\frac{\xi^2}{2} \sin \xi\big)' = \frac{2\xi}{2} \sin \xi + \frac{\xi^2}{2} \cos \xi$
+        
+        \[ \implies f'\left(\frac{\pi}{2}\right) = \frac{\pi}{2} + 0 = \frac{\pi}{2} \]
+        
+        \textbf{Conclusion:}
+        
+        \[
+        \int_\gamma \frac{z^2 \sin z}{2(z - \frac{\pi}{2})^2} \dz = 2\pi i \frac{\pi}{2} = \pi^2 i
+        \]
+    \end{itemize}
+\end{example}
+
+\textit{Autres exemples: ex. 1-4, série 7}

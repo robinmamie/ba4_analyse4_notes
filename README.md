@@ -12,6 +12,7 @@ Le document est compilé avec **XeTeX**.
 - 16.03.2018 : notes du 4e cours
 - 23.03.2018 : notes du 5e cours
 - 09.04.2018 : notes du 6e cours
+- 12.04.2018 : notes du 7e cours
 
 ## Contributions
 
@@ -29,6 +30,7 @@ En particulier, il ne s'agit ni d'un résumé, ni d'un document expliquant plus 
 
 - Robin Mamie (IN - <robin.mamie@epfl.ch>)
 - Eric Jollès (SC)
+- Yves Zumbach (IN)
 
 ## Distribution et licence
 
