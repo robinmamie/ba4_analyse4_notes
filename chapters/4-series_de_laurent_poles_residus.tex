@@ -104,6 +104,140 @@
 
 \textit{Autre exemple: ex. 5, série 7}
 
+\subsection{Applications}
+
+\begin{enumerate}[label=\arabic{enumi})]
+    \item Règle de l'Hôpital
+    
+    Soit $z_0 \in \Cx$ et $f, g$ deux fonctions holomorphes au voisinage de $z_0$ telles que $f(z_0) = 0$, $g(z_0) = 0$ et $g'(z_0) \neq 0$.
+    Alors:
+    
+    \[ \lim_{z \rightarrow z_0} \frac{f(z)}{g(z)} = \lim_{z \rightarrow z_0} \frac{f'(z)}{g'(z)} = \frac{f'(z_0)}{g'(z_0)} \]
+    
+    \textit{Preuve: ex.4, série 8}
+    
+    \item Théorème de Liouville
+    
+    Soit $f: \Cx \rightarrow \Cx$ une fonction \textit{bornée} et holomorphe \textit{dans} $\Cx$, alors $f$ est constante.
+    
+    \textit{Preuve: corrigé de l'ex. 18, p.248 (§11.3)}
+\end{enumerate}
+
+
+\section{Développement et série de Laurent d'une fonction holomorphe}
+
+\subsection{Problématique, définitions et résultats}
+
+
+\begin{motivation}\hfill
+    
+    Le développement de Taylor d'une fonction $f$ donne une série en puissances \textbf{positives} de $z - z_0$ au voisinage d'un point $z_0$ où $f$ \textbf{est} holomorphe.
+    
+    \textbf{But:} généralisation avec un développement en puissances \textbf{positives} et \textbf{négatives} de $z - z_0$ où $z_0$ peut être une \textbf{singularité} de $f$.
+\end{motivation}
+
+
+\begin{hypothesis}\hfill
+    
+    Soit $D \subset \Cx$ un domaine simplement connexe, $z_0 \in D$ et $f: D \setminus \{z_0\} \rightarrow \Cx$ une fonction holomorphe dans $D \setminus \{z_0\}$.
+\end{hypothesis}
+
+\begin{definition}
+    Pour $N \in \N$, le développement de Laurent de $f$ de degré $N$ au voisinage de $z_0$ est:
+    
+    \[ L_N f(z) = \sum_{n = -N}^{N} c_n (z - z_0)^n \]
+    
+    \[ = \frac{c_ {-N}}{(z - z_0)^N} + \ldots + \frac{c_ {-1}}{z - z_0} + c_0 + c_1 (z - z_0) + \ldots + c_n (z - z_0)^N \]
+    
+    avec
+    
+    \[ c_n = \oipi \int_\gamma \frac{f(\xi)}{(\xi - z_0)^{n + 1}} \dxi \]
+    
+    où $\gamma \subset D$ est une courbe simple fermée régulière (par morceaux) orientée positivement telle que $z_0 \in \inte \gamma$.
+\end{definition}
+
+\begin{result}
+    Soit $R > 0$ et $D_R(z_0) = \{ z \in \Cx : \module{z - z_0} < R \}$ le plus grand disque de rayon $R$ centré en $z_0$ et contenu dans $D$.
+    Alors:
+    
+    \begin{enumerate}[label=\arabic{enumi})]
+        \item 
+        \[ Lf(z) = \lim_{N \rightarrow \infty} L_N f(z) = \sum_{n = -\infty}^\infty c_n (z - z_0)^n \]
+        
+        existe et est finie pour tout $z \in D_R(z_0) \setminus \{z_0\}$.
+        L'expression $Lf(z)$ s'appelle la \textbf{série de Laurent} de $f$ au voisinage de $z_0$.
+        
+        \item 
+        De plus, on a $f(z) = Lf(z) \quad \forall z \in D_R(z_0) \setminus \{z_0\}$ et $R$ est appelé le \textbf{rayon de convergence} de la série de Laurent.
+    \end{enumerate}
+\end{result}
+
+\begin{remark}\hfill
+    
+    \begin{enumerate}[label=\alph*)]
+        \item 
+        La série de Laurent de $f$ peut s'écrire sous la forme suivante:
+        
+        \[ Lf(z) = \sum_{n = -\infty}^{-1} c_n(z - z_0)^n + \sum_{n = 0}^{\infty} c_n(z - z_0)^n \]
+        
+        \begin{itemize}
+        \item 
+        La première série
+        
+        \[
+        \sum_{n = -\infty}^{-1} c_n(z - z_0)^n =
+        \sum_{n = 1}^{\infty} c_{-n}(z - z_0)^{-n} =
+        \frac{c_{-1}}{z - z_0} + \frac{c_{-2}}{(z - z_0)^{-2}} + \ldots
+        \]
+        
+        s'appelle la \textbf{partie singulière} de la série de Laurent.
+        
+        \item 
+        La deuxième série
+        
+        \[
+        \sum_{n = 0}^{\infty} c_n(z - z_0)^n =
+        c_0 + c_1(z - z_0) + c_2(z - z_0)^2 + \ldots
+        \]
+        
+        s'appelle la \textbf{partie régulière} de la série de Laurent.
+        \end{itemize}
+
+        \item 
+        \textit{Si} $f: D \rightarrow \Cx$ est holomorphe en $z_0$, alors la série de Laurent coïncide avec la série de Taylor.
+        
+        En effet, la partie singulière de la série de Laurent est nulle puisque:
+        
+        Pour $n = 1, 2, 3, \ldots$, on a:
+        
+        \[ c_{-n} =  \oipi \int_\gamma \frac{f(\xi)}{(\xi - z_0)^{-n + 1}} \dxi
+        = \oipi \int_\gamma f(\xi)(\xi - z_0)^{n - 1} \dxi
+        = 0 \]
+        
+        par le Théorème de Cauchy (§3.2), car $f(\xi)(\xi - z_0)^{n - 1}$ est holomorphe dans $D$.
+        
+        Les coefficients de la partie régulière donnent la série de Taylor car:
+        
+        Pour $n = 1, 2, 3, \ldots$, on a:
+        
+        \[ c_{n} =  \oipi \int_\gamma \frac{f(\xi)}{(\xi - z_0)^{n + 1}} \dxi
+        = \frac{f^{(n)}(z_0)}{n!}\]
+        
+        par le corollaire de la formule intégrale de Cauchy (§3.4), car $f(\xi)$ est holomorphe dans $D$.
+    \end{enumerate}
+\end{remark}
+
+\subsection{Définitions issues de la série de Laurent}
+
+\begin{definition}[1]
+    $z_0 \in \Cx$ est un \textbf{point régulier} de $f \iff$ la partie singulière de la série de Laurent au voisinage de $z_0$ est nulle.
+    
+    C'est-à-dire:
+    
+    \[ Lf(z) = Tf(z) = \sum_{n = 0}^{\infty} \frac{f^{(n)}(z_0)}{n!} (z - z_0)^n \]
+\end{definition}
+
+
 
 
 
