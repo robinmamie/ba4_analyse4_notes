@@ -33,6 +33,8 @@ En particulier, il ne s'agit ni d'un résumé, ni d'un document expliquant plus 
 - Robin Mamie (IN - <robin.mamie@epfl.ch>)
 - Eric Jollès (SC)
 - Yves Zumbach (IN)
+- Victor Cochard (IN)
+- Ghali Chraibi (SC)
 
 ## Distribution et licence
 
