@@ -237,25 +237,124 @@
     \[ Lf(z) = Tf(z) = \sum_{n = 0}^{\infty} \frac{f^{(n)}(z_0)}{n!} (z - z_0)^n \]
 \end{definition}
 
+\begin{definition}[2]
+    Soit $m \in \N^\ast$, $z_0 \in \Cx$ est \textbf{un pôle d'ordre $m$} de $f \iff c_{-m} \neq 0$ et $c_{-k} = 0 \quad \forall k \geq m + 1$.
+    
+    C'est-à-dire:
+    
+    \[ Lf(z) = \frac{c_{-m}}{(z-z_0)^m} + \ldots + \frac{c_{-1}}{z-z_0} + \sum_{n = 0}^{\infty} c_n(z - z_0)^n \]
+\end{definition}
 
+\begin{definition}[3]
+    $z_0 \in \Cx$ est une \textbf{singularité essentielle} (isolée) de $f \iff c_{-n} \neq 0$ pour une infinité d'indices $n$.
+    
+    C'est-à-dire:
+    
+    \[ Lf(z) = \sum_{n = 1}^{\infty} \frac{c_{-n}}{(z - z_0)^{n}} + \sum_{n = 0}^{\infty} c_n(z - z_0)^n \]
+\end{definition}
 
+\begin{definition}[4]
+    Le \textbf{résidu} de $f$ en $z_0$, noté $\Res_{z_0}(f)$, est la valeur du coefficient $c_{-1}$ de la série de Laurent de $f$ au voisinage de $z_0$.
+    
+    C'est-à-dire:
+    
+    \[ \Res_{z_0}(f) := c_{-1} = \oipi \int_\gamma f(\xi) \dxi \]
+    
+    où $\gamma \subset D$ avec $Z-0 \in \inte \gamma$
+\end{definition}
 
+\subsection{Exemples}
 
+\begin{example}[1]
+    Soit
+    
+    \[f(z) = \frac{1}{z}\]
+    
+    (holomorphe dans $\Cx \setminus \{0\}$)
+    
+    \begin{enumerate}[label=\alph*)]
+        \item 
+        Au voisinage de $z_0 = 0$, on a $Lf(z) = \frac{1}{z} + 0$
+        
+        $c_{-1} = 1$ et $c_{-n} = 0$ pour $n \geq 2 \implies z_0$ est un pôle d'ordre 1 de $f$ et $\Res_0(f) := c_{-1} = 1$
+        
+        \item 
+        Au voisinage de $z_0 = 1$, on a:
+        
+        \[ \frac{1}{z} = \frac{1}{1 - (1 - z)} = \sum_{n=0}^\infty (1-z)^n = \sum_{n=0}^\infty (-1)^n (z-1)^n = Tf(z) = Lf(z) \]
+        
+        \textit{(cf. série géométrique, donc le rayon de convergence est de 1)}
+        
+        Partie singulière nulle $\implies z_0 = 1$ est un point régulier de $f$ et $\Res_1(f) = 0$
+    \end{enumerate}
+\end{example}
 
+\begin{example}[2]
+    \[ f(z) = \frac{1}{z^3} + \frac{2}{z}\]
+    
+    ($f$ holomorphe dans $\Cx \setminus \{0\}$).
+    Au voisinage de $z_0 = 0$, on a:
+    
+    \[ Lf(z) = \frac{1}{z^3} + \frac{2}{z} + 0 \]
+    
+    On a $c_{-1} = 2$, $c_{-2} = 0$, $c_{-3} = 1$ et $c_{-n} = 0$ pour $n \geq 4$.
+    
+    $\implies z_0 = 0$ est un pôle d'ordre 3 de $f$ et $\Res_0(f) := c_{-1} = 2$
+\end{example}
 
+\begin{example}[3]
+    Soit
+    
+    \[ f(z) = \frac{1}{z^2 + z} \]
+    
+    ($f$ holomorphe dans $\Cx \setminus \{-1,0\}$).
+    Au voisinage de $z_0 = 0$, on a:
+    
+    \begin{align*}
+        \frac{1}{z^2 + z} &= \frac{1}{z(z+1)} = \frac{1}{z} - \frac{1}{z + 1} = \frac{1}{z} - \frac{1}{1 - (-z)}
+        \\&= \frac{1}{z} - \sum_{n = 0}^\infty (-z)^n
+        = \frac{1}{z} - \sum_{n = 0}^\infty (-1)^n z^n
+        = \frac{1}{z} + \sum_{n = 0}^\infty (-1)^{n+1} z^n
+    \end{align*}
+    
+    $\implies c_{-1} = 1$ et $c_{-n} = 0$ pour $n \geq 2 \implies z_0 = 0$ est un pôle d'ordre 1 de $f$ et $\Res_0(f) = 1$
+\end{example}
 
+\begin{example}[4]
+    \[ f(z) = \frac{\sin z}{z},\ g(z) = \frac{\cos z}{z} \]
+    
+    ($f$ et $g$ holomorphes dans $\Cx \setminus \{0\}$).
+    Au voisinage de $z_0 = 0$, on a:
+    
+    \begin{enumerate}[label=\alph*)]
+        \item 
+        \begin{align*}
+        \frac{\sin z}{z} &= \frac{1}{z} \sin z = \frac{1}{z} \sum_{n = 0}^\infty (-1)^n \frac{z^{2n + 1}}{(2n + 1)!} = \sum_{n = 0}^\infty (-1)^n \frac{z^{2n}}{(2n + 1)!}
+        \\&= 0 + 1 - \frac{z^2}{3!} + \frac{z^4}{5!} + \ldots = Lf(z)
+        \end{align*}
+        
+        $\implies z_0 = 0$ est un \textbf{point régulier} de $f$ et $\Res_0(f) = c_{-1} = 0$ ($z_0 = 0$ est une singularité éliminable).
+        
+        \item 
+        \begin{align*}
+        \frac{\cos z}{z} &= \frac{1}{z} \cos z = \frac{1}{z} \sum_{n = 0}^\infty (-1)^n \frac{z^{2n}}{(2n)!} = \sum_{n = 0}^\infty (-1)^n \frac{z^{2n - 1}}{(2n)!}
+        \\&= \frac{1}{z} + \sum_{n = 1}^\infty (-1)^n \frac{z^{2n - 1}}{(2n)!}
+        = \frac{1}{z} - \frac{z}{2!} + \frac{z^3}{4!} - \ldots = Lf(z)
+        \end{align*}
+        
+        $\implies z_0 = 0$ est un pôle d'ordre 1 de $g$ et $\Res_0(g) = 1$
+    \end{enumerate}
+\end{example}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{example}[5]
+    \[ f(z) = e^{\frac{1}{z}} \]
+    
+    ($f$ holomorphe dans $\Cx \setminus \{0\}$).
+    Au voisinage de $z_0 = 0$, on a:
+    
+    \[
+    e^{\frac{1}{z}} = \sum_{n_0}^\infty \frac{1}{n!} \left(\frac{1}{z}\right)^n = 1 + \sum_{n=1}^\infty \frac{1}{n!}z^{-n} = Lf(z)
+    \]
+    
+    $c_{-n} = \frac{1}{n!} \neq 0 \ \forall n \geq 1 \implies z_0$ est une singularité essentielle de $f$ et $\Res_0(f) = c_{-1} = \frac{1}{1!} = 1$.
+\end{example}
