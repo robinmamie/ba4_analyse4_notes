@@ -460,6 +460,12 @@
     Si $z_0$ est un pôle d'ordre m de $f$, alors:
     
     \[ \Res_{z_0}(f) = \frac{1}{(m - 1)!} \lim\limits_{z \rightarrow z_0} \frac{\dd^{m-1}}{\dz^{m - 1}} \left[ (z - z_0)^m f(z) \right] \]
+    
+    \item 
+    Soit $f(z) = \frac{p(z)}{q(z)}$ où $p$ et $q$ sont des fonctions holomorphes au voisinage de $z_0 \in \Cx$ telles que $z_0$ est un zéro d'ordre 1 de $q(z_0)$ et $p(z_0) \neq 0$.
+    Alors:
+    
+    \[ \Res_{z_0}(f) = \frac{p(z_0)}{q'(z_0)} \]
     \end{enumerate}
 \end{method}
 
@@ -488,6 +494,62 @@
     \[ \implies \Res_{i}(f) = \lim\limits_{z \rightarrow i} (z - i) \frac{\sin z}{(z - i)(z + i)} = \frac{\sin i}{2i} \]
     
     \[ \implies \Res_{-i}(f) = \lim\limits_{z \rightarrow -i} (z + i) \frac{\sin z}{(z - i)(z + i)} = \frac{\sin (-i)}{-2i} = \frac{\sin i}{2i} \]
+    
+    \item 
+    \[ f(z) = \frac{3z^2}{z + 2} \]
+    
+    et $z_0 = -2$.
+    Avec $p(z) = 3z^2$ et $q(z) = z + 2$, on a que $z_0 = -2$ est un zéro d'ordre 1 de $q$ avec $p(-2) = 12$ et $q'(-2) = 1$.
+    
+    \[ \implies \Res_{-2}(f) = \frac{12}{1} = 12 \]
     \end{enumerate}
     
 \end{example}
+
+\subsection{Démonstration des formules}
+
+\begin{proof}
+    
+    \begin{enumerate}[label=\alph*)]
+    \item 
+    Si $m = 1$, la série de Laurent de $f$ au voisinage de $z_0$ donne:
+    
+    \[ f(z) = \frac{c_{-1}}{z - z_0} + \sum_{n = 0}^\infty c_n (z - z_0)^n \]
+    
+    Alors $(z - z_0) f(z) = c_{-1} + F(z)$ avec $F(z) = \sum\limits_{n = 0}^\infty c_n (z - z_0)^{n + 1}$
+    
+    \[ \implies \lim_{z \rightarrow z_0} \left[ (z - z_0) f(z) \right] = c_{-1} + \lim_{z \rightarrow z_0} F(z) = c_{-1} =: \Res_{z_0}(f) \]
+    
+    Si $m = 2$, la série de Laurent de f au voisinage de $z_0$ donne:
+    
+    \[ f(z) = \frac{c_{-2}}{(z - z_0)^2} + \frac{c_{-1}}{z - z_0} + \sum_{n = 0}^\infty c_n (z - z_0)^n \]
+    
+    \[ (z - z_0)^2f(z) = c_{-2} + c_{-1}(z - z_0) + \sum_{n = 0}^\infty c_n (z - z_0)^{n + 2} \]
+    
+    et
+    
+    \begin{align*}
+    \frac{\dd}{\dz}\left[ (z - z_0)^2 f(z) \right]
+    &= \frac{\dd}{\dz}\left[ c_{-2} + c_{-1}(z - z_0) + \sum_{n = 0}^\infty c_n (z - z_0)^{n + 2} \right]
+    \\&= 0 + c_{-1} + \sum_{n = 0}^\infty c_n (n + 2) (z - z_0)^{n + 1}
+    \\&= c_{-1} + G(z)
+    \end{align*}
+    
+    où
+    
+    \[ G(z) = \sum_{n = 0}^\infty c_n (n + 2) (z - z_0)^{n + 1} \]
+    
+    Donc
+    
+    \[
+    \lim_{z \rightarrow z_0} \frac{\dd}{\dz}\left[ (z - z_0)^2 f(z) \right] = c_{-1} + \lim_{z \rightarrow z_0} G(z) = c_{-1} =: \Res_{z_0}(f)
+    \]
+    
+    Si $m \geq 3$, raisonnement analogue et preuve par récurrence qui fait apparaître le terme $\frac{1}{(m - 1)!}$ dans la formule
+    
+    \item 
+    On applique la formule a) à $f(z) = \frac{p(z)}{q(z)}$ où $z_0$ est un pôle d'ordre 1 de $f$.
+    
+    \textit{Cf. ex. 5, série 9}
+    \end{enumerate}
+\end{proof}

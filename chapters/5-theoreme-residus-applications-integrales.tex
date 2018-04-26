@@ -1,0 +1,95 @@
+% !TeX spellcheck = fr_FR
+\chapter{Théorème des résidus et applications au calul d'intégrales réelles}
+
+
+\section{Théorème des résidus}
+
+\subsection{Énoncé}
+
+\begin{theorem}
+    Soient $D \subset \Cx$ un ouvert simplement connexe, $\gamma$ une courbe simple fermée régulière (par morceaux) contenue dans $D$ orientée positivement et $z_1, z_2, \ldots, z_m \in \inte \gamma$ tels que $z_i \neq z_j$ pour $i \neq j$.
+    Si une fonction $f: D\setminus \{z_1, z_2, \ldots, z_m\} \rightarrow \Cx$ est holomorphe, alors:
+    
+    \[ \int_\gamma f(z) \dz = 2\pi i \sum_{k = 1}^m \Res_{z_k}(f) \]
+\end{theorem}
+
+\begin{note}
+    Si une fonction est holomorphe sauf peut-être en un nombre fini de points $z_1, z_2,$ $ \ldots, z_m$, alors l'intégrale de $f$ le long de n'importe quelle courbe simple fermée régulière $\gamma$ contenue dans $D$ et orientée positivement est donnée par la somme (multipliée par $2\pi i$) des résidus de la fonction aux points $z_k$ (où $f$ n'est pas holomorphe) enfermés à l'intérieur de $\gamma$.
+\end{note}
+
+% 5.2.1??
+\subsection{Exemples}
+
+\begin{example}[1]
+    Soit
+    
+    \[ f(z) = \frac{2}{z} + \frac{3}{z - 1} + \frac{1}{z^2} \]
+    
+    et $\gamma \subset \Cx$ une courbe régulière simple fermée orientée positivement.
+    
+    Discuter $\int_\gamma f(z) \dz$ en fonction de $\gamma$.
+    
+    \[ f(z) = \frac{p(z)}{q(z)} = \frac{2z(z-1) + 3z^2 + z -1 }{z^2 (z - 1)} \]
+    
+    $z_1 = 0$ est un pôle d'ordre 2 de $f$ ($p(0) \neq 0$, $q(0) = 0$, $q'(0) = 0$ et $q''(0) \neq 0$).
+    
+    $z_2 = 1$ est un pôle d'ordre 1 de $f$ ($p(1) \neq 0$, $q(1) = 0$ et $q'(1) \neq 0$).
+    
+    On a 
+    
+    \begin{align*}
+    \Res_{z_1}(f) &= \Res_{0}(f) = \lim_{z \rightarrow 0} \frac{\dd}{\dz} \left[ z^2 f(z) \right] = \lim_{z \rightarrow 0} \frac{\dd}{\dz} \left[ 2z + \frac{3z^2}{z - 1} + 1 \right] \\&= \lim_{z \rightarrow 0} \left[ 2 + \frac{6z(z-1) - 3z^2}{(z - 1)^2} \right] = 2 + 0 = 2
+    \end{align*}
+    
+    \begin{align*}
+    \Res_{z_2}(f) &= \Res_{1}(f) = \lim_{z \rightarrow 1} \left[ (z - 1) f(z) \right] = \lim_{z \rightarrow 1} \left[ \frac{2(z-1)}{z} + \frac{3(z-1)}{z - 1} + \frac{z -1}{z^2} \right] \\&= 0 + 3 + 0 = 3
+    \end{align*}
+    
+    \textbf{Distinction de cinq cas}
+    
+    \begin{description}
+    \item[1\ier{} cas:] 0 et $1 \in \inte \gamma$
+    
+    \[ \int_\gamma f(z) \dz = 2\pi i \left[ \Res_{0}(f) + \Res_{1}(f) \right] = 2\pi i \left[ 2 + 3 \right] = 10 \pi i \]
+    
+    \item[2\ieme{} cas:] $0 \in \inte \gamma$ mais $1 \notin \adh{\gamma}$
+    
+    \[ \int_\gamma f(z) \dz = 2\pi i \ \Res_{0}(f) = 2\pi i \cdot 2 = 4 \pi i \]
+    
+    \item[3\ieme{} cas:] $0 \notin \adh{\gamma}$ mais $1 \in \inte \gamma$
+    
+    \[ \int_\gamma f(z) \dz = 2\pi i \ \Res_{1}(f) = 2\pi i \cdot 3 = 6 \pi i \]
+    
+    \item[4\ieme{} cas:] 0 et $1 \notin \adh{\gamma}$
+    
+    \[ \int_\gamma f(z) \dz = 0 \quad \textrm{(Théorème de Cauchy)} \]
+    
+    \item[5\ieme{} cas:] 0 ou $1 \in \gamma$
+    
+    Intégrale n'est pas définie.
+    \end{description}
+
+    \textit{Exemples: ex 2 et 3, série 9}
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
