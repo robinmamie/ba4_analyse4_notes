@@ -358,3 +358,136 @@
     
     $c_{-n} = \frac{1}{n!} \neq 0 \ \forall n \geq 1 \implies z_0$ est une singularité essentielle de $f$ et $\Res_0(f) = c_{-1} = \frac{1}{1!} = 1$.
 \end{example}
+
+
+\section{Étude des pôles d'une fonction et calcul des résidus}
+
+\subsection{Méthodes de détection des pôles}
+
+\begin{definition}
+    Soient $n \in N^\ast$ et $z_0 \in \Cx$. $z_0$ est un \textbf{zéro d'ordre} $n$ de $f$ lorsque:
+    
+    \[ f(z_0) = f^{(1)}(z_0) = f^{(2)}(z_0) = \ldots = f^{(n-1)}(z_0) = 0 , \quad \textrm{mais } f^{(n)}(z_0) \neq 0 \]
+\end{definition}
+
+\begin{convention}
+    Si $z_0$ n'est pas un zéro de $f$, alors $f(z_0) \neq 0$ et puisque $f^{(0)}(z_0) = f(z_0) \neq 0$, en posant $n=0$, on dit que \og $z_0$ est un zéro d'ordre 0 \fg{}.
+\end{convention}
+
+\begin{method}\hfill
+    
+    \begin{enumerate}[label=\alph*)]
+    \item 
+    Soit $f(z) = \frac{p(z)}{q(z)}$ où $p$ et $q$ sont des fonctions holomorphes au voisinage de $z_0 \in \Cx$ qui est un zéro d'ordre $k$ de $p$ et un zéro d'ordre $\ell$ de $q$.
+    Deux cas sont possibles:
+    \begin{definition}
+        \item[Cas 1:]
+        si $\ell > k$, alors $z_0$ est un pôle d'ordre $\ell - k$ de $f$.
+        \item[Cas 2:]
+        si $\ell \leq k$, alors $z_0$ est un point régulier de $f$.
+        On dit que $z_0$ est une \textbf{singularité éliminable} en posant $f(z_0) = \lim\limits_{z \rightarrow z_0} \frac{p(z)}{q(z)}$.
+    \end{definition}
+
+    \item 
+    Soit $f$ une fonction holomorphe dans $D \setminus \{z_0\}$, soit $m \in \N^\ast$ et
+    
+    \[ L = \lim\limits_{z \rightarrow z_0} \left[ (z - z_0)^m f(z) \right] \]
+    
+    Si $L$ est finie et $L \neq 0$, alors $z_0$ est un pôle d'ordre $m$ de $f$.
+    \end{enumerate}
+\end{method}
+
+\begin{example}\hfill
+
+    \begin{enumerate}[label=\arabic{enumi})]
+        \item 
+        \[ f(z) =  \frac{\sin z}{z}, \quad z_0 = 0 \]
+        
+        Avec $p(z) = \sin z$ et $q(z) = z$, on a $p(0) = \sin(0) = 0$, $p'(0) = \cos(0) = 1$, $q(0) = 0$, $q'(0) = 1$.
+        Alors $k = \ell = 1$.
+        Donc $z_0$ est un point régulier.
+        C'est une singularité éliminable en posant:
+        
+        \[
+        f(z) =
+        \left\{
+        \begin{array}{cc}
+        \frac{\sin z}{z} & \textrm{pour } z \neq 0\\
+        \lim\limits_{z \rightarrow 0} \frac{\sin z}{z} = 1 & \textrm{pour } z = 0\\
+        \end{array}
+        \right.
+        \]
+        
+        \item 
+        \[ f(z) =  \frac{z}{\sin^2 z}, \quad z_0 = 0 \]
+        
+        Avec $p(z) = z$ et $q(z) = \sin^2 z$, on a $p(0) = 0$, $p'(0) = 1 \neq 0$, $q(0) = 0$, $q'(z) \Big|_{z=0} = 2 \sin z \cos z \Big|_{z=0} = 0$, $q''(z) \Big|_{z=0} = 2\cos^2 z - 2\sin^2 z \Big|_{z=0} = 2 \neq 0$.
+        Alors $k = 1$ et $l = 2$.
+        Donc $z_0 = 0$ est un pôle d'ordre $\ell - k = 1$ de $f$.
+        
+        \item 
+        \[ f(z) = \frac{\sin (z - \pi)}{(z - \pi)^3} \]
+        
+        $z_0 = \pi$ est un pôle d'ordre 2 de $f$ car
+        
+        \[ \lim\limits_{z \rightarrow z_0} \left[ (z - \pi)^2 f(z) \right]
+        = \lim\limits_{z \rightarrow z_0} \left[ (z - \pi)^2 \frac{\sin (z - \pi)}{(z - \pi)^3} \right]
+        = \lim\limits_{z \rightarrow z_0} \frac{\sin (z - \pi)}{z - \pi} = 1\]
+        
+        Par ailleurs, on constate
+        
+        \[ \lim\limits_{z \rightarrow z_0} \left[ (z - \pi)^3 f(z) \right]
+        = \lim\limits_{z \rightarrow z_0} \left[ (z - \pi)^3 \frac{\sin (z - \pi)}{(z - \pi)^3} \right]
+        = \lim\limits_{z \rightarrow z_0} \sin (z - \pi) = 0 \]
+        
+        \[ \lim\limits_{z \rightarrow z_0} \left[ (z - \pi) f(z) \right]
+        = \lim\limits_{z \rightarrow z_0} \left[ (z - \pi) \frac{\sin (z - \pi)}{(z - \pi)^3} \right]
+        = \lim\limits_{z \rightarrow z_0} \frac{1}{z - \pi} \lim\limits_{z \rightarrow z_0} \frac{\sin (z - \pi)}{z - \pi} = \infty \]
+    \end{enumerate}
+\end{example}
+
+\begin{remark}
+    Les preuves des critères a) et b) découlent du développement en série de Laurent et de la définition de pôle (§4.2.1 et §4.2.2).
+\end{remark}
+
+\subsection{Formules de calcul du résidu d'une fonction}
+
+\begin{method}\hfill
+    
+    \begin{enumerate}[label=\alph*)]
+    \item 
+    Soit $f$ une fonction holomorphe dans $D\setminus \{ z_0 \}$, soit $m \in \N^\ast$.
+    Si $z_0$ est un pôle d'ordre m de $f$, alors:
+    
+    \[ \Res_{z_0}(f) = \frac{1}{(m - 1)!} \lim\limits_{z \rightarrow z_0} \frac{\dd^{m-1}}{\dz^{m - 1}} \left[ (z - z_0)^m f(z) \right] \]
+    \end{enumerate}
+\end{method}
+
+\begin{example}\hfill
+    
+    \begin{enumerate}[label=\arabic{enumi})]
+    \item 
+    \[ f(z) = \frac{3z^2}{z + 2} \]
+    
+    alors $z_0 = -2$ est un pôle d'ordre 1 de $f$.
+    
+    \[ \implies \Res_{-2}(f) = \lim\limits_{z \rightarrow -2} (z + 2) \frac{3z^2}{z + 2} = 12 \]
+    
+    \item 
+    \[ f(z) = \frac{e^z}{(z - 5)^3} \]
+    
+    alors $z_0 = 5$ est un pôle d'ordre 3 de $f$.
+    
+    \[ \implies \Res_{5}(f) = \frac{1}{2!} \lim\limits_{z \rightarrow 5} \frac{\dd^2}{\dz^2} \left[ (z - 5)^3 \frac{e^z}{(z - 5)^3}  \right] = \frac{1}{2} \lim\limits_{z \rightarrow 5} e^z = \frac{e^5}{2} \]
+    
+    \item 
+    \[ f(z) = \frac{\sin z}{z^2 + 1} \]
+    
+    comme $z^2 + 1 = (z - i)(z + i)$, alors $z_0 = i$ et $z_0 = -i$ sont deux pôles d'ordre 1 de $f$.
+    
+    \[ \implies \Res_{i}(f) = \lim\limits_{z \rightarrow i} (z - i) \frac{\sin z}{(z - i)(z + i)} = \frac{\sin i}{2i} \]
+    
+    \[ \implies \Res_{-i}(f) = \lim\limits_{z \rightarrow -i} (z + i) \frac{\sin z}{(z - i)(z + i)} = \frac{\sin (-i)}{-2i} = \frac{\sin i}{2i} \]
+    \end{enumerate}
+    
+\end{example}
