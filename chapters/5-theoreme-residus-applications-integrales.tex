@@ -66,11 +66,131 @@
     
     \item[5\ieme{} cas:] 0 ou $1 \in \gamma$
     
-    Intégrale n'est pas définie.
+    L'intégrale $\int_\gamma f(z) \dz$ n'est pas définie.
     \end{description}
 
     \textit{Exemples: ex 2 et 3, série 9}
 \end{example}
+
+\begin{example}[2]
+    Soit
+    
+    \[ f(z) = e^{\frac{1}{z^2}} \]
+    
+    et $\gamma$ une courbe simple fermée régulière orientée positivement.
+    
+    Discuter la valeur de $\int_\gamma f(z) \dz$ en fonction de $\gamma$.
+    
+    $f$ n'est pas holomorphe en $z_1 = 0$.
+    Au voisinage de $z_1 = 0$, on a:
+    
+    \[ Lf(z) = \sum_{n = 0}^\infty \frac{1}{n!} \left(\frac{1}{z^2}\right)^n =
+    1 + \sum_{n = 1}^\infty \frac{1}{n!z^{2n}} \]
+    
+    $\implies z_1 = 0$ est une singularité essentielle \textit{(cf. §4.2.2)}.
+    
+    On a que $\Res_{0}(f) := c_{-1} = 0$ (pas de terme $z^{-1}$ dans $Lf(z)$).
+    
+    \textbf{Distinction de trois cas}
+    
+    \begin{description}
+        \item[1\ier{} cas:] $0 \in \inte \gamma$
+        
+        \[ \int_\gamma f(z) \dz = 2\pi i \ \Res_{0}(f) = 2\pi i \ 0 = 0 \]
+        
+        (mais $f$ n'est pas holomorphe en $z = 0$)
+        
+        \item[2\ieme{} cas:] $0 \notin \adh{\gamma}$
+        
+        \[ \int_\gamma f(z) \dz = 0  \quad \textrm{(Théorème de Cauchy)} \]
+        
+        $f$ holomorphe dans un domaine $D$ simplement connexe tel que $\adh{\gamma} \subset D \implies \gamma \subset \adh{\gamma} \subset D$
+        
+        \item[3\ieme{} cas:] $0 \in \gamma$
+        
+        L'intégrale $\int_\gamma f(z) \dz$ n'est pas définie.
+    \end{description}
+\end{example}
+
+\subsection{Démonstration du Théorème des résidus}
+
+\begin{proof}
+    Soient $\gamma_k$ avec $k = 1, 2, \ldots, m$ $m$ courbes simples fermées régulières orientées positivement contenues dans $\inte \gamma$ et contenant $z_k$ dans leur intérieur.
+    
+    Comme $f: \adh{\gamma} \setminus \bigcup\limits_{k = 1}^m \inte \gamma_k \rightarrow \Cx$ est holomorphe, en appliquant le corollaire du Théorème de Cauchy \textit{(cf. §3.2.4)}, on a:
+    
+    \[ \int_\gamma f(z) \dz = \sum_{k = 1}^m \int_{\gamma_k} f(z) \dz := 2\pi i \sum_{k = 1}^m \Res_{z_k}(f) \]
+    
+    L'intégrale dans la somme est le coefficient $c_{-1}$ de la série de Laurent de $f$ au voisinage de $z_k$ multipliée par $2\pi i$.
+    La deuxième égalité est donnée par la définition du résidu de $f$ en $z_k$ \textit{(§4.2.2)}.
+\end{proof}
+
+\begin{remark}
+    Si $f$ est holomorphe dans $D$, alors pour toute courbe simple $\gamma$ fermée régulière dans $D$, il n'y a aucune singularité $z_k \in \inte \gamma$.
+    Dans ce cas, $\sum\limits_{k = 1}^m \Res_{z_k}(f) = 0$ et le Théorème des résidus donne le résultat $\int_\gamma f(z) \dz = 0$ du Théorème de Cauchy \textit{(§3.2.1)}.
+\end{remark}
+
+
+\section{Application du Théorème des résidus au calcul d'intégrales réelles}
+
+\subsection{Calcul d'intégrale de fonctions périodiques}
+
+\begin{enumerate}[label=\alph*)]
+    \item But: calculer des intégrales de la forme
+    
+    \[ \int_0^{2\Pi} f(\cos \theta, \sin \theta) \dth \]
+    
+    avec $f: \R^2 \rightarrow \R$ définie par
+    
+    \[ (x,y) \longmapsto f(x,y) = \frac{p(x,y)}{q(x,y)} \]
+    
+    où $p$ et $q$ sont des fonctions polynômiales avec $q(\cos \theta, \sin \theta) \neq 0 \ \forall \theta \in [0, 2\pi]$
+    
+    \item Méthode:
+    
+    \begin{itemize}
+    \item 
+    On pose $z = e^{i\theta}$ et on a donc
+    
+    \[ \cos \theta = \frac{e^{i\theta} + e^{-i\theta}}{2}
+    = \frac{1}{2} \left(z + \frac{1}{z}\right) \]
+    
+    \[ \sin \theta = \frac{e^{i\theta} - e^{-i\theta}}{2i}
+    = \frac{1}{2i} \left(z - \frac{1}{z}\right) \]
+    
+    \item 
+    On définit:
+    
+    \[ \tilde{f}: \Cx \longrightarrow \Cx \ ; \ z \longmapsto \tilde{f}(z) = \frac{1}{iz} f\left(\frac{1}{2} \left(z + \frac{1}{z}\right), \frac{1}{2i} \left(z - \frac{1}{z}\right)\right) \]
+    
+    On considère $\gamma$ le cercle \textit{unité} centré en $z = 0$ orienté positivement et $z_k$ pour $k = 1, 2, \ldots, m$ les singularités de $\tilde{f}$ à \textit{l'intérieur} de $\gamma$.
+    
+    $z_k \notin \gamma$ car $q(\cos \theta, \sin \theta) \neq 0$ pour $\theta \in [0, 2\pi] \implies$ pas de singularité de $\tilde{f}$ \textit{sur} $\gamma$
+    
+    \item 
+    On applique le Théorème des résidus à la fonction $ \tilde{f}$ intégrée le long de $\gamma$:
+    
+    \[ \int_\gamma \tilde{f}(z) \dz = 2\pi i \sum_{k = 1}^m \Res_{z_k} (\tilde{f}) \]
+    
+    Mais on remarque que:
+    
+    \begin{align*}
+    \int_\gamma \tilde{f}(z) \dz &= \int_\gamma \frac{1}{iz} f\left(\frac{1}{2} \left(z + \frac{1}{z}\right), \frac{1}{2i} \left(z - \frac{1}{z}\right)\right) \dz
+    \\&= \int_0^{2\pi} \frac{1}{ie^{i\theta}} f(\cos \theta, \sin \theta) i e^{i\theta} \dth
+    \\&= \int_0^{2\pi} f(\cos \theta, \sin \theta) \dth
+    \end{align*}
+    
+    est exactement l'intégrale \textit{réelle} que l'on veut calculer.
+    \end{itemize}
+
+    Le résultat est:
+    
+    \[ \int_0^{2\pi} f(\cos \theta, \sin \theta) \dth = 2\pi i \sum_{k = 1}^m \Res_{z_k}(\tilde{f}) \]
+    
+    où $z_k$ pour $k = 1, 2, \ldots, m$ sont les singularités de $\tilde{f}$ à l'intérieur du cercle unité $\gamma$ centré en $z = 0$
+    
+\end{enumerate}
+
 
 
 
