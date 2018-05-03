@@ -187,29 +187,99 @@
     
     \[ \int_0^{2\pi} f(\cos \theta, \sin \theta) \dth = 2\pi i \sum_{k = 1}^m \Res_{z_k}(\tilde{f}) \]
     
-    où $z_k$ pour $k = 1, 2, \ldots, m$ sont les singularités de $\tilde{f}$ à l'intérieur du cercle unité $\gamma$ centré en $z = 0$
+    où $z_k$ pour $k = 1, 2, \ldots, m$ sont les singularités de $\tilde{f}$ à l'intérieur du cercle unité $\gamma$ centré en $z = 0$.
     
+    \item Exemples
+    
+    \begin{example}[1]
+        Calculer
+        
+        \[ \int_0^{2\Pi} \frac{\dth}{\sqrt{5} - \sin \theta} \]
+        
+        On a $f(\cos \theta, \sin \theta) = \frac{1}{\sqrt{5} - \sin \theta}$, et $\sqrt{5} - \sin \theta \neq 0$ pour $\theta \in [0, 2\pi]$ et
+        
+        \[ \tilde{f} := \frac{1}{iz} f\left(\frac{1}{2} \left(z + \frac{1}{z}\right), \frac{1}{2i} \left(z - \frac{1}{z}\right)\right) = \frac{1}{iz} \frac{1}{\sqrt{5} - \frac{1}{2i} \left(z - \frac{1}{z}\right)} = \frac{2}{-z^2 + 2i\sqrt{5}z + 1} \]
+        
+        Les singularités de $\tilde{f}$ sont les zéros de $-z^2 + 2i\sqrt{5}z + 1$. $\Delta = (2i\sqrt{5})^2 + 4 = -16$
+        
+        \[ z_1 = \frac{-2i\sqrt{5} + 4i}{-2} = i(\sqrt{5} - 2) \]
+        
+        \[ z_2 = \frac{-2i\sqrt{5} - 4i}{-2} = i(\sqrt{5} + 2) \]
+        
+        On a que $-z^2 + 2i\sqrt{5}z + 1 = -(z - z_1)(z - z_2) = - \left[ z - i(\sqrt{5} - 2) \right] \left[ z - i(\sqrt{5} + 2) \right]$ et
+        
+        \[ \tilde{f}(z) = \frac{-2}{\left[ z - i(\sqrt{5} - 2) \right] \left[ z - i(\sqrt{5} + 2) \right]} \]
+        
+        Soit $\gamma$ le cercle unité centré en $z = 0$ et orienté positivement.
+        
+        \[ 0 < \Imp z_1 = \sqrt{5} - 2 < 1 \implies z_1 \in \inte \gamma  \]
+        
+        \[ \Imp z_2 = \sqrt{5} + 2 > 1 \implies z_2 \notin \inte \gamma \]
+        
+        On a:
+        
+        \[ \int_0^{2\pi} \frac{\dth}{\sqrt{5} - \sin \theta} = 2\pi i \ \Res_{z_1} (\tilde{f}) \]
+        
+        $z_1 = i(\sqrt{5} - 2)$ est un pôle d'ordre 1 de $\tilde{f}$
+        
+        \begin{align*}
+        \Res_{z_1} (\tilde{f})& = \lim_{z \rightarrow z_1} (z - z_1) \tilde{f}(z) \\&= \lim_{z \rightarrow i(\sqrt{5} - 2)} (z - i(\sqrt{5} - 2)) \frac{-2}{\left[ z - i(\sqrt{5} - 2) \right] \left[ z - i(\sqrt{5} + 2) \right]}
+        \\&= \frac{-2}{-4i} = \frac{1}{2i}
+        \end{align*}
+        
+        Le résultat est
+        
+        \[ \int_0^{2\pi} \frac{\dth}{\sqrt{5} - \sin \theta} = 2 \pi i \frac{1}{2i} = \pi \]
+    \end{example}
+
+    \begin{example}[2]
+        Calculer:
+        
+        \[ \int_0^{2\pi} \frac{\dth}{2 + \cos \theta} \]
+        
+        On a $f(\sin \theta, \cos \theta) = \frac{1}{2 + \cos \theta} \quad 2 + \cos \theta \neq 0 \ \forall \theta \in [0, 2\pi]$
+        
+        \[ \tilde{f} = := \frac{1}{iz} f\left(\frac{1}{2} \left(z + \frac{1}{z}\right), \frac{1}{2i} \left(z - \frac{1}{z}\right)\right) = \frac{1}{iz} \frac{1}{2 + \frac{1}{2} \left(z + \frac{1}{z}\right)} = \frac{2}{i \left(z^2 + 4z + 1\right)} \]
+        
+        Les singularités de $\tilde{f}$ sont les zéros de $z^2 + 4z + 1$. $\Delta = 12$
+        
+        \[ z_1 = \frac{-4 + 2\sqrt{3}}{2} = \sqrt{3} - 2 \]
+        \[ z_1 = \frac{-4 - 2\sqrt{3}}{2} = -(\sqrt{3} + 2) \]
+        
+        On a $z^2 +  4z + 1 = (z - z_1)(z - z_2) = (z + 2 - \sqrt{3})(z + 2 + \sqrt{3})$ et
+        
+        \[ \tilde{f} = \frac{2}{i(z + 2 - \sqrt{3})(z + 2 + \sqrt{3})} \]
+        
+        Soit $\gamma$ le cercle unité centré en $z = 0$ orienté positivement.
+        
+        \[ -1 < z_1 = \sqrt{3} - 2 < 0 \implies  z_1 \in \inte \gamma \]
+        
+        \[ z_2 = -(\sqrt{3} + 2) < -1 \implies  z_2 \notin \inte \gamma \]
+        
+        Donc
+        
+        \[ \int_0^{2\pi} \frac{\dth}{2 + \cos \theta} = 2\pi i \Res_{z_1} (\tilde{f}) \]
+        
+        $z_1 = \sqrt{3} - 2$ est un pôle d'ordre 1 de $\tilde{f}$, donc:
+        
+        \begin{align*}
+        \Res_{z_1} (\tilde{f}) &= \lim_{z \rightarrow z_1} (z - z_1) \tilde{f}(z)
+        \\&= \lim_{z \rightarrow \sqrt{3} - 2} (z + 2 - \sqrt{3}) \frac{2}{i(z + 2 - \sqrt{3})(z + 2 + \sqrt{3})}
+        \\&= \frac{1}{i\sqrt{3}}
+        \end{align*}
+        
+        Le résultat est:
+        
+        \[ \int_0^{2\pi} \frac{\dth}{2 + \cos \theta} = 2\pi i \frac{1}{i\sqrt{3}} = \frac{2\pi}{\sqrt{3}} \]
+        
+        \textit{Autres exemples: ex 1 à 4, série 10 et ex 1, série 11}
+    \end{example}
 \end{enumerate}
 
+\subsection{Calcul d'intégrales généralisées}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{enumerate}[label=\alph*)]
+    \item But: calculer des intégrales de la forme
+    
+    \[ \int_{-\infty}^\infty f(x) e^{i\alpha x} \dx \quad \alpha \in \R_+,\ f: \R \rightarrow \R \]
+\end{enumerate}
