@@ -278,8 +278,251 @@
 
 \subsection{Calcul d'intégrales généralisées}
 
-\begin{enumerate}[label=\alph*)]
-    \item But: calculer des intégrales de la forme
+\begin{enumerate}
+\item But: calculer des intégrales de la forme
+
+\[ \int_{-\infty}^\infty f(x) e^{i\alpha x} \dx \quad \alpha \in \R_+ \ (\alpha \geq 0),\ f: \R \rightarrow \R \]
+
+Où $f(x) = \frac{p(x)}{q(x)}$, et $p, q$ sont des fonctions polynômiales telles que $q(x) \neq 0 \ \forall x \in \R$ et degré$(q) - $ degré$(p) \geq 2$.
+
+\begin{remark}
+    Les conditions sur $p$ et $q$ impliquent que l'intégrale généralisée $\int_{-\infty}^\infty |f(x)| \dx$ existe.
+\end{remark}
+
+\item Méthode: on choisit un nombre réel $r > 0$ et on considère la courbe $\gamma_r := L_r \cup C_r$ orientée positivement, où:
+
+\begin{itemize}
+    \item $L_r$ est le segment de droite $[-r,r]$ situé sur \textit{l'axe réel},
+    \item $C_r$ est le demi-cercle de rayon $r$ centré en $z = 0$ et situé dans le \textit{demi-plan supérieur}.
+\end{itemize}
+
+$\gamma_r = L_r \cup C_r$ est une courbe simple fermée par morceaux.
+
+On définit la fonction $g: \Cx \rightarrow \Cx$ par $z \mapsto g(z) = f(z) e^{i\alpha z} = \frac{p(z)}{q(z)} e^{i\alpha z}$.
+
+\begin{constatation}
+    Les seules singularités de $g$ sont les zéros de $q$.
+    Par hypothèse, $q$ est une fonction polynômiale et $q(x) \neq 0 \ \forall x \in R$, alors $q$ possède un nombre \textit{fini} de zéros et aucun ne se trouve situé sur l'axe réel.
+\end{constatation}
+
+\begin{idea}
+    On choisit $r > 0$ suffisamment grand pour que \textbf{tous} les zéros de $q$ situés dans le \textit{demi-plan supérieur} soient à l'intérieur de $\gamma_r$.
+\end{idea}
+
+En appliquant le Théorème des résidus à $g(z) = f(z) e^{i\alpha z}$ intégrée le long de $\gamma_r$, on a:
+
+\[ \int_{\gamma_r} f(z) e^{i\alpha z} \dz = 2\pi i \sum_{k = 1}^m \Res_{z_k}(g) \]
+
+où $z_k$ pour $k = 1, 2, \ldots, m$ sont les singularités de $f$ (i.e. les zéros de $q$) situées dans le demi-plan supérieur.
+
+D'autre part, puisque $\gamma_r = L_r \cup C_r$, on a:
+
+\[ \int_{\gamma_r} f(z) e^{i\alpha z} \dz = \int_{L_r} f(z) e^{i\alpha z} \dz + \int_{C_r} f(z) e^{i\alpha z} \dz \]
+
+\[ \lim_{r \rightarrow \infty} \int_{\gamma_r} f(z) e^{i\alpha z} \dz
+= \lim_{r \rightarrow \infty} \int_{L_r} f(z) e^{i\alpha z} \dz
++ \lim_{r \rightarrow \infty} \int_{C_r} f(z) e^{i\alpha z} \dz \]
+
+\textbf{Étude de chaque limite}
+
+\begin{enumerate}
+    \item
     
-    \[ \int_{-\infty}^\infty f(x) e^{i\alpha x} \dx \quad \alpha \in \R_+,\ f: \R \rightarrow \R \]
+    \[
+        \lim_{r \rightarrow \infty} \int_{\gamma_r} f(z) e^{i\alpha z} \dz
+        = \lim_{r \rightarrow \infty} \left[ 2\pi i \sum_{k = 1}^m \Res_{z_k}(g) \right]
+        = 2\pi i \sum_{k = 1}^m \Res_{z_k}(g)
+    \]
+    
+    \item 
+    
+    \[
+        \lim_{r \rightarrow \infty} \int_{L_r} f(z) e^{i\alpha z} \dz
+        = \lim_{r \rightarrow \infty} \int_{-r}^r f(x) e^{i\alpha x} \dx
+        = \int_{-\infty}^\infty f(x) e^{i\alpha x} \dx
+    \]
+    
+    où $z = x \in [-r, r] \subset \R$.
+    Ceci est l'intégrale généralisée que l'on veut calculer!
+    
+    \item On montre que si $\deg(q) - \deg(p) \geq 2$, alors:
+    
+    \[
+        \lim_{r \rightarrow \infty} \int_{C_r} f(z) e^{i\alpha z} \dz = 0
+    \]
 \end{enumerate}
+
+\begin{result}[final]
+    On obtient la formule suivante:
+    
+    \[ \int_{-\infty}^\infty f(x) e^{i\alpha x} \dx
+    = 2\pi i \sum_{k = 1}^m \Res_{z_k}(g) \]
+    
+    où $g(z) = f(z)e^{i\alpha z}$ et $z_k$ pour $k = 1, 2, \ldots, m$ sont les singularités de $f$ situées dans le demi-plan supérieur (i.e. les zéros de $q$ tels que $\Imp z_k > 0$).
+\end{result}
+
+\item
+
+\begin{example}[1]
+Calculer
+
+\[ \int_{-\infty}^\infty \frac{x^2}{x^4 + 16} \dx \]
+
+où $\alpha = 0$ et $f(x) = \frac{x^2}{x^4 + 16}$.
+On a $p(x) = x^2$ et $q(x) = x^4 + 16$.
+Conditions vérifiées: $q(x) \neq 0 \ \forall x \in \R$ et $\deg(q) - \deg(p) = 2$.
+
+Calcul avec la méthode des résidus avec $g(z) = f(z) = \frac{z^2}{z^4 + 16}$.
+
+Singularités de $f(z) \iff$ recherche des zéros de $q(z)$
+
+$q(z) = 0 \iff z^4 + 16 = 0 \iff z^4 = -16 \iff 16 e^{i\pi} \iff z = 2 e^{i\left(\frac{\pi}{4} + \frac{2n\pi}{4}\right)}$ avec $n = 0,1,2,3$.
+
+Les singularités sont:
+
+\begin{description}
+    \item[pour n = 0]
+        \[ z_1 = 2 e^{i\frac{\pi}{4}}
+        = 2 \left( \cos \frac{\pi}{4} + i \sin \frac{\pi}{4}\right)
+        = 2 \left( \frac{\sqrt{2}}{2} + i \frac{\sqrt{2}}{2} \right) = \sqrt{2} (1 + i)\]
+
+    \item[pour n = 1]
+        \[ z_2 = 2 e^{i\frac{3\pi}{4}} = \ldots = \sqrt{2} (-1 + i) \]
+
+    \item[pour n = 2]
+        \[ z_2 = 2 e^{i\frac{5\pi}{4}} = \ldots = - \sqrt{2} (1 + i) \]
+
+    \item[pour n = 3]
+        \[ z_2 = 2 e^{i\frac{7\pi}{4}} = \ldots = - \sqrt{2} (-1 + i) \]
+\end{description}
+
+Ce sont des pôles d'ordre 1, car $z^4 + 16 = (z - z_1) (z - z_2) (z - z_3) (z - z_4)$.
+
+Les seuls pôles qui contribuent sont $z_1$ et $z_2$ situés dans le demi-plan \textit{supérieur}.
+
+Calcul des résidus de $f$ en $z_1$ et $z_2$:
+
+\[
+    \Res_{z_1}(f) = \frac{p(z_1)}{q'(z_1)}
+    = \frac{z_1^2}{4 z_1^3} = \frac{1}{4 z_1} = \frac{1}{4\sqrt{2}(1+i)} = \frac{1 - i}{8\sqrt{2}}
+\]
+
+\[
+    \Res_{z_2}(f) = \frac{p(z_2)}{q'(z_2)}
+    = \frac{z_2^2}{4 z_2^3} = \frac{1}{4 z_2} = \frac{1}{4\sqrt{2}(-1+i)} = - \frac{1 + i}{8\sqrt{2}}
+\]
+
+L'intégrale vaut:
+
+\[
+    \int_{-\infty}^\infty \frac{x^2}{x^4 + 16} \dx
+    = 2 \pi i \left[ \Res_{z_1}(f) + \Res_{z_2}(f) \right]
+    = 2 \pi i \left[ \frac{1 - i}{8\sqrt{2}} - \frac{1 + i}{8\sqrt{2}} \right] = \frac{\sqrt{2}\pi}{4}
+\]
+
+\end{example}
+
+
+\begin{example}[2]
+    Calculer
+    
+    \[ \int_{-\infty}^\infty \frac{\cos 5x}{x^2 + 1} \dx \]
+    
+    On utilise la formule d'Euler
+    
+    \[ e^{i5x} = \cos 5x + i \sin 5x \]
+    
+    et on peut écrire
+    
+    \[
+        \int_{-\infty}^\infty \frac{\cos 5x}{x^2 + 1} \dx
+        = \Rep \left[ \int_{-\infty}^\infty \frac{e^{i5x}}{x^2 + 1} \dx \right]
+    \]
+    
+    On considère $\int_{-\infty}^\infty f(x) e^{i\alpha x} \dx$ où $\alpha = 5$ et $f(x) = \frac{1}{x^2 + 1}$.
+    
+    On a $p(x) = 1$ et $q(x) = x^2 + 1$.
+    Conditions vérifiées: $q(x) \neq 0 \ \forall x \in \R$ et $\deg(p) - \deg(q) = 2$.
+    
+    Méthode des résidus avec $g(z) = f(z) e^{i5x} = \frac{e^{i5x}}{x^2 + 1}$.
+    
+    Singularités de $f \implies$ zéros de $q \implies q(z) = 0 \implies z^2 + 1 = 0 \implies z^2 = -1 \implies z_1 = i$ et $z_2 = -i$.
+    Ce sont des pôles d'ordre 1 et $z^2 + 1 = (z - i)(z + i)$.
+    
+    Le seul pôle qui contribue est $z_1 = i$ situé dans le demi-plan supérieur.
+    
+    \[
+        \Res_{z_1}(g)
+        = \lim_{z \rightarrow z_1} (z - z_1) g(z)
+        = \lim_{z \rightarrow i} (z - i) \frac{e^{izx}}{(z - i)(z + i)}
+        = \frac{e^{i5z}}{2i}
+        = \frac{e^{-5}}{2i}
+    \]
+    
+    Alors:
+    
+    \[
+        \int_{-\infty}^\infty \frac{e^{i5x}}{x^2 + 1} \dx = 2\pi \Res_i (g) = 2\pi i \frac{e^{-5}}{2i} = \frac{\pi}{e^{5}}
+    \]
+    
+    et
+    
+    \[
+        \int_{-\infty}^\infty \frac{\cos 5x}{x^2 + 1} \dx
+        = \Rep \left[ \int_{-\infty}^\infty \frac{e^{i5x}}{x^2 + 1} \dx \right]
+        = \Rep \left[ \frac{\pi}{e^{5}} \right]
+        = \frac{\pi}{e^{5}}
+    \]
+    
+    \textit{Autres exemples: ex. 2 et 3, série 11}
+\end{example}
+
+\end{enumerate}
+
+\begin{proof}
+    Preuve de
+    
+    \[ \lim_{r \rightarrow \infty} \int_{C_r} f(z) e^{i\alpha z} \dz = 0 \]
+    
+    Sur $C_r$, on a $z = r e^{i\theta}$ avec $\theta \in [0,\pi]$ et $\dz = i r e^{i\theta} \dth$
+    
+    \begin{align*}
+        \implies \int_{C_r} f(z) e^{i\alpha z} \dz
+        &= \int_0^\pi f(r e^{i\theta}) e^{i\alpha r e^{i\theta}} i r e^{i\theta} \dth
+        \\&= ir \int_0^\pi f(r e^{i\theta}) e^{i\alpha r (\cos \theta + i \sin \theta)} e^{i\theta} \dth
+        \\&= ir \int_0^\pi f(r e^{i\theta}) e^{-\alpha r\sin \theta}e^{i\alpha r \cos \theta} e^{i\theta} \dth
+        \\&= ir \int_0^\pi f(r e^{i\theta}) e^{-\alpha r\sin \theta}e^{i \left(\alpha r \cos \theta + \theta\right)} \dth
+    \end{align*}
+    
+    Alors
+    
+    \[
+        \left| \int_{C_r} f(z) e^{i\alpha z} \dz \right|
+        \leq r \int_0^\pi \left| f(r e^{i\theta}) \right| e^{-\alpha r\sin \theta} \left| e^{i \left(\alpha r \cos \theta + \theta\right)} \right| \dth
+    \]
+    
+    \begin{enumerate}
+        \item 
+        Puisque $f(z) = \frac{p(z)}{q(z)}$ avec $\deg(q) - \deg(p) \geq 2$, alors on a que $\left|f(z)\right| \leq \frac{C}{|z|^2}$ pour tout $z \in \Cx$ avec $|z|$ suffisamment grand, $C \in \R^\ast_+$ est une constante.
+        
+        \item 
+        Comme $\alpha \geq 0$, $r > 0$ et $\sin \theta \geq 0$ pour $\theta \in [0, \pi]$, on a que $-\alpha r \sin \theta \leq 0$.
+        
+        \[ 0 \leq e^{-\alpha r \sin \theta} \leq 1 \]
+        
+        \item 
+        De plus, $\left| e^{i(\theta + \alpha r \cos \theta)} \right| = 1$ car $\left|e^{ix}\right| = 1$ pour tout $x \in \R$.
+        Donc on obtient:
+        
+        \[
+            \left| \int_{C_r} f(z) e^{i\alpha z} \dz \right|
+            \leq r \int_0^\pi \frac{C}{r^2} \dth = \frac{C}{r} \int_0^\pi \dth = \frac{C\pi}{r}
+        \]
+        
+        Puisque 
+        
+        \[
+            \lim_{r \rightarrow \infty} \frac{C\pi}{r} = 0 \implies \lim_{r \rightarrow \infty} \int_{C_r} f(z) e^{i\alpha z} \dz = 0
+        \]
+    \end{enumerate}
+\end{proof}
