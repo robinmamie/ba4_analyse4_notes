@@ -16,6 +16,7 @@ Il suffit de lancer la commande `make` dans le terminal afin de compiler le docu
 - 12.04.2018 : notes du 7e cours, ajout des annexes du cours dans le dossier `/doc`
 - 19.04.2018 : notes du 8e cours
 - 26.04.2018 : notes du 9e cours
+- 03.05.2018 : notes du 10e cours
 
 ## Contributions
 
