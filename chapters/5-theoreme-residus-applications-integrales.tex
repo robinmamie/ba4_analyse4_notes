@@ -444,7 +444,7 @@ L'intégrale vaut:
     On a $p(x) = 1$ et $q(x) = x^2 + 1$.
     Conditions vérifiées: $q(x) \neq 0 \ \forall x \in \R$ et $\deg(p) - \deg(q) = 2$.
     
-    Méthode des résidus avec $g(z) = f(z) e^{i5x} = \frac{e^{i5x}}{x^2 + 1}$.
+    Méthode des résidus avec $g(z) = f(z) e^{i5z} = \frac{e^{i5z}}{z^2 + 1}$.
     
     Singularités de $f \implies$ zéros de $q \implies q(z) = 0 \implies z^2 + 1 = 0 \implies z^2 = -1 \implies z_1 = i$ et $z_2 = -i$.
     Ce sont des pôles d'ordre 1 et $z^2 + 1 = (z - i)(z + i)$.
@@ -454,15 +454,15 @@ L'intégrale vaut:
     \[
         \Res_{z_1}(g)
         = \lim_{z \rightarrow z_1} (z - z_1) g(z)
-        = \lim_{z \rightarrow i} (z - i) \frac{e^{izx}}{(z - i)(z + i)}
-        = \frac{e^{i5z}}{2i}
+        = \lim_{z \rightarrow i} (z - i) \frac{e^{i5z}}{(z - i)(z + i)}
+        = \frac{e^{i5i}}{2i}
         = \frac{e^{-5}}{2i}
     \]
     
     Alors:
     
     \[
-        \int_{-\infty}^\infty \frac{e^{i5x}}{x^2 + 1} \dx = 2\pi \Res_i (g) = 2\pi i \frac{e^{-5}}{2i} = \frac{\pi}{e^{5}}
+        \int_{-\infty}^\infty \frac{e^{i5x}}{x^2 + 1} \dx = 2\pi i \Res_i (g) = 2\pi i \frac{e^{-5}}{2i} = \frac{\pi}{e^{5}}
     \]
     
     et
