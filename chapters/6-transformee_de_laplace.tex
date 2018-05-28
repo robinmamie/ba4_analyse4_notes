@@ -1,0 +1,243 @@
+% !TeX spellcheck = fr_FR
+\chapter{Transformée de Laplace}
+
+
+\section{Introduction}
+
+\begin{motivation}
+    Généralisation de la théorie de Fourier pour appliquer une étude de problèmes transitoires en électricité avec des conditions initiales.
+\end{motivation}
+
+\subsubsection*{Procédé heuristique induisant la définition de la transformée de Laplace:}
+
+Soit $g: \R \rightarrow \R$, la transformée de Fourier $\TF (g): \R \rightarrow \Cx$ est définie par $\TF(g)(\alpha) = \ostpi \int_{-\infty}^{\infty} g(t) e^{-i\alpha t} \dt$.
+
+On considère $g(t) = \left\{
+\begin{array}{lcl}
+f(t) & \textrm{ si } & t \geq 0\\
+0    & \textrm{ si } & t < 0\\
+\end{array}
+\right.$ et on autorise la variable $\alpha \in \R$ à prendre des valeurs complexes.
+En posant $\alpha = -i z$ avec $z \in \Cx$, on obtient:
+
+\[ \sqrt{2\pi} \ \TF(g)(-iz) = \int_{-\infty}^{\infty} g(t) e^{-i(-iz)t} \dt = \int_{0}^{\infty} f(t) e^{-zt} \dt \]
+
+Ceci est une nouvelle fonction qui dépend de la variable $z \in \Cx$ qui est appelée la transformée de Laplace de $f$.
+
+\section{Transformée de Laplace d'une fonction}
+
+\subsection{Définition}
+
+\begin{definition}
+    Soit $f: \R_+ \rightarrow \R$ une fonction continue par morceaux et soit $\gamma_0 \in \R$ tels que $\int_0^\infty \module{f(t)} e^{-\gamma_0 t} \dt < \infty$.
+    
+    La \textbf{transformée de Laplace} de $f$ est la fonction notée $\TL(f)$ où $F: \Cx \rightarrow \Cx$ définie par:
+    
+    \[ z \longmapsto \TL(f)(z) = F(z) = \int_0^\infty f(t) e^{-zt} \dt \quad \forall z \in \Cx : \Rep z \geq \gamma_0 \]
+    
+    $\gamma_0$ s'appelle l'abscisse de convergence de $f$.
+\end{definition}
+
+\begin{remark}
+    Si $\Rep z \geq \gamma_0$, alors $\TL(f)(z)$ est bien définie.
+    En effet, comme:
+    
+    \[ \module{e^{-zt}} = \module{e^{-(\Rep z + i \Imp z) t}} = e^{-t \Rep z} \module{e^{-i t \Imp z}} = e^{-t\Rep z} \leq e^{-t\gamma_0} \]
+    
+    pour $t \geq 0$ si $\Rep z \geq \gamma_0$.
+    Alors:
+    
+    \[ \module{\TL(f)(z)} = \module{\int_0^\infty f(t) e^{-zt} \dt} \leq \int_0^\infty \module{f(t)} \module{e^{-zt}} \dt \leq \int_0^\infty \module{f(t)} e^{-\gamma_0 t} \dt < \infty \]
+\end{remark}
+
+\subsection{Exemples}
+
+\begin{example}[1]
+    Calculer la transformée de Laplace de la fonction $f: \R_+ \rightarrow \R$, où $f(t) = 1$.
+
+Puisque
+
+\[
+    \int_0^\infty \module{f(t)} e^{-\gamma_0 t} \dt
+    = \int_0^\infty e^{-\gamma_0 t} \dt
+    = \left.-\frac{e^{-\gamma_0 t}}{\gamma_0}\right|_0^\infty
+    = \frac{1}{\gamma_0} \left[1 - \lim_{t \rightarrow \infty} e^{-\gamma_0 t}\right]
+    = \left\{
+    \begin{array}{clc}
+    \frac{1}{\gamma_0} & \textrm{ si } \gamma_0 > 0\\
+    +\infty & \textrm{ si } \gamma_0 < 0
+    \end{array}\right.
+\]
+
+Alors n'importe quel $\gamma_0 \in \R_+^\ast$ est abscisse de convergence de $f$.
+
+\[
+    \TL(f)(z)
+    = \int_0^\infty \module{f(t)} \module{e^{-zt}} \dt
+    = \int_0^\infty \module{e^{-zt}} \dt
+    = \left.-\frac{e^{-z t}}{z}\right|_0^\infty
+    = \frac{1}{z} \left[1 - \lim_{t \rightarrow \infty} e^{-z t}\right]
+\]
+
+Or,
+
+\[
+    \lim_{t \rightarrow \infty} \module{e^{-zt}}
+    = \lim_{t \rightarrow \infty} \module{e^{-(x + iy)t}}
+    = \lim_{t \rightarrow \infty} e^{-xt} \module{e^{-iyt}}
+    = 0
+\]
+
+si $x = \Rep z > 0$.
+
+Résultat: $\TL(f): \Cx \rightarrow \Cx$, où:
+
+\[
+    z \longmapsto \TL(f)(z) = \frac{1}{z} \textrm{ si } \Rep z > 0
+\]
+\end{example}
+
+\begin{example}[2]
+Calculer la transformée de Laplace de la fonction $f: \R_+ \rightarrow \R$, où $f(t) = e^{at}$ avec $a \in \R$:
+
+Comme 
+
+\begin{align*}
+    \int_0^\infty \module{f(t)} e^{-\gamma_0 t} \dt 
+    &= \int_0^\infty e^{(a - \gamma_0)t}
+    = \left.
+    \frac{e^{(a - \gamma_0)t}}{a - \gamma_0}
+    \right|_0^\infty
+    \\& = \frac{1}{a - \gamma_0} \left[ \lim_{t \rightarrow \infty} e^{(a - \gamma_0)t} - 1 \right]
+    = \left\{
+    \begin{array}{clc}
+    +\infty & \textrm{ si } a \geq \gamma_0\\
+    \frac{1}{\gamma_0 - a} & \textrm{ si } a < \gamma_0
+    \end{array}\right.
+\end{align*}
+
+Alors, n'importe quel $\gamma_0 > a$ est abscisse de convergence de $f$.
+
+\[
+    \TL(f)(z)
+    = \int_0^\infty f(t) e^{-z t} \dt 
+    = \int_0^\infty e^{(a - z)t}
+    = \left.
+    \frac{e^{(a - z)t}}{a - z}
+    \right|_0^\infty
+    = \frac{1}{a - z} \left[ \lim_{t \rightarrow \infty} e^{(a - z)t} - 1 \right]
+\]
+
+Or,
+
+\[
+    \lim_{t \rightarrow \infty} \module{e^{(a - z)t}}
+    = \lim_{t \rightarrow \infty} \module{e^{(a - x - iy)t}}
+    = \lim_{t \rightarrow \infty} e^{(a - x)t} \module{e^{- iyt}}
+    = 0
+\]
+
+si $a - x < 0$.
+
+Résultat: $\TL(f): \Cx \rightarrow \Cx$, où:
+
+\[
+z \longmapsto \TL(f)(z) = \frac{1}{z - a} \textrm{ si } \Rep z > a
+\]
+
+\textit{Autres exemples: ex.1, série 12}
+
+\end{example}
+
+
+\section{Propriétés de la transformée de Laplace}
+
+On considère deux fonctions, $f,g: \R_+ \rightarrow \R$ continues par morceaux et $\gamma_0 \in \R$ tels que $\int_{0}^{\infty} \module{f(t)} e^{-\gamma_0 t} \dt < \infty$ et $\int_{0}^{\infty} \module{g(t)} e^{-\gamma_0 t} \dt < \infty$.
+
+On note $\TL(f) = F$ et $\TL(g) = G$ les transformées de Laplace de $f$ et de $g$.
+
+\subsection{Linéarité et décalage}
+
+\begin{itemize}
+    \item 
+    $\TL(af + bg) = a \TL(f) + b \TL(g)$ avec $a, b \in \R$
+    \item 
+    Si $a \in \R_+^\ast$ et $b \in \R$ et $h(t) = e^{-bt} f(at)$ alors
+    
+    \[ \TL(h)(z) = \frac{1}{a} \TL(f)(\frac{z + b}{a}) \]
+    
+    pour tout $z \in \Cx$ tel que $\Rep\left(\frac{z + b}{a}\right) \geq \gamma_0$
+\end{itemize}
+
+\subsection{Transformée de Laplace du produit de convolution}
+
+Si
+
+    \[
+        (f \ast g)(t)
+        = \int_{-\infty}^\infty f(t - s)g(s) \ds
+        = \int_0^t f(t-s)g(s) \ds
+    \]
+
+est le produit de convolution de $f$ et de $g$, alors:
+
+\[
+    \TL(f \ast g)(z) = \TL(f)(z)\TL(g)(z) \quad \forall z \in \Cx : \Rep z \geq \gamma_0
+\]
+
+\subsection{Holomorphie et dérivation de la transformée de Laplace}
+
+$\TL(f)$ est holomorphe dans le domaine $D = \{ z \in \Cx | \Rep z > \gamma_0 \}$.
+De plus, $\forall z \in D$, on a:
+
+\[ \TL(f)'(z) = - \int_0^\infty t f(t) e^{-zt} \dt = - \TL(h)(z) \]
+
+où $h: \R_+ \rightarrow \R$ est définie par $h(t) = tf(t)$.
+
+\subsection{Transformée de Laplace de la dérivée d'une fonction}
+
+Si de plus $f \in C^1(\R_+)$ et $\int_0^\infty \module{f'(t)} e^{-\gamma_0 t} \dt < \infty$, alors $\forall z \in D$, on a:
+
+\[
+    \TL(f')(z) = z \TL(f)(z) - f(0)
+\]
+
+Plus généralement: si $f \in C^n (R_+)$ et $\int_0^\infty \module{f^{(k)}(t)} e^{-\gamma_0 t} \dt < \infty$ pour $k = 1, 2, \ldots, n$, alors:
+
+\[
+    \TL(f^{(n)})(z) = z^n \TL(f)(z) - z^{n-1} f(0) - z^{n-2} f'(0)
+    - \ldots -  - z f^{(n-2)}(0) -  - f^{(n-1)}(0) \enspace \forall z \in D
+\]
+
+\subsection{Transformée de Laplace d'une primitive d'une fonction}
+
+Si de plus $f \in C(\R_+)$ avec $\gamma_0 \geq 0$ et si $\varphi(t) = \int_0^t f(s) \ds$ est une primitive de $f$, alors $\forall z \in D$, on a:
+
+\[
+    \TL(\varphi)(z) = \frac{1}{z} \TL(f)(z)
+\]
+
+\subsection{Esquisse des démonstrations des propriétés}
+
+\textit{Cf. ex.3, série 12}
+
+\subsection{Exemples d'utilisation des propriétés}
+
+\begin{example}
+    Calculer la transformée de Laplace de la fonction $f: \R_+ \rightarrow \R$ définie par $f(t) = t^2$.
+    
+    Méthode: utiliser la propriété 6.3.4 de la deuxième dérivée de $f$:
+    
+    On a $\TL(f'')(z) = z^2 \TL(f)(z) - zf(0) - f'(0)$.
+    Comme $f(t) = t^2, \enspace f'(t) = 2t$ et $f''(t) = 2 \implies f(0) = 0$ et $f'(0) = 0$, et $f''(t) = 2g(t)$ avec $g(t) = 1$ si $t \geq 0$.
+    
+    \[ \implies \TL(f'')(z) = 2 \TL(g)(z) = 2 \frac{1}{z} \]
+    
+    Donc on obtient $\frac{2}{z} = z^2 \TL(f)(z) \implies \TL(f)(z) = \frac{2}{z^3}$
+    
+    Résultat, pour $\TL(f): \Cx \rightarrow \Cx$:
+    
+    \[ z \longmapsto \TL(f)(z) = \frac{2}{z^3} \]
+    
+    \textit{Autres exemples: ex. 2, série 12}
+\end{example}

@@ -18,6 +18,7 @@ Il suffit de lancer la commande `make` dans le terminal afin de compiler le docu
 - 26.04.2018 : notes du 9e cours
 - 03.05.2018 : notes du 10e cours
 - 17.05.2018 : notes du 11e cours (12e semaine)
+- 28.05.2018 : notes du 12e cours
 
 ## Contributions
 
