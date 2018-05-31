@@ -352,5 +352,144 @@ Si de plus $f \in C(\R_+)$ avec $\gamma_0 \geq 0$ et si $\varphi(t) = \int_0^t f
         \[ C'_r = \left\{ z \in \Cx : |z| = r \ \textrm{ et } \Rep z < \gamma \right\} \]
         
         \[ L_r = \left\{ z \in \Cx : \Rep z = \gamma \ \textrm{ et } \module{\Imp z} \leq \sqrt{r^2 - \gamma^2} \right\} \]
+        
+        \item 
+        On applique le théorème des résidus à $h$ et $\gamma_r$.
+        
+        \[ \int_{\gamma_r} \frac{z^2 e^{zt}}{(z+1)(z-2)^2} \dz = 2 \pi i \left[ \Res_{-1}(h) + \Res_2(h) \right] \]
+        
+        On a:
+        
+        \[
+            \Res_{-1}(h)
+            = \lim_{z \rightarrow -1} (z + 1) h(z)
+            = \lim_{z \rightarrow -1} \frac{z^2 e^{zt}}{(z-2)^2}
+            = \frac{e^{-t}}{9}
+        \]
+        
+        \begin{align*}
+            \Res_2(h)
+            &= \lim_{z \rightarrow 2} \frac{\dd}{\dz} \left[ (z - 2)^2 h(z) \right]
+            = \lim_{z \rightarrow 2} \frac{\dd}{\dz} \frac{z^2 e^{zt}}{z+1}
+            \\&= \frac{1}{9} \left( 8 e^{2t} + 12t e^{2t} \right)
+            = (8 + 12t) \frac{e^{2t}}{9}
+        \end{align*}
+        
+        Donc:
+        
+        \[ \int_{\gamma_r} \frac{z^2 e^{zt}}{(z+1)(z-2)^2} \dz = \frac{2 \pi i}{9} \left[ e^{-t} + (8 + 12t) e^{2t} \right] \]
+        
+        \item 
+        On a aussi:
+        
+        \[
+            \int_{\gamma_r} \frac{z^2 e^{zt}}{(z+1)(z-2)^2} \dz
+            = \int_{C'_r} F(z) e^{zt} \dz + \int_{L_r} F(z) e^{zt} \dz
+        \]
+        
+        Par ailleurs:
+        \begin{itemize}
+            \item 
+            Si $\module{F(z)} \leq \frac{C}{|z|^k}$ avec $C \in \R$ et $k > 0$ pour $z \in C'_r$ avec $|z|$ suffisamment grand, alors on peut montrer que $\lim\limits_{r \rightarrow \infty} \int_{C'_r} F(z)e^{zt} \dz = 0$.
+            
+            Pour $F(z) = \frac{z^2}{(z+1)(z-2)^2}$, la condition est vérifiée avec $k = 1$.
+            
+            \item 
+            \begin{align*}
+                \lim_{r \rightarrow \infty} \int_{L_r} F(z) e^{zt} \dz
+                &= \lim_{r \rightarrow \infty}
+                i \int_{-\sqrt{r^2 - \gamma^2}}^{\sqrt{r^2 - \gamma^2}} F(\gamma + is) e^{(\gamma + is)t} \ds
+                \\&= i \int_{-\infty}^\infty F(\gamma + is) e^{(\gamma + is)t} \ds
+                = 2 \pi i \TLi(F)(t)
+            \end{align*}
+            
+            avec $z = \gamma + is$, $\dz = i \ds$.
+            On obtient la formule d'inversion de la transformée de Laplace.
+            
+            \item 
+            \[
+                \lim\limits_{r \rightarrow \infty} \int_{\gamma_r} \frac{z^2 e^{zt}}{(z+1)(z-2)^2} \dz
+                = \frac{2 \pi i}{9} \left[ e^{-t} + (8 + 12t) e^{2t} \right]
+            \]
+        \end{itemize}
     \end{enumerate}
+
+Finalement, lorsque $r \rightarrow \infty$, on obtient:
+
+\[
+    2 \pi i \TLi(F)(t) = \frac{2 \pi i}{9} \left[ e^{-t} + (8 + 12t) e^{2t} \right]
+\]
+
+D'après le théorème de la transformée de Laplace inverse, on a:
+
+\[
+    f(t) = \TLi(F)(t)
+    = \frac{1}{9} \left[ e^{-t} + (8 + 12t) e^{2t} \right]
+\]
 \end{example}
+
+\textit{Autres exemples: ex 1-2, série 13}
+
+
+\section{Quelques applications de la transformée de Laplace}
+
+\begin{enumerate}[label=\alph{enumi})]
+    \item 
+    Trouver une solution d'équations intégrales du type produit de convolution \textit{(cf ex.3, série 13)}.
+    
+    \item 
+    Trouver une solution d'équations différentielles du type
+    
+    \[ a y''(t) + b y'(t) + c y(t) = f(t) \]
+    
+    pour $t > 0$ avec les conditions initiales $y(0)$ et $y'(0)$ données.
+    
+    \begin{example}
+        Trouver une solution $y$ de:
+        
+        \[ y''(t) + 4 y'(t) + 3 y(t) = 0 \]
+        
+        pour $t > 0$ avec conditions initiales $y(0) = 3$ et $y'(0) = 1$.
+        
+        On écrit:
+        
+        \[ \TL(y'' + 4 y' + 3 y)(t) = \TL(f)(z) \]
+        
+        avec $f(t) = 0$ pour $t > 0$.
+        
+        \[ \implies \TL(y'')(z) + 4 \TL(y')(z) + 3 \TL(y)(z) = 0 \]
+        
+        car $\TL(f)(z) = 0$.
+        En écrivant $\TL(y)(z) = Y(z)$, on a:
+        
+        \[ \implies \left[ z^2 Y(z) - z y(0) - y'(0) \right] + 4 \left[ z Y(z) - y(0) \right] + 3 Y(z) = 0 \]
+        
+        \[ \implies \left[ z^2 Y(z) - 3z - 1 \right] + 4 \left[ z Y(z) - 3 \right] + 3 Y(z) = 0 \]
+        
+        \[ \implies \left[ z^2 + 4z + 3 \right] Y(z) - 3z - 13 = 0 \]
+        
+        \[ \implies Y(z) = \frac{3z + 13}{z^2 + 4z + 3} = \frac{3z + 13}{(z+3)(z+1)} \]
+        
+        On calcule la transformée de Laplace inverse de $Y(z)$.
+        
+        Méthode des résidus (conditions vérifiées avec $k = 1$) avec:
+        
+        \[ h(z) = Y(z) e^{zt} = \frac{(3z + 13)e^{zt}}{(z+3)(z+1)} \]
+        
+        Deux pôles d'ordre 1: $z = -3$ et $z = -1$
+        
+        \[ \Res_{-3}(h) = \lim_{z \rightarrow -3} (z + 3)h(z)
+        = \lim_{z \rightarrow -3} \frac{(3z + 13)e^{zt}}{z+1}
+        = \frac{4 e^{-3t}}{-2} = -2 e^{-3t} \]
+        
+        \[ \Res_{-1}(h) = \lim_{z \rightarrow -1} (z + 1)h(z)
+        = \lim_{z \rightarrow -1} \frac{(3z + 13)e^{zt}}{z+3}
+        = \frac{10 e^{-t}}{2} = 5 e^{-t} \]
+        
+        La solution est
+        
+        \[ y(t) = \TLi(Y)(t) = \Res_{-3}(h) + \Res_{-1}(h) = 5 e^{-t} - 2 e^{-3t} \]
+        
+        \textit{Autre exemple: ex. 4, série 13}
+    \end{example}
+\end{enumerate}
