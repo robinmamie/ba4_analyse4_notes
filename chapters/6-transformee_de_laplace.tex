@@ -57,17 +57,17 @@ Ceci est une nouvelle fonction qui dépend de la variable $z \in \Cx$ qui est ap
 
 Puisque
 
-\[
+\begin{align*}
     \int_0^\infty \module{f(t)} e^{-\gamma_0 t} \dt
-    = \int_0^\infty e^{-\gamma_0 t} \dt
+    &= \int_0^\infty e^{-\gamma_0 t} \dt
     = \left.-\frac{e^{-\gamma_0 t}}{\gamma_0}\right|_0^\infty
-    = \frac{1}{\gamma_0} \left[1 - \lim_{t \rightarrow \infty} e^{-\gamma_0 t}\right]
+    \\&= \frac{1}{\gamma_0} \left[1 - \lim_{t \rightarrow \infty} e^{-\gamma_0 t}\right]
     = \left\{
     \begin{array}{clc}
     \frac{1}{\gamma_0} & \textrm{ si } \gamma_0 > 0\\
     +\infty & \textrm{ si } \gamma_0 < 0
     \end{array}\right.
-\]
+\end{align*}
 
 Alors n'importe quel $\gamma_0 \in \R_+^\ast$ est abscisse de convergence de $f$.
 
@@ -206,7 +206,7 @@ Plus généralement: si $f \in C^n (R_+)$ et $\int_0^\infty \module{f^{(k)}(t)} 
 
 \[
     \TL(f^{(n)})(z) = z^n \TL(f)(z) - z^{n-1} f(0) - z^{n-2} f'(0)
-    - \ldots -  - z f^{(n-2)}(0) -  - f^{(n-1)}(0) \enspace \forall z \in D
+    - \ldots - z f^{(n-2)}(0) - f^{(n-1)}(0) \quad \forall z \in D
 \]
 
 \subsection{Transformée de Laplace d'une primitive d'une fonction}
