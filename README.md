@@ -35,11 +35,14 @@ En particulier, il ne s'agit ni d'un résumé, ni d'un document expliquant plus 
 
 ### Liste des contributeurs
 
-- Robin Mamie (IN - <robin.mamie@epfl.ch>)
+- Robin Mamié (IN - <robin.mamie@epfl.ch>)
 - Eric Jollès (SC)
 - Yves Zumbach (IN)
 - Victor Cochard (IN)
 - Ghali Chraibi (SC)
+- Charline Montial (IN)
+- Amine Chaouachi (SC)
+- Xiaoyan Zou (SC)
 
 ## Distribution et licence
 
