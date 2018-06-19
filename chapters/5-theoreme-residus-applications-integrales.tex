@@ -377,7 +377,7 @@ Calcul avec la méthode des résidus avec $g(z) = f(z) = \frac{z^2}{z^4 + 16}$.
 
 Singularités de $f(z) \iff$ recherche des zéros de $q(z)$
 
-$q(z) = 0 \iff z^4 + 16 = 0 \iff z^4 = -16 \iff 16 e^{i\pi} \iff z = 2 e^{i\left(\frac{\pi}{4} + \frac{2n\pi}{4}\right)}$ avec $n = 0,1,2,3$.
+$q(z) = 0 \iff z^4 + 16 = 0 \iff z^4 = -16 = 16 e^{i\pi} \iff z = 2 e^{i\left(\frac{\pi}{4} + \frac{2n\pi}{4}\right)}$ avec $n = 0,1,2,3$.
 
 Les singularités sont:
 
@@ -530,7 +530,7 @@ L'intégrale vaut:
 
 \begin{remark}[1]
     Pour $z = r e^{i\theta} = r(cos \theta + i \sin \theta)$, on a $\module{e^{i\alpha z}} = e^{-\alpha r \sin \theta}$.
-    Lorsque $\alpha \leq 0$, on a $-\alpha r \sin \theta \leq 0$ et $\module{e^{i\alpha z}} < 1$ si $\theta \in [\pi, 2\pi]$ et il faut donc choisir le demi-cercle $C_r$ dans le demi-plan pour avoirremarq
+    Lorsque $\alpha \leq 0$, on a $-\alpha r \sin \theta \leq 0$ et $\module{e^{i\alpha z}} < 1$ si $\theta \in [\pi, 2\pi]$ et il faut donc choisir le demi-cercle $C_r$ dans le demi-plan inférieur pour avoir:
     
     \[ \lim_{r \rightarrow \infty} \int_{C_r} f(z) e^{i\alpha z} \dz = 0 \]
     
