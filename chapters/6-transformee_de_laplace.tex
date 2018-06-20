@@ -1,5 +1,5 @@
 % !TeX spellcheck = fr_FR
-\chapter{Transformée de Laplace}
+\chapter{Transformées de Laplace}
 
 
 \section{Introduction}
@@ -28,7 +28,7 @@ Ceci est une nouvelle fonction qui dépend de la variable $z \in \Cx$ qui est ap
 
 \subsection{Définition}
 
-\begin{definition}
+\begin{definition}[16.1, p.119]
     Soit $f: \R_+ \rightarrow \R$ une fonction continue par morceaux et soit $\gamma_0 \in \R$ tels que $\int_0^\infty \module{f(t)} e^{-\gamma_0 t} \dt < \infty$.
     
     La \textbf{transformée de Laplace} de $f$ est la fonction notée $\TL(f)$ où $F: \Cx \rightarrow \Cx$ définie par:
@@ -156,6 +156,10 @@ On considère deux fonctions, $f,g: \R_+ \rightarrow \R$ continues par morceaux 
 
 On note $\TL(f) = F$ et $\TL(g) = G$ les transformées de Laplace de $f$ et de $g$.
 
+\begin{note}
+    Ces propriétés sont issues du \textbf{Théorème 16.2} page 119 du livre de référence.
+\end{note}
+
 \subsection{Linéarité et décalage}
 
 \begin{itemize}
@@ -243,11 +247,11 @@ Si de plus $f \in C(\R_+)$ avec $\gamma_0 \geq 0$ et si $\varphi(t) = \int_0^t f
 \end{example}
 
 
-\section{La formule d'inversion de la transformée de Laplace}
+\section{Formule d'inversion de la transformée de Laplace}
 
 \subsection{Théorème de la transformée de Laplace inverse}
 
-\begin{theorem}
+\begin{theorem}[Formule d'inversion -- 16.3, p.121]
     Soit $f: \R_+ \rightarrow \R$ une fonction (étendue à $\R$ en posant $f(t) = 0$ pour $t < 0$) continue pour $t > 0$ et soit $\gamma_0 \in \R$ tel que $\int_0^\infty \module{f(t)}e^{-\gamma_0 t}\dt < \infty$.
     
     Si la transformée de Laplace $F = \TL(f)$ de $f$ est telle que $\int_{-\infty}^\infty F(\gamma + is) \ds < \infty$ pour un certain $\gamma > \gamma_0$, alors on a la formule d'inversion de $\TL$:
@@ -324,6 +328,9 @@ Si de plus $f \in C(\R_+)$ avec $\gamma_0 \geq 0$ et si $\varphi(t) = \int_0^t f
     \end{align*}
 \end{example}
 
+\begin{note}
+    L'application suivante est issue de l'\textbf{Exemple 16.7} page 122 du livre de référence.
+\end{note}
 
 \begin{example}[3]
     Trouver une fonction $f: \R_+ \rightarrow \R$ telle que sa transformée de Laplace soit:
@@ -432,6 +439,10 @@ D'après le théorème de la transformée de Laplace inverse, on a:
 
 
 \section{Quelques applications de la transformée de Laplace}
+
+\begin{note}
+    Cette application est issue du \textbf{Chapitre 17.1} page 127 du livre de référence.
+\end{note}
 
 \begin{enumerate}[label=\alph{enumi})]
     \item 

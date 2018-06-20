@@ -1,5 +1,5 @@
 % !TeX spellcheck = fr_FR
-\chapter{Théorème et formule intégrale de Cauchy}
+\chapter{Théorème et formule de Cauchy}
 
 
 \section{Intégration complexe}
@@ -124,10 +124,10 @@
     
     \begin{enumerate}[label=\alph*)]
     \item 
-    $D = \Cx$ Le Thm. de Cauchy ne s'applique pas car $f$ n'est pas holomorphe en $t = 0$.
+    $D = \Cx$ Le Théorème de Cauchy ne s'applique pas car $f$ n'est pas holomorphe en $t = 0$.
     
     $D = \Cx^\ast = \Cx \setminus \{0\}$
-    Le Thm. de Cauchy ne s'applique pas non plus car $D$ n'est pas simplement connexe.
+    Le Théorème de Cauchy ne s'applique pas non plus car $D$ n'est pas simplement connexe.
     Par exemple, si $\gamma$ le cercle unité centré en $z = 0$, alors:
     
     \[
@@ -136,7 +136,7 @@
     
     \item 
     $D = \{z \in \Cx : \Rep z > 0\}$
-    Le Thm. de Cauchy s'applique car $D$ est simplement connexe et $f$ est holomorphe dans $D$.
+    Le Théorème de Cauchy s'applique car $D$ est simplement connexe et $f$ est holomorphe dans $D$.
     
     \[\textrm{Thm. de Cauchy } \implies \int_\gamma \frac{1}{z} \dz = 0\]
     
@@ -151,7 +151,6 @@
     \end{enumerate}
 \end{example}
 
-%!TeX newpage for the design of the document
 \newpage
 
 \subsection{Démonstration du théorème de Cauchy}
@@ -191,7 +190,7 @@
     \end{align*}
     
     On a que $I_1 = \int_\gamma F \cd \dl$ est l'intervalle curviligne le long de $\gamma$ du champ vectoriel $F: \R^2 \rightarrow \R^2$ défini par $F(x,y) = \big(u(x,y),-v(x,y)\big)$.
-    En appliquant le Thm. de Green, on obtient:
+    En appliquant le Théorème de Green, on obtient:
     
     \[
     I_1 = \iint_{\inte\gamma} \rot F(x,y) \, \dx\dy
@@ -201,7 +200,7 @@
     $f$ holomorphe dans $D$ et $\gamma \subset D \xRightarrow[\textrm{CR}]{\textrm{Thm}} v_x(x,y) + u_y(x,y) = 0 \enspace \forall(x,y) \in \inte\gamma \implies I_1 = 0$
     
     On a que $I_2 = \int_\gamma G \cd \dl$ est l'intervalle curviligne le long de $\gamma$ du champ vectoriel $G: \R^2 \rightarrow \R^2$ défini par $G(x,y) = \big(v(x,y),u(x,y)\big)$.
-    En appliquant le Thm. de Green, on obtient:
+    En appliquant le Théorème de Green, on obtient:
     
     \[
     I_2 = \iint_{\inte\gamma} \rot G(x,y) \, \dx\dy
@@ -241,7 +240,6 @@
 
 \subsubsection*{Justification heuristique du corollaire}
 
-%!TeX IMAGE À COMMENTER
 \begin{figure}[h]
     \centering
     \includegraphics[width=.65\linewidth]{img/3_2_4-heur.png}
@@ -284,7 +282,7 @@ Donc:
 
 \subsection{Énoncé}
 
-\begin{theorem}
+\begin{theorem}[10.2, p.73]
     Soient $D \subset \Cx$ un domaine simplement connexe, $f: D \rightarrow \Cx$ une fonction holomorphe dans $D$ et $\gamma$ une courbe simple fermée régulière (par morceaux) orientée positivement contenue dans $D$.
     Alors:
     
@@ -317,7 +315,7 @@ Donc:
     
     \item[2\ieme{} cas $0 \notin \adh{\gamma}$]
     La fonction $g(z) = \frac{\cos 2z}{z}$ est holomorphe dans un domaine $D$ simplement connexe tel que $\adh{\gamma} \subset D$.
-    Comme $\gamma \subset \adh{\gamma} \subset D$, alors le Thm. de Cauchy s'applique à la fonction $g$ et on trouve:
+    Comme $\gamma \subset \adh{\gamma} \subset D$, alors le Théorème de Cauchy s'applique à la fonction $g$ et on trouve:
     
     \[\int_\gamma \frac{\cos 2z}{z} \dz = 0\]
     
@@ -384,7 +382,7 @@ Soit $f$ holomorphe dans $D$ et $\gamma$ une courbe simple fermée régulière o
 Soient $z \in \inte \gamma$ et $C$ un cercle de rayon $r$ centré en $z$ orienté positivement tel que $C \subset \inte \gamma$.
 On note $V = \adh{\gamma} \setminus \inte C$.
 
-Corollaire du Thm. de Cauchy (§3.2.4) appliqué à la fonction $g(\xi) = \frac{f(\xi)}{\xi - z}$ holomorphe pour $\xi \in V$ 
+Corollaire du Théorème de Cauchy (§3.2.4) appliqué à la fonction $g(\xi) = \frac{f(\xi)}{\xi - z}$ holomorphe pour $\xi \in V$ 
 
 \begin{align*}
 \implies \int_\gamma \frac{f(\xi)}{\xi - z} \dxi
@@ -428,52 +426,55 @@ f(z) \int_0^{2\pi} \dth
 
 \subsection{Énoncé}
 
-Avec les mêmes hypothèses du §3.3 ($D \subset \Cx$ domaine simplement connexe, $f: D \rightarrow \Cx$ holomorphe dans $D$, $\gamma \subset D$ courbe fermée régulière orientée positivement), on a:
+\begin{corollary}[10.2, p.73]
+    Avec les mêmes hypothèses du §3.3 ($D \subset \Cx$ domaine simplement connexe, $f: D \rightarrow \Cx$ holomorphe dans $D$, $\gamma \subset D$ courbe fermée régulière orientée positivement), on a:
+    
+    \begin{enumerate}[label=\arabic{enumi})]
+        \item 
+        $f$ est infiniment dérivable dans $D$
+        \item 
+        \[
+        f^{(n)}(z) = \frac{n!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^{n+1}} \dxi \quad \textrm{pour } n \in \N, \ \forall z \in \inte \gamma
+        \]
+    \end{enumerate}
+\end{corollary}
 
-\begin{enumerate}[label=\arabic{enumi})]
-    \item 
-    $f$ est infiniment dérivable dans $D$
-    \item 
-    \[
-    f^{(n)}(z) = \frac{n!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^{n+1}} \dxi \quad \textrm{pour } n \in \N, \ \forall z \in \inte \gamma
-    \]
-\end{enumerate}
+\begin{comment}\hfill
 
-Commentaires
-
-\begin{enumerate}[label=\arabic{enumi})]
-    \item 
-    Pour $n=0$, le corollaire redonne la formule intégrale de Cauchy:
-    
-    \[
-    f(z) = f^{(0)}(z) = \frac{0!}{2\pi i} \int_\gamma \frac{f(\xi)}{\xi - z} \dxi
-    \]
-    
-    \item 
-    Résultat remarquable: le corollaire affirme qu'une fonction holomorphe dans $D$ (i.e. dérivable $\forall z \in D$) est en fait infiniment dérivable et que sa $n$-ième dérivée se calcule en dérivant $n$ fois par rapport à $z$ sous l'intégrale de la formule de Cauchy.
-    En effet: $\quad ' = \frac{\dd}{\dz}$
-    
-    \[
-    f^{(1)}(z) = \frac{1}{2\pi i} \int_\gamma f(\xi) \left[\frac{1}{\xi - z}\right]' \dxi
-    = \frac{1}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^2} \dxi = \frac{1!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^2} \dxi
-    \]
-    
-    \[
-    f^{(2)}(z) = \frac{1}{2\pi i} \int_\gamma f(\xi) \left[\frac{1}{(\xi - z)^2}\right]' \dxi
-    = \frac{2}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^3} \dxi = \frac{2!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^3} \dxi 
-    \]
-    
-    \[
-    f^{(3)}(z) = \frac{2}{2\pi i} \int_\gamma f(\xi) \left[\frac{1}{(\xi - z)^3}\right]' \dxi
-    = \frac{2 \cd 3}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^4} \dxi = \frac{3!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^4} \dxi 
-    \]
-    
-    Récurrence sur $n$:
-    
-    \[
-    f^{(n)}(z) = \frac{n!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^{n+1}} \dxi
-    \]
-\end{enumerate}
+    \begin{enumerate}[label=\arabic{enumi})]
+        \item 
+        Pour $n=0$, le corollaire redonne la formule intégrale de Cauchy:
+        
+        \[
+        f(z) = f^{(0)}(z) = \frac{0!}{2\pi i} \int_\gamma \frac{f(\xi)}{\xi - z} \dxi
+        \]
+        
+        \item 
+        Résultat remarquable: le corollaire affirme qu'une fonction holomorphe dans $D$ (i.e. dérivable $\forall z \in D$) est en fait infiniment dérivable et que sa $n$-ième dérivée se calcule en dérivant $n$ fois par rapport à $z$ sous l'intégrale de la formule de Cauchy.
+        En effet: $\quad ' = \frac{\dd}{\dz}$
+        
+        \[
+        f^{(1)}(z) = \frac{1}{2\pi i} \int_\gamma f(\xi) \left[\frac{1}{\xi - z}\right]' \dxi
+        = \frac{1}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^2} \dxi = \frac{1!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^2} \dxi
+        \]
+        
+        \[
+        f^{(2)}(z) = \frac{1}{2\pi i} \int_\gamma f(\xi) \left[\frac{1}{(\xi - z)^2}\right]' \dxi
+        = \frac{2}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^3} \dxi = \frac{2!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^3} \dxi 
+        \]
+        
+        \[
+        f^{(3)}(z) = \frac{2}{2\pi i} \int_\gamma f(\xi) \left[\frac{1}{(\xi - z)^3}\right]' \dxi
+        = \frac{2 \cd 3}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^4} \dxi = \frac{3!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^4} \dxi 
+        \]
+        
+        Récurrence sur $n$:
+        
+        \[
+        f^{(n)}(z) = \frac{n!}{2\pi i} \int_\gamma \frac{f(\xi)}{(\xi - z)^{n+1}} \dxi
+        \]
+    \end{enumerate}
+\end{comment}
 
 \subsection{Exemples d'utilisation}
 

@@ -1,5 +1,7 @@
+% !TeX spellcheck = fr_FR
 \documentclass[a4paper, 11pt]{report}
 
+%% PACKAGES %%
 \usepackage[french]{babel}
 \usepackage[a4paper]{geometry}
 \usepackage{amsmath}
@@ -10,7 +12,7 @@
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 
-
+%% THEOREM GROUP %%
 \newtheorem*{theorem}{Théorème}
 \newtheorem*{corollary}{Corollaire}
 
@@ -30,7 +32,10 @@
 \newtheorem*{example}{Exemple}
 \newtheorem*{illustration}{Illustration}
 \newtheorem*{constatation}{Constatation}
+\newtheorem*{comment}{Commentaire}
 
+
+%% SHORTCUTS %%
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
@@ -64,12 +69,15 @@
 \newcommand{\Res}{\textrm{Rés}}
 
 
+%% TITLE %%
 \title{\textbf{Analyse IV} \\
 Transcript du cours du Pr. Michel \bsc{Cibils}}
-\author{Robin \bsc{Mamié}}
-\date{Printemps 2018}
+\author{\href{mailto:robin.mamie@epfl.ch}{Robin \bsc{Mamié}}}
+\date{Semestre de printemps 2018
+    \let\thefootnote\relax\footnotetext{Version 1.0.0 -- 2018.06.20 \hspace{1cm} \url{https://github.com/robinmamie/ba4_analyse4_notes}}}
 
 
+%% DOCUMENT %%
 \begin{document}
 
 \maketitle
@@ -93,11 +101,10 @@ Transcript du cours du Pr. Michel \bsc{Cibils}}
 
 Toutes les références (numéro de théorème, définition, etc.) sont faites à ce livre.
 
-
 \section*{Contributeurs}
 
 \begin{itemize}
-    \item Robin Mamié (IN)
+    \item Robin Mamié (IN) (courriel: \href{mailto:robin.mamie@epfl.ch}{robin.mamie@epfl.ch})
     \item Eric Jollès (SC)
     \item Yves Zumbach (IN)
     \item Victor Cochard (IN)

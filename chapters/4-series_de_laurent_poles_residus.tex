@@ -142,7 +142,7 @@
     Soit $D \subset \Cx$ un domaine simplement connexe, $z_0 \in D$ et $f: D \setminus \{z_0\} \rightarrow \Cx$ une fonction holomorphe dans $D \setminus \{z_0\}$.
 \end{hypothesis}
 
-\begin{definition}
+\begin{definition}[11.1, p.78]
     Pour $N \in \N$, le développement de Laurent de $f$ de degré $N$ au voisinage de $z_0$ est:
     
     \[ L_N f(z) = \sum_{n = -N}^{N} c_n (z - z_0)^n \]
@@ -156,7 +156,7 @@
     où $\gamma \subset D$ est une courbe simple fermée régulière (par morceaux) orientée positivement telle que $z_0 \in \inte \gamma$.
 \end{definition}
 
-\begin{result}
+\begin{result}[11.2, p.80]
     Soit $R > 0$ et $D_R(z_0) = \{ z \in \Cx : \module{z - z_0} < R \}$ le plus grand disque de rayon $R$ centré en $z_0$ et contenu dans $D$.
     Alors:
     
@@ -228,6 +228,10 @@
 \end{remark}
 
 \subsection{Définitions issues de la série de Laurent}
+
+\begin{note}
+    Ces définitions sont issues de la \textbf{Définition 11.2} page 80 du livre de référence.
+\end{note}
 
 \begin{definition}[1]
     $z_0 \in \Cx$ est un \textbf{point régulier} de $f \iff$ la partie singulière de la série de Laurent au voisinage de $z_0$ est nulle.
@@ -364,6 +368,10 @@
 
 \subsection{Méthodes de détection des pôles}
 
+\begin{note}
+    Ces résultats sont issus de la \textbf{Proposition 11.3} page 81 du livre de référence.
+\end{note}
+
 \begin{definition}
     Soient $n \in N^\ast$ et $z_0 \in \Cx$. $z_0$ est un \textbf{zéro d'ordre} $n$ de $f$ lorsque:
     
@@ -450,9 +458,11 @@
     Les preuves des critères a) et b) découlent du développement en série de Laurent et de la définition de pôle (§4.2.1 et §4.2.2).
 \end{remark}
 
-%!TeX newpage esthétique
-\newpage
 \subsection{Formules de calcul du résidu d'une fonction}
+
+\begin{note}
+    Ces résultats sont issus des \textbf{Propositions 11.4, 11.5} page 81 du livre de référence.
+\end{note}
 
 \begin{method}\hfill
     
@@ -540,6 +550,8 @@
     où
     
     \[ G(z) = \sum_{n = 0}^\infty c_n (n + 2) (z - z_0)^{n + 1} \]
+    
+    \newpage
     
     Donc
     
