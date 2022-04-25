@@ -27,8 +27,6 @@ Il suffit de lancer la commande `make` dans le terminal afin de compiler le docu
 Tout le monde est libre de contribuer au transcript.
 Veuillez s'il vous plaît vous ajouter à la liste des contributeurs si vous décidez de participer à ce projet.
 
-A contrario, vous pouvez me contacter par email (<robin.mamie@epfl.ch>) en cas de remarques ou de commentaires.
-
 Cependant, l'esprit du document doit être respecté.
 Il s'agit d'une retranscription la plus fidèle possible du cours et le contenu ne doit pas dévier pas de celui-ci.
 
@@ -36,7 +34,7 @@ En particulier, il ne s'agit ni d'un résumé, ni d'un document expliquant plus 
 
 ### Liste des contributeurs
 
-- Robin Mamié (IN - <robin.mamie@epfl.ch>)
+- Robin Mamié (IN)
 - Eric Jollès (SC)
 - Yves Zumbach (IN)
 - Victor Cochard (IN)
